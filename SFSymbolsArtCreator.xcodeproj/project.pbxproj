@@ -16,6 +16,7 @@
 		975679F02AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679EF2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift */; };
 		97567A0D2AB9C6670057B0E2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 97567A0C2AB9C6670057B0E2 /* ComposableArchitecture */; };
 		97567A102AB9C6A20057B0E2 /* SFUserFriendlySymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 97567A0F2AB9C6A20057B0E2 /* SFUserFriendlySymbols */; };
+		97567A122AB9C6D80057B0E2 /* SymbolCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97567A112AB9C6D80057B0E2 /* SymbolCatalogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		975679E52AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFSymbolsArtCreator.xcdatamodel; sourceTree = "<group>"; };
 		975679EB2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFSymbolsArtCreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		975679EF2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsArtCreatorTests.swift; sourceTree = "<group>"; };
+		97567A112AB9C6D80057B0E2 /* SymbolCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCatalogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				97567A112AB9C6D80057B0E2 /* SymbolCatalogView.swift */,
 			);
 			path = SymbolCatalog;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97567A122AB9C6D80057B0E2 /* SymbolCatalogView.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
 				975679DC2AB9C2690057B0E2 /* ContentView.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
