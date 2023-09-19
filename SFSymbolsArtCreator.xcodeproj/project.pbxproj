@@ -79,6 +79,7 @@
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
 				975679DB2AB9C2690057B0E2 /* ContentView.swift */,
+				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
 				975679DF2AB9C26B0057B0E2 /* Preview Content */,
@@ -117,6 +118,13 @@
 				975679E42AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SymbolCatalog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
