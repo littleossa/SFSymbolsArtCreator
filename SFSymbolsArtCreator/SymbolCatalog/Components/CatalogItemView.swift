@@ -17,6 +17,10 @@ struct CatalogItemView: View {
         return canvasLength / 2
     }
     
+    private var oneThirdCanvasLength: CGFloat {
+        return canvasLength / 3
+    }
+    
     var body: some View {
         
         VStack(alignment: .center, spacing: 8) {
@@ -36,7 +40,7 @@ struct CatalogItemView: View {
                     )
                     .overlay {
                         Image(systemName: symbol.rawValue)
-                            .font(.system(size: halfCanvasLength))
+                            .font(.system(size: oneThirdCanvasLength))
                             .foregroundColor(.black)
                     }
             }
