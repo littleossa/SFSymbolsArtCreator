@@ -9,6 +9,7 @@ import SwiftUI
 extension Color {
     
     static let placeholderText = Color(uiColor: .placeholderText)
-    // heavyDarkGray
-    // paleGray
+    // 背景色: heavyDarkGray
+    // テキスト: paleGray
+    // フレーム: gray
 }
