@@ -89,7 +89,7 @@ struct CatalogItemView: View {
                     viewStore.send(.symbolTapped)
                 } label: {
                     RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(.white)
+                        .foregroundColor(viewStore.backgroundColor)
                         .frame(width: viewStore.squareLength,
                                height: viewStore.squareLength)
                         .overlay(
