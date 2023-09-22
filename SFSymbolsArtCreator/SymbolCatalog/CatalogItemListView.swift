@@ -11,20 +11,20 @@ import SwiftUI
 struct CatalogItemListFeature: Reducer {
     
     struct State: Equatable {
-        @BindingState var backgroundCanvasColor: Color
+        @BindingState var backgroundColor: Color
         var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
         @BindingState var category: SFSymbols.Category
         @BindingState var searchText = ""
         
-        init(backgroundCanvasColor: Color = .white,
+        init(backgroundColor: Color = .white,
              category: SFSymbols.Category = .all,
              searchText: String = "") {
-            self.backgroundCanvasColor = backgroundCanvasColor
+            self.backgroundColor = backgroundColor
             self.category = category
             
             let allItems = category.symbols.compactMap { symbol in
                 CatalogItemFeature.State(
-                    canvasColor: backgroundCanvasColor,
+                    canvasColor: backgroundColor,
                     canvasLength: 72,
                     id: UUID(),
                     symbol: symbol
@@ -49,7 +49,7 @@ struct CatalogItemListFeature: Reducer {
             } else {
                 let filteredItems = filteredSymbols.compactMap { symbol in
                     CatalogItemFeature.State(
-                        canvasColor: backgroundCanvasColor,
+                        canvasColor: backgroundColor,
                         canvasLength: 72,
                         id: UUID(),
                         symbol: symbol
@@ -144,7 +144,7 @@ struct CatalogItemListView: View {
             
             CatalogItemListView(store: .init(
                 initialState: CatalogItemListFeature.State(
-                    backgroundCanvasColor: .white
+                    backgroundColor: .white
                 )
             ) {
                 CatalogItemListFeature()
