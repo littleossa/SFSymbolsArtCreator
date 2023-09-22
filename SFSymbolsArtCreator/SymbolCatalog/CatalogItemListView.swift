@@ -128,7 +128,7 @@ struct CatalogItemListView: View {
                 }
             }
             .padding(.horizontal)
-            .background(Color(uiColor: .darkGray))
+            .background(.heavyDarkGray)
         }
         .frame(width: 284)
     }
