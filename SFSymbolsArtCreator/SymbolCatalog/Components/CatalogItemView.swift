@@ -30,11 +30,11 @@ struct CatalogItemFeature: Reducer {
              backgroundColor: Color,
              squareLength: CGFloat) {
             self.backgroundColor = backgroundColor
-            self.squareLength = squareLength
             self.id = id
             self.primaryColor = primaryColor
             self.renderingMode = renderingMode
             self.secondaryColor = secondaryColor
+            self.squareLength = squareLength
             self.symbol = symbol
             self.tertiaryColor = tertiaryColor
         }
@@ -127,11 +127,11 @@ struct CatalogItemView: View {
 #Preview {
     Color.heavyDarkGray.overlay {
         HStack(spacing: 12) {
-            
+                        
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
                     symbol: SFSymbols(rawValue: "xmark")!,
-                primaryColor: .black,
+                    primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
                     renderingMode: .monochrome,
@@ -145,7 +145,7 @@ struct CatalogItemView: View {
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
                     symbol: SFSymbols(rawValue: "arrow.right.doc.on.clipboard")!,
-                    primaryColor: .white,
+                    primaryColor: .red,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
                     renderingMode: .hierarchical,
