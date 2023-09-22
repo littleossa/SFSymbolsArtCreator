@@ -89,7 +89,7 @@ struct CatalogItemView: View {
                                alignment: .top)
                         .multilineTextAlignment(.center)
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.paleGray)
                     
                     Spacer()
                 }
@@ -99,7 +99,7 @@ struct CatalogItemView: View {
 }
 
 #Preview {
-    Color.black.overlay {
+    Color.heavyDarkGray.overlay {
         HStack(spacing: 12) {
             
             CatalogItemView(store: .init(
