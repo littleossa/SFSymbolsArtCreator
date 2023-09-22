@@ -15,6 +15,7 @@ struct CatalogItemListFeature: Reducer {
         var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
         @BindingState var category: SFSymbols.Category
         var primaryColor: Color
+        var renderingMode: SymbolRenderingMode
         var secondaryColor: Color
         @BindingState var searchText = ""
         var tertiaryColor: Color
@@ -22,6 +23,7 @@ struct CatalogItemListFeature: Reducer {
         init(primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
+             renderingMode: SymbolRenderingMode,
              backgroundColor: Color,
              category: SFSymbols.Category = .all,
              searchText: String = "") {
@@ -41,6 +43,7 @@ struct CatalogItemListFeature: Reducer {
             self.catalogItems = IdentifiedArray(uniqueElements: allItems)
             self.searchText = searchText
             self.primaryColor = primaryColor
+            self.renderingMode = renderingMode
             self.secondaryColor = secondaryColor
             self.tertiaryColor = tertiaryColor
         }
@@ -160,6 +163,7 @@ struct CatalogItemListView: View {
                     primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
+                    renderingMode: .monochrome,
                     backgroundColor: .white
                 )
             ) {
@@ -168,5 +172,27 @@ struct CatalogItemListView: View {
             })
         }
         Spacer()
+    }
+}
+
+extension SymbolRenderingMode: Equatable {
+    
+    public static func == (lhs: SymbolRenderingMode, rhs: SymbolRenderingMode) -> Bool {
+        return lhs.label == rhs.label
+    }
+    
+    var label: LocalizedStringKey {
+        switch self {
+        case .hierarchical:
+            return "Hierarchical"
+        case .monochrome:
+            return "Monochrome"
+        case .multicolor:
+            return "multicolor"
+        case .palette:
+            return "Palette"
+        default:
+            return "Other"
+        }
     }
 }
