@@ -10,5 +10,5 @@ extension Color {
     
     static let placeholderText = Color(uiColor: .placeholderText)
     // heavyDarkGray
-    // systemGray5
+    // paleGray
 }
