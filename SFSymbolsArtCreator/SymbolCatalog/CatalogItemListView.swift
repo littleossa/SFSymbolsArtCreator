@@ -16,7 +16,7 @@ struct CatalogItemListFeature: Reducer {
         @BindingState var category: SFSymbols.Category
         var fontWeight: Font.Weight
         var primaryColor: Color
-        var renderingMode: SymbolRenderingMode
+        var renderingType: RenderingType
         var secondaryColor: Color
         @BindingState var searchText = ""
         var tertiaryColor: Color
@@ -25,7 +25,7 @@ struct CatalogItemListFeature: Reducer {
              primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
-             renderingMode: SymbolRenderingMode,
+             renderingType: RenderingType,
              backgroundColor: Color,
              category: SFSymbols.Category = .all,
              searchText: String = "") {
@@ -40,7 +40,7 @@ struct CatalogItemListFeature: Reducer {
                     primaryColor: primaryColor,
                     secondaryColor: secondaryColor,
                     tertiaryColor: tertiaryColor,
-                    renderingMode: renderingMode,
+                    renderingType: renderingType,
                     backgroundColor: backgroundColor,
                     squareLength: 72
                 )
@@ -48,7 +48,7 @@ struct CatalogItemListFeature: Reducer {
             self.catalogItems = IdentifiedArray(uniqueElements: allItems)
             self.searchText = searchText
             self.primaryColor = primaryColor
-            self.renderingMode = renderingMode
+            self.renderingType = renderingType
             self.secondaryColor = secondaryColor
             self.tertiaryColor = tertiaryColor
         }
@@ -73,7 +73,7 @@ struct CatalogItemListFeature: Reducer {
                         primaryColor: primaryColor,
                         secondaryColor: secondaryColor,
                         tertiaryColor: tertiaryColor,
-                        renderingMode: renderingMode,
+                        renderingType: renderingType,
                         backgroundColor: backgroundColor,
                         squareLength: 72
                     )
@@ -171,7 +171,7 @@ struct CatalogItemListView: View {
                     primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
-                    renderingMode: .monochrome,
+                    renderingType: .monochrome,
                     backgroundColor: .white
                 )
             ) {

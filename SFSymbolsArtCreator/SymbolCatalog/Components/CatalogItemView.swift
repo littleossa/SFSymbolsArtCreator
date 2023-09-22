@@ -16,7 +16,7 @@ struct CatalogItemFeature: Reducer {
         let fontWeight: Font.Weight
         let id: UUID
         let primaryColor: Color
-        let renderingMode: SymbolRenderingMode
+        var renderingType: RenderingType
         let secondaryColor: Color
         let squareLength: CGFloat
         let symbol: SFSymbols
@@ -28,14 +28,14 @@ struct CatalogItemFeature: Reducer {
              primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
-             renderingMode: SymbolRenderingMode,
+             renderingType: RenderingType,
              backgroundColor: Color,
              squareLength: CGFloat) {
             self.backgroundColor = backgroundColor
             self.fontWeight = weight
             self.id = id
             self.primaryColor = primaryColor
-            self.renderingMode = renderingMode
+            self.renderingType = renderingType
             self.secondaryColor = secondaryColor
             self.squareLength = squareLength
             self.symbol = symbol
@@ -103,7 +103,7 @@ struct CatalogItemView: View {
                             Image(symbol: viewStore.symbol)
                                 .font(.system(size: viewStore.imageFontSize,
                                               weight: viewStore.fontWeight))
-                                .symbolRenderingMode(viewStore.renderingMode)
+                                .symbolRenderingMode(viewStore.renderingType.renderingMode)
                                 .foregroundStyle(viewStore.primaryColor,
                                                  viewStore.secondaryColor,
                                                  viewStore.tertiaryColor)
@@ -139,7 +139,7 @@ struct CatalogItemView: View {
                     primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
-                    renderingMode: .monochrome,
+                    renderingType: .monochrome,
                     backgroundColor: .white,
                     squareLength: 72)) {
                         CatalogItemFeature()
@@ -154,7 +154,7 @@ struct CatalogItemView: View {
                     primaryColor: .red,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
-                    renderingMode: .hierarchical,
+                    renderingType: .hierarchical,
                     backgroundColor: .black,
                     squareLength: 72)) {
                         CatalogItemFeature()
