@@ -12,11 +12,11 @@ struct CatalogItemFeature: Reducer {
     
     struct State: Equatable, Identifiable {
     
-        let canvasColor: Color
-        let canvasLength: CGFloat
+        let backgroundColor: Color
         let id: UUID
         let primaryColor: Color
         let secondaryColor: Color
+        let squareLength: CGFloat
         let symbol: SFSymbols
         let tertiaryColor: Color
         
@@ -25,10 +25,10 @@ struct CatalogItemFeature: Reducer {
              primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
-             canvasColor: Color,
-             canvasLength: CGFloat) {
-            self.canvasColor = canvasColor
-            self.canvasLength = canvasLength
+             backgroundColor: Color,
+             squareLength: CGFloat) {
+            self.backgroundColor = backgroundColor
+            self.squareLength = squareLength
             self.id = id
             self.primaryColor = primaryColor
             self.secondaryColor = secondaryColor
@@ -37,11 +37,11 @@ struct CatalogItemFeature: Reducer {
         }
         
         var imageFontSize: CGFloat {
-            return canvasLength / 2
+            return squareLength / 2
         }
         
         var symbolNameHeight: CGFloat {
-            return canvasLength / 1.75
+            return squareLength / 1.75
         }
     }
     
@@ -87,8 +87,8 @@ struct CatalogItemView: View {
                 } label: {
                     RoundedRectangle(cornerRadius: 8)
                         .foregroundColor(.white)
-                        .frame(width: viewStore.canvasLength,
-                               height: viewStore.canvasLength)
+                        .frame(width: viewStore.squareLength,
+                               height: viewStore.squareLength)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(.gray, lineWidth: 0.5)
@@ -104,7 +104,7 @@ struct CatalogItemView: View {
                     Spacer()
                     
                     Text(viewStore.state.symbol.rawValue)
-                        .frame(width: viewStore.canvasLength,
+                        .frame(width: viewStore.squareLength,
                                height: viewStore.symbolNameHeight,
                                alignment: .top)
                         .multilineTextAlignment(.center)
@@ -128,8 +128,8 @@ struct CatalogItemView: View {
                 primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
-                    canvasColor: .white,
-                    canvasLength: 72)) {
+                    backgroundColor: .white,
+                    squareLength: 72)) {
                         CatalogItemFeature()
                     }
             )
@@ -141,8 +141,8 @@ struct CatalogItemView: View {
                     primaryColor: .white,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
-                    canvasColor: .black,
-                    canvasLength: 72)) {
+                    backgroundColor: .black,
+                    squareLength: 72)) {
                         CatalogItemFeature()
                     }
             )

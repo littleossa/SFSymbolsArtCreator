@@ -34,8 +34,8 @@ struct CatalogItemListFeature: Reducer {
                     primaryColor: primaryColor,
                     secondaryColor: secondaryColor,
                     tertiaryColor: tertiaryColor,
-                    canvasColor: backgroundColor,
-                    canvasLength: 72
+                    backgroundColor: backgroundColor,
+                    squareLength: 72
                 )
             }
             self.catalogItems = IdentifiedArray(uniqueElements: allItems)
@@ -64,8 +64,8 @@ struct CatalogItemListFeature: Reducer {
                         primaryColor: primaryColor,
                         secondaryColor: secondaryColor,
                         tertiaryColor: tertiaryColor,
-                        canvasColor: backgroundColor,
-                        canvasLength: 72
+                        backgroundColor: backgroundColor,
+                        squareLength: 72
                     )
                 }
                 return IdentifiedArray(uniqueElements: filteredItems)
