@@ -13,6 +13,7 @@ struct CatalogItemFeature: Reducer {
     struct State: Equatable, Identifiable {
     
         let backgroundColor: Color
+        let fontWeight: Font.Weight
         let id: UUID
         let primaryColor: Color
         let renderingMode: SymbolRenderingMode
@@ -23,6 +24,7 @@ struct CatalogItemFeature: Reducer {
         
         init(id: UUID = UUID(),
              symbol: SFSymbols,
+             weight: Font.Weight,
              primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
@@ -30,6 +32,7 @@ struct CatalogItemFeature: Reducer {
              backgroundColor: Color,
              squareLength: CGFloat) {
             self.backgroundColor = backgroundColor
+            self.fontWeight = weight
             self.id = id
             self.primaryColor = primaryColor
             self.renderingMode = renderingMode
@@ -98,7 +101,8 @@ struct CatalogItemView: View {
                         )
                         .overlay {
                             Image(symbol: viewStore.symbol)
-                                .font(.system(size: viewStore.imageFontSize))
+                                .font(.system(size: viewStore.imageFontSize,
+                                              weight: viewStore.fontWeight))
                                 .symbolRenderingMode(viewStore.renderingMode)
                                 .foregroundStyle(viewStore.primaryColor,
                                                  viewStore.secondaryColor,
@@ -131,6 +135,7 @@ struct CatalogItemView: View {
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
                     symbol: SFSymbols(rawValue: "xmark")!,
+                    weight: .regular,
                     primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
@@ -145,6 +150,7 @@ struct CatalogItemView: View {
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
                     symbol: SFSymbols(rawValue: "arrow.right.doc.on.clipboard")!,
+                    weight: .black,
                     primaryColor: .red,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,

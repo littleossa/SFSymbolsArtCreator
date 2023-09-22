@@ -14,13 +14,15 @@ struct CatalogItemListFeature: Reducer {
         @BindingState var backgroundColor: Color
         var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
         @BindingState var category: SFSymbols.Category
+        var fontWeight: Font.Weight
         var primaryColor: Color
         var renderingMode: SymbolRenderingMode
         var secondaryColor: Color
         @BindingState var searchText = ""
         var tertiaryColor: Color
         
-        init(primaryColor: Color,
+        init(fontWeight: Font.Weight,
+             primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
              renderingMode: SymbolRenderingMode,
@@ -29,10 +31,12 @@ struct CatalogItemListFeature: Reducer {
              searchText: String = "") {
             self.backgroundColor = backgroundColor
             self.category = category
+            self.fontWeight = fontWeight
             
             let allItems = category.symbols.compactMap { symbol in
                 CatalogItemFeature.State(
                     symbol: symbol,
+                    weight: fontWeight,
                     primaryColor: primaryColor,
                     secondaryColor: secondaryColor,
                     tertiaryColor: tertiaryColor,
@@ -65,6 +69,7 @@ struct CatalogItemListFeature: Reducer {
                 let filteredItems = filteredSymbols.compactMap { symbol in
                     CatalogItemFeature.State(
                         symbol: symbol,
+                        weight: fontWeight,
                         primaryColor: primaryColor,
                         secondaryColor: secondaryColor,
                         tertiaryColor: tertiaryColor,
@@ -162,6 +167,7 @@ struct CatalogItemListView: View {
             
             CatalogItemListView(store: .init(
                 initialState: CatalogItemListFeature.State(
+                    fontWeight: .regular,
                     primaryColor: .black,
                     secondaryColor: .accentColor,
                     tertiaryColor: .black,
