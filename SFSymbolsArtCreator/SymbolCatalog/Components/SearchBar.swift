@@ -12,12 +12,12 @@ struct SearchBar: View {
     
     var body: some View {
         Rectangle()
-            .fill(.gray)
+            .fill(Color(uiColor: .systemGray5))
             .overlay {
                 HStack(spacing: 4) {
                     
                     Image(symbol: .magnifyingglass)
-                        .foregroundStyle(Color(uiColor: .placeholderText))
+                        .foregroundStyle(Color.placeholderText)
                     
                     TextField(
                         "Search text",
@@ -36,7 +36,7 @@ struct SearchBar: View {
                                 .frame(width: 16, height: 16)
                                 .scaledToFit()
                         }
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.heavyDarkGray)
                     }
                 }
                 .padding(.horizontal, 8)
