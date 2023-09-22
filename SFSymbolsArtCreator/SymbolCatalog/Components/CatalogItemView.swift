@@ -21,7 +21,7 @@ struct CatalogItemFeature: Reducer {
         }
         
         var symbolNameHeight: CGFloat {
-            return canvasLength / 3
+            return canvasLength / 1.75
         }
     }
     
