@@ -16,7 +16,7 @@ struct CatalogItemFeature: Reducer {
         let fontWeight: Font.Weight
         let id: UUID
         let primaryColor: Color
-        var renderingType: RenderingType
+        let renderingType: RenderingType
         let secondaryColor: Color
         let squareLength: CGFloat
         let symbol: SFSymbols
