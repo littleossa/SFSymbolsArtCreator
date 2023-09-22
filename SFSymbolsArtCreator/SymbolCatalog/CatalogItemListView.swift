@@ -14,9 +14,15 @@ struct CatalogItemListFeature: Reducer {
         @BindingState var backgroundColor: Color
         var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
         @BindingState var category: SFSymbols.Category
+        var primaryColor: Color
+        var secondaryColor: Color
         @BindingState var searchText = ""
+        var tertiaryColor: Color
         
-        init(backgroundColor: Color = .white,
+        init(primaryColor: Color,
+             secondaryColor: Color,
+             tertiaryColor: Color,
+             backgroundColor: Color,
              category: SFSymbols.Category = .all,
              searchText: String = "") {
             self.backgroundColor = backgroundColor
@@ -24,14 +30,19 @@ struct CatalogItemListFeature: Reducer {
             
             let allItems = category.symbols.compactMap { symbol in
                 CatalogItemFeature.State(
+                    symbol: symbol,
+                    primaryColor: primaryColor,
+                    secondaryColor: secondaryColor,
+                    tertiaryColor: tertiaryColor,
                     canvasColor: backgroundColor,
-                    canvasLength: 72,
-                    id: UUID(),
-                    symbol: symbol
+                    canvasLength: 72
                 )
             }
             self.catalogItems = IdentifiedArray(uniqueElements: allItems)
             self.searchText = searchText
+            self.primaryColor = primaryColor
+            self.secondaryColor = secondaryColor
+            self.tertiaryColor = tertiaryColor
         }
         
         var filterCatalogItems: IdentifiedArrayOf<CatalogItemFeature.State> {
@@ -49,10 +60,12 @@ struct CatalogItemListFeature: Reducer {
             } else {
                 let filteredItems = filteredSymbols.compactMap { symbol in
                     CatalogItemFeature.State(
+                        symbol: symbol,
+                        primaryColor: primaryColor,
+                        secondaryColor: secondaryColor,
+                        tertiaryColor: tertiaryColor,
                         canvasColor: backgroundColor,
-                        canvasLength: 72,
-                        id: UUID(),
-                        symbol: symbol
+                        canvasLength: 72
                     )
                 }
                 return IdentifiedArray(uniqueElements: filteredItems)
@@ -144,6 +157,9 @@ struct CatalogItemListView: View {
             
             CatalogItemListView(store: .init(
                 initialState: CatalogItemListFeature.State(
+                    primaryColor: .black,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .black,
                     backgroundColor: .white
                 )
             ) {

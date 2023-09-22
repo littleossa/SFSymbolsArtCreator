@@ -11,10 +11,30 @@ import SwiftUI
 struct CatalogItemFeature: Reducer {
     
     struct State: Equatable, Identifiable {
+    
         let canvasColor: Color
         let canvasLength: CGFloat
         let id: UUID
+        let primaryColor: Color
+        let secondaryColor: Color
         let symbol: SFSymbols
+        let tertiaryColor: Color
+        
+        init(id: UUID = UUID(),
+             symbol: SFSymbols,
+             primaryColor: Color,
+             secondaryColor: Color,
+             tertiaryColor: Color,
+             canvasColor: Color,
+             canvasLength: CGFloat) {
+            self.canvasColor = canvasColor
+            self.canvasLength = canvasLength
+            self.id = id
+            self.primaryColor = primaryColor
+            self.secondaryColor = secondaryColor
+            self.symbol = symbol
+            self.tertiaryColor = tertiaryColor
+        }
         
         var imageFontSize: CGFloat {
             return canvasLength / 2
@@ -104,10 +124,12 @@ struct CatalogItemView: View {
             
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
+                    symbol: SFSymbols(rawValue: "xmark")!,
+                primaryColor: .black,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .black,
                     canvasColor: .white,
-                    canvasLength: 72,
-                    id: UUID(),
-                    symbol: SFSymbols(rawValue: "xmark")!)) {
+                    canvasLength: 72)) {
                         CatalogItemFeature()
                     }
             )
@@ -115,10 +137,12 @@ struct CatalogItemView: View {
             
             CatalogItemView(store: .init(
                 initialState: CatalogItemFeature.State(
-                    canvasColor: .white,
-                    canvasLength: 72,
-                    id: UUID(),
-                    symbol: SFSymbols(rawValue: "arrow.right.doc.on.clipboard")!)) {
+                    symbol: SFSymbols(rawValue: "arrow.right.doc.on.clipboard")!,
+                    primaryColor: .white,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .black,
+                    canvasColor: .black,
+                    canvasLength: 72)) {
                         CatalogItemFeature()
                     }
             )
