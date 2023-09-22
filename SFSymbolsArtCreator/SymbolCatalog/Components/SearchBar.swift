@@ -12,7 +12,7 @@ struct SearchBar: View {
     
     var body: some View {
         Rectangle()
-            .fill(Color(uiColor: .systemGray5))
+            .fill(.paleGray)
             .overlay {
                 HStack(spacing: 4) {
                     
