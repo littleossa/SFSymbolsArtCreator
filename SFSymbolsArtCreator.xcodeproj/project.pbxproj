@@ -20,6 +20,7 @@
 		97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97567A142ABA4E1C0057B0E2 /* CatalogItemView.swift */; };
 		97567A172ABC3D410057B0E2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97567A162ABC3D410057B0E2 /* SearchBar.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
+		97FCD5482ABDEC56002795F6 /* SymbolRenderingMode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* SymbolRenderingMode+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		97567A142ABA4E1C0057B0E2 /* CatalogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemView.swift; sourceTree = "<group>"; };
 		97567A162ABC3D410057B0E2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		97FCD5472ABDEC56002795F6 /* SymbolRenderingMode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymbolRenderingMode+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */,
+				97FCD5472ABDEC56002795F6 /* SymbolRenderingMode+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
 				975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */,
 				97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */,
+				97FCD5482ABDEC56002795F6 /* SymbolRenderingMode+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
