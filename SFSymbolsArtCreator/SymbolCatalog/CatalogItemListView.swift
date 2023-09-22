@@ -36,6 +36,7 @@ struct CatalogItemListFeature: Reducer {
                     primaryColor: primaryColor,
                     secondaryColor: secondaryColor,
                     tertiaryColor: tertiaryColor,
+                    renderingMode: renderingMode,
                     backgroundColor: backgroundColor,
                     squareLength: 72
                 )
@@ -67,6 +68,7 @@ struct CatalogItemListFeature: Reducer {
                         primaryColor: primaryColor,
                         secondaryColor: secondaryColor,
                         tertiaryColor: tertiaryColor,
+                        renderingMode: renderingMode,
                         backgroundColor: backgroundColor,
                         squareLength: 72
                     )
