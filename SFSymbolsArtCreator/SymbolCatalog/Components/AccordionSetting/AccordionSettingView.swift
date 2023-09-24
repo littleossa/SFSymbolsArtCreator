@@ -59,6 +59,6 @@ struct AccordionSettingView<Content: View>: View {
             AccordionSettingView(title: "メニュー") {
                 Text("Content")
             }
-                .frame(width: 284, height: 500)
+            .frame(width: 284, height: 500)
         }
 }
