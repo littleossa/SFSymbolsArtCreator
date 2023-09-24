@@ -119,7 +119,7 @@ struct CatalogItemView: View {
                                alignment: .top)
                         .multilineTextAlignment(.center)
                         .font(.caption)
-                        .foregroundColor(.paleGray)
+                        .foregroundStyle(.paleGray)
                     
                     Spacer()
                 }
