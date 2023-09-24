@@ -11,15 +11,16 @@ import SwiftUI
 struct CatalogItemListFeature: Reducer {
     
     struct State: Equatable {
-        @BindingState var backgroundColor: Color
-        var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
-        @BindingState var category: SFSymbols.Category
+        let backgroundColor: Color
+        let category: SFSymbols.Category
         let fontWeight: Font.Weight
         let primaryColor: Color
         let renderingType: RenderingType
         let secondaryColor: Color
-        @BindingState var searchText = ""
         let tertiaryColor: Color
+        
+        var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
+        @BindingState var searchText = ""
         
         init(fontWeight: Font.Weight,
              primaryColor: Color,
@@ -87,7 +88,6 @@ struct CatalogItemListFeature: Reducer {
         case binding(BindingAction<State>)
         case catalogItem(id: CatalogItemFeature.State.ID, action: CatalogItemFeature.Action)
         case delegate(Delegate)
-        case selectCategory(SFSymbols.Category)
         
         enum Delegate: Equatable {
             case selectSymbol(SFSymbols)
@@ -112,9 +112,6 @@ struct CatalogItemListFeature: Reducer {
                 print("select", symbol)
                 return .none
             case .delegate:
-                return .none
-            case let .selectCategory(category):
-                state.category = category
                 return .none
             }
         }
