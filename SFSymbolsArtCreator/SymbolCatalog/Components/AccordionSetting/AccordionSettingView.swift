@@ -1,12 +1,12 @@
 //
-//  AccordionMenuView.swift
+//  AccordionSettingView.swift
 //  SFSymbolsArtCreator
 //
 //
 
 import SwiftUI
 
-struct AccordionMenuView<Content: View>: View {
+struct AccordionSettingView<Content: View>: View {
     
     let content: Content
     @State private var isOpen = false
@@ -56,7 +56,7 @@ struct AccordionMenuView<Content: View>: View {
     
     Color.heavyDarkGray
         .overlay {
-            AccordionMenuView(title: "メニュー") {
+            AccordionSettingView(title: "メニュー") {
                 Text("Content")
             }
                 .frame(width: 284, height: 500)

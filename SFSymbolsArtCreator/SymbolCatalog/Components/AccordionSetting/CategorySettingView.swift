@@ -13,7 +13,7 @@ struct CategorySettingView: View {
     
     var body: some View {
         
-        AccordionMenuView(title: "Category") {
+        AccordionSettingView(title: "Category") {
             Picker("Category", selection: $selectedCategory) {
                 
                 ForEach(SFSymbols.Category.allCases) { category in
