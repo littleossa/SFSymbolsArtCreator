@@ -26,6 +26,7 @@ struct CategorySettingView: View {
             }
             .labelsHidden()
             .pickerStyle(MenuPickerStyle())
+            .padding()
         }
     }
 }
