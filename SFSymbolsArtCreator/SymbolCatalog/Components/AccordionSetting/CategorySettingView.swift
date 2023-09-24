@@ -14,18 +14,24 @@ struct CategorySettingView: View {
     var body: some View {
         
         AccordionSettingView(title: "Category") {
-            Picker("Category", selection: $selectedCategory) {
-                
+            
+            Menu(
+                selectedCategory.rawValue,
+                systemImage: selectedCategory.symbol.rawValue
+            ) {
                 ForEach(SFSymbols.Category.allCases) { category in
                     
-                    Label(
-                        title: { Text(category.rawValue) },
-                        icon: { Image(symbol: category.symbol) }
-                    )
+                    Button(action: {
+                        selectedCategory = category
+                    }, label: {
+                        Label(
+                            title: { Text(category.rawValue) },
+                            icon: { Image(symbol: category.symbol) }
+                        )
+                    })
                 }
             }
-            .labelsHidden()
-            .pickerStyle(MenuPickerStyle())
+            .font(.title3)
             .padding()
         }
     }
