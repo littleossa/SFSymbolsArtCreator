@@ -26,7 +26,7 @@ struct CatalogBackgroundColorSettingView: View {
                         Circle()
                             .fill(color)
                     }
-                    .frame(width: 48, height: 48)
+                    .frame(width: 44, height: 44)
                     .overlay {
                         if self.color == color {
                             Circle()
