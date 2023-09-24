@@ -15,24 +15,29 @@ struct CategorySettingView: View {
         
         AccordionSettingView(title: "Category") {
             
-            Menu(
-                selectedCategory.rawValue,
-                systemImage: selectedCategory.symbol.rawValue
-            ) {
-                ForEach(SFSymbols.Category.allCases) { category in
-                    
-                    Button(action: {
-                        selectedCategory = category
-                    }, label: {
-                        Label(
-                            title: { Text(category.rawValue) },
-                            icon: { Image(symbol: category.symbol) }
-                        )
-                    })
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.paleGray)
+                .overlay {
+                    Menu(
+                        selectedCategory.rawValue,
+                        systemImage: selectedCategory.symbol.rawValue
+                    ) {
+                        ForEach(SFSymbols.Category.allCases) { category in
+                            
+                            Button(action: {
+                                selectedCategory = category
+                            }, label: {
+                                Label(
+                                    title: { Text(category.rawValue) },
+                                    icon: { Image(symbol: category.symbol) }
+                                )
+                            })
+                        }
+                    }
+                    .font(.title3)
                 }
-            }
-            .font(.title3)
-            .padding()
+                .frame(height: 48)
+                .padding()
         }
     }
 }
