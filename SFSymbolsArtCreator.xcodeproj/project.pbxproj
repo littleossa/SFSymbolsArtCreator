@@ -23,6 +23,7 @@
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
 		97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54D2AC061F6002795F6 /* CategorySettingView.swift */; };
+		97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
 		97FCD54D2AC061F6002795F6 /* CategorySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySettingView.swift; sourceTree = "<group>"; };
+		97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolWeightSettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */,
 				97FCD54D2AC061F6002795F6 /* CategorySettingView.swift */,
+				97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */,
 			);
 			path = AccordionSetting;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
 				975679DC2AB9C2690057B0E2 /* ContentView.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
+				97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */,
 				975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */,
 				97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */,
 				97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */,
