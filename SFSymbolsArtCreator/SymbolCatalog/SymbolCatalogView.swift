@@ -49,7 +49,7 @@ struct SymbolCatalogFeature: Reducer {
         }
         Reduce { state, action in
             switch action {
-            case let .catalogItemList(.delegate(.selectSymbol(symbol))):
+            case let .catalogItemList(.symbolTapped(symbol)):
                 // TODO: アートシンボル配列に追加
                 print("Selected Symbol", symbol)
                 return .none
