@@ -12,8 +12,11 @@ struct SFSymbolsArtCreatorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            SymbolCatalogView(store: .init(
+                initialState: SymbolCatalogFeature.State()) {
+                    SymbolCatalogFeature()
+                        ._printChanges()
+                })
         }
     }
 }
