@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */; };
-		975679DC2AB9C2690057B0E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679DB2AB9C2690057B0E2 /* ContentView.swift */; };
 		975679DE2AB9C26B0057B0E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975679DD2AB9C26B0057B0E2 /* Assets.xcassets */; };
 		975679E12AB9C26B0057B0E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975679E02AB9C26B0057B0E2 /* Preview Assets.xcassets */; };
 		975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679E22AB9C26B0057B0E2 /* Persistence.swift */; };
@@ -42,7 +41,6 @@
 /* Begin PBXFileReference section */
 		975679D62AB9C2690057B0E2 /* SFSymbolsArtCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFSymbolsArtCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsArtCreatorApp.swift; sourceTree = "<group>"; };
-		975679DB2AB9C2690057B0E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		975679DD2AB9C26B0057B0E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		975679E02AB9C26B0057B0E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		975679E22AB9C26B0057B0E2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
-				975679DB2AB9C2690057B0E2 /* ContentView.swift */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
@@ -311,7 +308,6 @@
 				97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */,
 				97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
-				975679DC2AB9C2690057B0E2 /* ContentView.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
 				97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */,
 				97FCD5542AC07C35002795F6 /* CatalogSettingsView.swift in Sources */,
