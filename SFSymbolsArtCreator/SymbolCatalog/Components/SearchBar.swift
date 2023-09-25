@@ -24,6 +24,7 @@ struct SearchBar: View {
                         text: $text,
                         prompt: Text("Look for SF Symbols...")
                     )
+                    .submitLabel(.done)
                     .foregroundStyle(.black)
                     
                     if text != "" {
