@@ -17,10 +17,8 @@ struct CatalogItemListFeature: Reducer {
         let primaryColor: Color
         let renderingType: RenderingType
         let secondaryColor: Color
-        let tertiaryColor: Color
-        
-        var catalogItems: IdentifiedArrayOf<CatalogItemFeature.State>
         @BindingState var searchText = ""
+        let tertiaryColor: Color
         
         init(fontWeight: Font.Weight,
              primaryColor: Color,
@@ -33,20 +31,6 @@ struct CatalogItemListFeature: Reducer {
             self.backgroundColor = backgroundColor
             self.category = category
             self.fontWeight = fontWeight
-            
-            let allItems = category.symbols.compactMap { symbol in
-                CatalogItemFeature.State(
-                    symbol: symbol,
-                    weight: fontWeight,
-                    primaryColor: primaryColor,
-                    secondaryColor: secondaryColor,
-                    tertiaryColor: tertiaryColor,
-                    renderingType: renderingType,
-                    backgroundColor: backgroundColor,
-                    squareLength: 72
-                )
-            }
-            self.catalogItems = IdentifiedArray(uniqueElements: allItems)
             self.searchText = searchText
             self.primaryColor = primaryColor
             self.renderingType = renderingType
@@ -54,7 +38,7 @@ struct CatalogItemListFeature: Reducer {
             self.tertiaryColor = tertiaryColor
         }
         
-        var filterCatalogItems: IdentifiedArrayOf<CatalogItemFeature.State> {
+        var catalogItems: [SFSymbols] {
             
             let filteredSymbols: [SFSymbols]
             if searchText.isEmpty {
@@ -63,31 +47,14 @@ struct CatalogItemListFeature: Reducer {
                 let lowerCasedText = searchText.lowercased()
                 filteredSymbols = category.symbols.filter { $0.rawValue.contains(lowerCasedText) }
             }
-            
-            if filteredSymbols.isEmpty {
-                return []
-            } else {
-                let filteredItems = filteredSymbols.compactMap { symbol in
-                    CatalogItemFeature.State(
-                        symbol: symbol,
-                        weight: fontWeight,
-                        primaryColor: primaryColor,
-                        secondaryColor: secondaryColor,
-                        tertiaryColor: tertiaryColor,
-                        renderingType: renderingType,
-                        backgroundColor: backgroundColor,
-                        squareLength: 72
-                    )
-                }
-                return IdentifiedArray(uniqueElements: filteredItems)
-            }
+            return filteredSymbols
         }
     }
     
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
-        case catalogItem(id: CatalogItemFeature.State.ID, action: CatalogItemFeature.Action)
         case delegate(Delegate)
+        case symbolTapped(SFSymbols)
         
         enum Delegate: Equatable {
             case selectSymbol(SFSymbols)
@@ -101,22 +68,17 @@ struct CatalogItemListFeature: Reducer {
                 
             case .binding:
                 return .none
-            case let .catalogItem(id: _, action: .delegate(.selectSymbol(symbol))):
-                return .run { send in
-                    await send(.delegate(.selectSymbol(symbol)))
-                }
-            case .catalogItem:
-                return .none
             case let .delegate(.selectSymbol(symbol)):
                 // TODO: symbolを選択された時の処理
                 print("select", symbol)
                 return .none
             case .delegate:
                 return .none
+            case let .symbolTapped(symbol):
+                return .run { send in
+                    await send(.delegate(.selectSymbol(symbol)))
+                }
             }
-        }
-        .forEach(\.catalogItems, action: /Action.catalogItem(id:action:)) {
-            CatalogItemFeature()
         }
     }
 }
@@ -138,11 +100,17 @@ struct CatalogItemListView: View {
                     
                     LazyVGrid(columns: columns) {
                         
-                        ForEachStore(
-                            self.store.scope(state: \.filterCatalogItems,
-                                             action: CatalogItemListFeature.Action.catalogItem(id:action:))
-                        ) {
-                            CatalogItemView(store: $0)
+                        ForEach(viewStore.catalogItems, id: \.self) { symbol in
+                            CatalogItemView(symbol: symbol,
+                                            weight: viewStore.fontWeight,
+                                            primaryColor: viewStore.primaryColor,
+                                            secondaryColor: viewStore.secondaryColor,
+                                            tertiaryColor: viewStore.tertiaryColor,
+                                            renderingType: viewStore.renderingType,
+                                            backgroundColor: viewStore.backgroundColor,
+                                            squareLength: 72) {
+                                viewStore.send(.symbolTapped(symbol))
+                            }
                         }
                     }
                 }
