@@ -11,9 +11,9 @@ import SwiftUI
 struct CatalogItemListFeature: Reducer {
     
     struct State: Equatable {
-        let backgroundColor: Color
-        let category: SFSymbols.Category
-        let fontWeight: Font.Weight
+        var backgroundColor: Color
+        var category: SFSymbols.Category
+        var fontWeight: Font.Weight
         let primaryColor: Color
         let renderingType: RenderingType
         let secondaryColor: Color
