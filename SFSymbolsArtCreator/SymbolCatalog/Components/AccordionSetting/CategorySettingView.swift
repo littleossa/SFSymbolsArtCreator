@@ -14,31 +14,34 @@ struct CategorySettingView: View {
     var body: some View {
         
         AccordionSettingView(title: "Category") {
-            
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.paleGray)
-                .overlay {
-                    Menu(
-                        selectedCategory.rawValue,
-                        systemImage: selectedCategory.symbol.rawValue
-                    ) {
-                        ForEach(SFSymbols.Category.allCases) { category in
-                            
-                            Button(action: {
-                                selectedCategory = category
-                            }, label: {
-                                Label(
-                                    title: { Text(category.rawValue) },
-                                    icon: { Image(symbol: category.symbol) }
-                                )
-                            })
-                        }
-                    }
-                    .font(.title3)
+                        
+            Menu {
+                ForEach(SFSymbols.Category.allCases) { category in
+                    
+                    Button(action: {
+                        selectedCategory = category
+                    }, label: {
+                        Label(
+                            title: { Text(category.rawValue) },
+                            icon: { Image(symbol: category.symbol) }
+                        )
+                    })
                 }
-                .frame(height: 48)
-                .padding(.bottom)
-                .padding(.trailing)
+                
+            } label: {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.paleGray)
+                    .overlay {
+                        Label(
+                            title: { Text(selectedCategory.rawValue) },
+                            icon: { Image(symbol: selectedCategory.symbol) }
+                        )
+                        .font(.title3)
+                    }
+            }
+            .frame(height: 48)
+            .padding(.bottom)
+            .padding(.trailing)
         }
     }
 }
