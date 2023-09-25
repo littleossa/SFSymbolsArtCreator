@@ -28,7 +28,7 @@ struct CatalogItemListFeature: Reducer {
              tertiaryColor: Color,
              renderingType: RenderingType,
              backgroundColor: Color,
-             category: SFSymbols.Category = .all,
+             category: SFSymbols.Category,
              searchText: String = "") {
             self.backgroundColor = backgroundColor
             self.category = category
@@ -166,7 +166,8 @@ struct CatalogItemListView: View {
                         secondaryColor: .accentColor,
                         tertiaryColor: .black,
                         renderingType: .monochrome,
-                        backgroundColor: .white
+                        backgroundColor: .white,
+                        category: .all
                     )
                 ) {
                     CatalogItemListFeature()
