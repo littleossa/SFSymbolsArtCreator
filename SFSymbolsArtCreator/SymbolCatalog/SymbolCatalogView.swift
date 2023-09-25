@@ -38,6 +38,11 @@ struct SymbolCatalogFeature: Reducer {
     enum Action: Equatable {
         case catalogItemList(CatalogItemListFeature.Action)
         case catalogSettings(CatalogSettingsFeature.Action)
+        case delegate(Delegate)
+        
+        enum Delegate: Equatable {
+            case selectSymbol(SFSymbols)
+        }
     }
     
     var body: some ReducerOf<Self> {
@@ -50,9 +55,10 @@ struct SymbolCatalogFeature: Reducer {
         Reduce { state, action in
             switch action {
             case let .catalogItemList(.symbolTapped(symbol)):
-                // TODO: アートシンボル配列に追加
-                print("Selected Symbol", symbol)
-                return .none
+                return .run { send in
+                    await send(.delegate(.selectSymbol(symbol)))
+                    print("⚠️TODO: add symbols into art symbol array:", symbol)
+                }
             case .catalogItemList:
                 return .none
             case .catalogSettings(.binding(\.$backgroundColor)):
@@ -65,6 +71,8 @@ struct SymbolCatalogFeature: Reducer {
                 state.catalogItemListState.fontWeight = state.catalogSettingsState.symbolWeight
                 return .none
             case .catalogSettings:
+                return .none
+            case .delegate:
                 return .none
             }
         }
