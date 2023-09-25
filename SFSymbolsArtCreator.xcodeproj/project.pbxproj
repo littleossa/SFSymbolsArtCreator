@@ -12,7 +12,6 @@
 		975679E12AB9C26B0057B0E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975679E02AB9C26B0057B0E2 /* Preview Assets.xcassets */; };
 		975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679E22AB9C26B0057B0E2 /* Persistence.swift */; };
 		975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 975679E42AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld */; };
-		975679F02AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975679EF2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift */; };
 		97567A0D2AB9C6670057B0E2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 97567A0C2AB9C6670057B0E2 /* ComposableArchitecture */; };
 		97567A102AB9C6A20057B0E2 /* SFUserFriendlySymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 97567A0F2AB9C6A20057B0E2 /* SFUserFriendlySymbols */; };
 		97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97567A112AB9C6D80057B0E2 /* CatalogItemListView.swift */; };
@@ -47,7 +46,6 @@
 		975679E22AB9C26B0057B0E2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		975679E52AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SFSymbolsArtCreator.xcdatamodel; sourceTree = "<group>"; };
 		975679EB2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFSymbolsArtCreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		975679EF2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsArtCreatorTests.swift; sourceTree = "<group>"; };
 		97567A112AB9C6D80057B0E2 /* CatalogItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemListView.swift; sourceTree = "<group>"; };
 		97567A142ABA4E1C0057B0E2 /* CatalogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemView.swift; sourceTree = "<group>"; };
 		97567A162ABC3D410057B0E2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		975679EE2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				975679EF2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift */,
 				97671A0F2AC2301700648FD4 /* CatalogItemListFeatureTests.swift */,
 			);
 			path = SFSymbolsArtCreatorTests;
@@ -325,7 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975679F02AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests.swift in Sources */,
 				97671A102AC2301700648FD4 /* CatalogItemListFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
