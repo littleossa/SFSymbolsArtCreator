@@ -26,6 +26,7 @@
 		97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */; };
 		97FCD5522AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5512AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift */; };
 		97FCD5542AC07C35002795F6 /* CatalogSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5532AC07C35002795F6 /* CatalogSettingsView.swift */; };
+		97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5552AC0882D002795F6 /* SymbolCatalogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolWeightSettingView.swift; sourceTree = "<group>"; };
 		97FCD5512AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBackgroundColorSettingView.swift; sourceTree = "<group>"; };
 		97FCD5532AC07C35002795F6 /* CatalogSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSettingsView.swift; sourceTree = "<group>"; };
+		97FCD5552AC0882D002795F6 /* SymbolCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCatalogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				97567A112AB9C6D80057B0E2 /* CatalogItemListView.swift */,
 				97FCD5532AC07C35002795F6 /* CatalogSettingsView.swift */,
+				97FCD5552AC0882D002795F6 /* SymbolCatalogView.swift */,
 				97567A132ABA4D790057B0E2 /* Components */,
 			);
 			path = SymbolCatalog;
@@ -303,6 +306,7 @@
 			files = (
 				97FCD5522AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift in Sources */,
 				97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */,
+				97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */,
 				97567A172ABC3D410057B0E2 /* SearchBar.swift in Sources */,
 				97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */,
 				97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */,
