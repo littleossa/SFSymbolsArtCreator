@@ -37,7 +37,8 @@ struct CategorySettingView: View {
                     .font(.title3)
                 }
                 .frame(height: 48)
-                .padding()
+                .padding(.bottom)
+                .padding(.trailing)
         }
     }
 }

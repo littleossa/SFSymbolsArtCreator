@@ -17,8 +17,10 @@ struct SymbolWeightSettingView: View {
                     get: { weight.sliderValue },
                     set: { weight = Font.Weight(sliderValue: $0) }
                 ),
-                in: 1...9)
-            .padding()
+                in: 1...9
+            )
+            .padding(.bottom)
+            .padding(.trailing)
         }
     }
 }

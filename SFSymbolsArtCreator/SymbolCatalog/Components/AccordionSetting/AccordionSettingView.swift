@@ -20,7 +20,7 @@ struct AccordionSettingView<Content: View>: View {
     
     var body: some View {
         
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             HStack {
                 Text(title)
                     .font(.title2)

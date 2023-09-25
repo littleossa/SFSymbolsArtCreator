@@ -37,7 +37,8 @@ struct CatalogBackgroundColorSettingView: View {
                 }
                 Spacer()
             }
-            .padding()
+            .padding(.bottom)
+            .padding(.trailing)
         }
     }
 }

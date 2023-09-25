@@ -148,34 +148,34 @@ struct CatalogItemListView: View {
                 }
             }
             .padding(.horizontal)
-            .background(.heavyDarkGray)
         }
-        .frame(width: 284)
     }
 }
 
 #Preview {
     
-    HStack {
-        
-        ZStack {
-            Color(uiColor: .darkGray)
-                .frame(width: 284)
+    Color.black
+        .overlay {
             
-            CatalogItemListView(store: .init(
-                initialState: CatalogItemListFeature.State(
-                    fontWeight: .regular,
-                    primaryColor: .black,
-                    secondaryColor: .accentColor,
-                    tertiaryColor: .black,
-                    renderingType: .monochrome,
-                    backgroundColor: .white
-                )
-            ) {
-                CatalogItemListFeature()
-                    ._printChanges()
-            })
+            HStack {
+                
+                CatalogItemListView(store: .init(
+                    initialState: CatalogItemListFeature.State(
+                        fontWeight: .regular,
+                        primaryColor: .black,
+                        secondaryColor: .accentColor,
+                        tertiaryColor: .black,
+                        renderingType: .monochrome,
+                        backgroundColor: .white
+                    )
+                ) {
+                    CatalogItemListFeature()
+                        ._printChanges()
+                })
+                .frame(width: 284)
+                .background(.heavyDarkGray)
+                
+                Spacer()
+            }
         }
-        Spacer()
-    }
 }

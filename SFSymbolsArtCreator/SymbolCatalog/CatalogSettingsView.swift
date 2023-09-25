@@ -36,12 +36,13 @@ struct CatalogSettingsView: View {
                 SymbolWeightSettingView(weight: viewStore.$symbolWeight)
                 CatalogBackgroundColorSettingView(color: viewStore.$backgroundColor)
             }
+            .padding(.leading)
         }
     }
 }
 
 #Preview {
-    Color.heavyDarkGray
+    Color.black
         .overlay {
             CatalogSettingsView(store: .init(
                 initialState: CatalogSettingsFeature.State(
@@ -52,6 +53,7 @@ struct CatalogSettingsView: View {
                     CatalogSettingsFeature()
                 })
             )
-            .frame(width: 284, height: 500)
+            .frame(width: 284)
+            .background(.heavyDarkGray)
         }
 }
