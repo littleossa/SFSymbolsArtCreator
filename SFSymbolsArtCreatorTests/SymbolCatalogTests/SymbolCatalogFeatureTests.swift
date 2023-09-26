@@ -11,11 +11,9 @@ import XCTest
 @MainActor
 final class SymbolCatalogFeatureTests: XCTestCase {
     
-    private var store = TestStore(
-        initialState: SymbolCatalogFeature.State()
-    ) {
-        SymbolCatalogFeature()
-    }
+    private lazy var store: TestStore<SymbolCatalogFeature.State, SymbolCatalogFeature.Action> = {
+        preconditionFailure("store has not been set")
+    }()
 
     override func setUpWithError() throws {
         store = TestStore(
