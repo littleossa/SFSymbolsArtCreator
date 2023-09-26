@@ -189,9 +189,17 @@
 			isa = PBXGroup;
 			children = (
 				97671A162AC30F3100648FD4 /* ColorToolBar.swift */,
-				97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */,
+				97671A1B2AC335E500648FD4 /* Components */,
 			);
 			path = ColorToolBar;
+			sourceTree = "<group>";
+		};
+		97671A1B2AC335E500648FD4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
