@@ -157,7 +157,6 @@ struct ColorToolBar: View {
                     .preferredColorScheme(.dark)
             }
         }
-        .ignoresSafeArea(edges: .top)
     }
 }
 
