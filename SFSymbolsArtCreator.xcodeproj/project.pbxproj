@@ -21,6 +21,7 @@
 		97671A122AC2556900648FD4 /* CatalogSettingsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A112AC2556900648FD4 /* CatalogSettingsFeatureTests.swift */; };
 		97671A142AC2575900648FD4 /* SymbolCatalogFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A132AC2575900648FD4 /* SymbolCatalogFeatureTests.swift */; };
 		97671A172AC30F3100648FD4 /* ColorToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A162AC30F3100648FD4 /* ColorToolBar.swift */; };
+		97671A192AC32F9800648FD4 /* ColorPickCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -56,6 +57,7 @@
 		97671A112AC2556900648FD4 /* CatalogSettingsFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSettingsFeatureTests.swift; sourceTree = "<group>"; };
 		97671A132AC2575900648FD4 /* SymbolCatalogFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCatalogFeatureTests.swift; sourceTree = "<group>"; };
 		97671A162AC30F3100648FD4 /* ColorToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToolBar.swift; sourceTree = "<group>"; };
+		97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickCircleButton.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
 				97671A162AC30F3100648FD4 /* ColorToolBar.swift */,
+				97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
@@ -328,6 +331,7 @@
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
 				97671A172AC30F3100648FD4 /* ColorToolBar.swift in Sources */,
 				97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */,
+				97671A192AC32F9800648FD4 /* ColorPickCircleButton.swift in Sources */,
 				97FCD5542AC07C35002795F6 /* CatalogSettingsView.swift in Sources */,
 				975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */,
 				97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */,
