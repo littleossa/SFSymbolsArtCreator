@@ -110,8 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
-				97671A162AC30F3100648FD4 /* ColorToolBar.swift */,
-				97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */,
+				97671A1A2AC3359600648FD4 /* ColorToolBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
@@ -184,6 +183,15 @@
 				97671A132AC2575900648FD4 /* SymbolCatalogFeatureTests.swift */,
 			);
 			path = SymbolCatalogTests;
+			sourceTree = "<group>";
+		};
+		97671A1A2AC3359600648FD4 /* ColorToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				97671A162AC30F3100648FD4 /* ColorToolBar.swift */,
+				97671A182AC32F9800648FD4 /* ColorPickCircleButton.swift */,
+			);
+			path = ColorToolBar;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
