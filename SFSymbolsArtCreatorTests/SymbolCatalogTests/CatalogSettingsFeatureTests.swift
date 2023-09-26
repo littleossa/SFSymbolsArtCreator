@@ -5,7 +5,6 @@
 //
 
 import ComposableArchitecture
-import SwiftUI
 import XCTest
 @testable import SFSymbolsArtCreator
 
