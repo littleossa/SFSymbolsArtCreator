@@ -107,11 +107,14 @@ struct ColorToolBar: View {
                     .frame(width: 44, height: 44)
                 }
                 .popover(store: store.scope(
-                    state: \.$colorPicker, action: ColorToolFeature.Action.colorPicker),
-                    attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
-                    arrowEdge: .top,
-                    content: ColorPickerView.init(store:)
-                )
+                    state: \.$colorPicker,
+                    action: ColorToolFeature.Action.colorPicker),
+                         attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
+                         arrowEdge: .top) {
+                    ColorPickerView(store: $0)
+                        .preferredColorScheme(.dark)
+                }
+                
                 Spacer()
             }
             .labelsHidden()
