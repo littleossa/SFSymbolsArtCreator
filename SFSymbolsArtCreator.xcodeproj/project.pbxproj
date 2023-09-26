@@ -127,9 +127,7 @@
 		975679EE2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				97671A0F2AC2301700648FD4 /* CatalogItemListFeatureTests.swift */,
-				97671A112AC2556900648FD4 /* CatalogSettingsFeatureTests.swift */,
-				97671A132AC2575900648FD4 /* SymbolCatalogFeatureTests.swift */,
+				97671A152AC25D4400648FD4 /* SymbolCatalogTests */,
 			);
 			path = SFSymbolsArtCreatorTests;
 			sourceTree = "<group>";
@@ -170,6 +168,16 @@
 				97FCD54C2AC060C8002795F6 /* AccordionSetting */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		97671A152AC25D4400648FD4 /* SymbolCatalogTests */ = {
+			isa = PBXGroup;
+			children = (
+				97671A0F2AC2301700648FD4 /* CatalogItemListFeatureTests.swift */,
+				97671A112AC2556900648FD4 /* CatalogSettingsFeatureTests.swift */,
+				97671A132AC2575900648FD4 /* SymbolCatalogFeatureTests.swift */,
+			);
+			path = SymbolCatalogTests;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
