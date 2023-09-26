@@ -11,14 +11,8 @@ import XCTest
 
 @MainActor
 final class CatalogItemListFeatureTests: XCTestCase {
-
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
-    }
     
-    func test_search() async {
+    func test_catalogItemList() async {
         let store = TestStore(
             initialState: CatalogItemListFeature.State(
                 fontWeight: .regular,
