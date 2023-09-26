@@ -11,6 +11,7 @@ struct ColorToolFeature: Reducer {
     
     struct State: Equatable {
         @PresentationState var colorPicker: ColorPickerFeature.State?
+        var canvasColor: Color = .white
         var primaryColor: Color = .black
         var secondaryColor: Color = .clear
         var tertiaryColor: Color = .clear
@@ -22,19 +23,22 @@ struct ColorToolFeature: Reducer {
             
             if let colorPicker {
                 switch colorPicker.colorType {
+                case .canvas:
+                    height = 488
                 case .primary:
-                    height = 22
+                    height = 30
                 case .secondary:
-                    height = 82
+                    height = 90
                 case .tertiary:
-                    height = 140
+                    height = 148
                 }
             }
-            return CGRect(x: 0, y: 0, width: 44, height: height)
+            return CGRect(x: 0, y: 0, width: 60, height: height)
         }
     }
     
     enum Action: Equatable {
+        case canvasColorButtonTapped
         case colorPicker(PresentationAction<ColorPickerFeature.Action>)
         case primaryColorButtonTapped
         case secondaryColorButtonTapped
@@ -44,9 +48,16 @@ struct ColorToolFeature: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .canvasColorButtonTapped:
+                state.colorPicker = .init(colorType: .canvas,
+                                          selectedColor: state.canvasColor)
+                return .none
+                
             case let .colorPicker(.presented(.delegate(.selectColor(type, color)))):
                 
                 switch type {
+                case .canvas:
+                    state.canvasColor = color
                 case .primary:
                     state.primaryColor = color
                 case .secondary:
@@ -106,20 +117,31 @@ struct ColorToolBar: View {
                     }
                     .frame(width: 44, height: 44)
                 }
-                .popover(store: store.scope(
-                    state: \.$colorPicker,
-                    action: ColorToolFeature.Action.colorPicker),
-                         attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
-                         arrowEdge: .top) {
-                    ColorPickerView(store: $0)
-                        .preferredColorScheme(.dark)
+                
+                Divider()
+                    .frame(height: 1)
+                    .background(.gray)
+                    .padding(.vertical)
+                    .padding(.horizontal, 8)
+                
+                ColorPickRectangleButton(color: viewStore.canvasColor) {
+                    viewStore.send(.canvasColorButtonTapped)
                 }
                 
                 Spacer()
+                // TODO: レンダリングタイプによってdisableの切り替え
             }
             .labelsHidden()
             .frame(width: 60)
             .background(.heavyDarkGray)
+            .popover(store: store.scope(
+                state: \.$colorPicker,
+                action: ColorToolFeature.Action.colorPicker),
+                     attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
+                     arrowEdge: .top) {
+                ColorPickerView(store: $0)
+                    .preferredColorScheme(.dark)
+            }
         }
         .ignoresSafeArea(edges: .top)
     }

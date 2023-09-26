@@ -14,6 +14,7 @@ struct ColorPickerFeature: Reducer {
         var selectedColor: Color
         
         enum ColorType: String {
+            case canvas
             case primary
             case secondary
             case tertiary
