@@ -10,6 +10,8 @@ import SwiftUI
 struct ColorToolFeature: Reducer {
     
     struct State: Equatable {
+        let renderingType: RenderingType
+        
         @PresentationState var colorPicker: ColorPickerFeature.State?
         var canvasColor: Color = .white
         var primaryColor: Color = .black
@@ -34,6 +36,10 @@ struct ColorToolFeature: Reducer {
                 }
             }
             return CGRect(x: 0, y: 0, width: 60, height: height)
+        }
+        
+        var isOnlyPrimaryColorEnabled: Bool {
+            return renderingType != .multiColor
         }
     }
     
@@ -102,17 +108,26 @@ struct ColorToolBar: View {
                     .frame(height: 8)
                 
                 VStack(spacing: 16) {
-                    ColorPickCircleButton(color: viewStore.primaryColor, isDisabled: false) {
+                    ColorPickCircleButton(
+                        color: viewStore.primaryColor,
+                        isDisabled: false
+                    ) {
                         viewStore.send(.primaryColorButtonTapped)
                     }
                     .frame(width: 44, height: 44)
                     
-                    ColorPickCircleButton(color: viewStore.secondaryColor, isDisabled: false) {
+                    ColorPickCircleButton(
+                        color: viewStore.secondaryColor,
+                        isDisabled: viewStore.isOnlyPrimaryColorEnabled
+                    ) {
                         viewStore.send(.secondaryColorButtonTapped)
                     }
                     .frame(width: 44, height: 44)
                     
-                    ColorPickCircleButton(color: viewStore.tertiaryColor, isDisabled: false) {
+                    ColorPickCircleButton(
+                        color: viewStore.tertiaryColor,
+                        isDisabled: viewStore.isOnlyPrimaryColorEnabled
+                    ) {
                         viewStore.send(.tertiaryColorButtonTapped)
                     }
                     .frame(width: 44, height: 44)
@@ -131,7 +146,6 @@ struct ColorToolBar: View {
                 Spacer()
                 // TODO: レンダリングタイプによってdisableの切り替え
             }
-            .labelsHidden()
             .frame(width: 60)
             .background(.heavyDarkGray)
             .popover(store: store.scope(
@@ -149,10 +163,19 @@ struct ColorToolBar: View {
 
 #Preview {
     Color.black.overlay {
-        ColorToolBar(store: .init(
-            initialState: ColorToolFeature.State()
-        ) {
-            ColorToolFeature()
-        })
+        
+        HStack {
+            ColorToolBar(store: .init(
+                initialState: ColorToolFeature.State(renderingType: .monochrome)
+            ) {
+                ColorToolFeature()
+            })
+            
+            ColorToolBar(store: .init(
+                initialState: ColorToolFeature.State(renderingType: .multiColor)
+            ) {
+                ColorToolFeature()
+            })
+        }
     }
 }
