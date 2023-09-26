@@ -14,6 +14,24 @@ struct ColorToolFeature: Reducer {
         var primaryColor: Color = .black
         var secondaryColor: Color = .clear
         var tertiaryColor: Color = .clear
+        
+        // Rect for a arrow of pop over
+        var attachmentAnchorRect: CGRect {
+            
+            var height: CGFloat = 0
+            
+            if let colorPicker {
+                switch colorPicker.colorType {
+                case .primary:
+                    height = 22
+                case .secondary:
+                    height = 82
+                case .tertiary:
+                    height = 140
+                }
+            }
+            return CGRect(x: 0, y: 0, width: 44, height: height)
+        }
     }
     
     enum Action: Equatable {
@@ -73,59 +91,27 @@ struct ColorToolBar: View {
                     .frame(height: 8)
                 
                 VStack(spacing: 16) {
-                    Button(action: {
+                    ColorPickCircleButton(color: viewStore.primaryColor, isDisabled: false) {
                         viewStore.send(.primaryColorButtonTapped)
-                    }, label: {
-                        Image(symbol: .circleFill)
-                            .resizable()
-                            .foregroundStyle(viewStore.primaryColor.gradient)
-                            .frame(width: 40, height: 40)
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundStyle(.paleGray)
-                            }
-                    })
+                    }
                     .frame(width: 44, height: 44)
                     
-                    Button(action: {
+                    ColorPickCircleButton(color: viewStore.secondaryColor, isDisabled: false) {
                         viewStore.send(.secondaryColorButtonTapped)
-                    }, label: {
-                        Image(symbol: .circleFill)
-                            .resizable()
-                            .foregroundStyle(viewStore.secondaryColor.gradient)
-                            .frame(width: 40, height: 40)
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundStyle(.paleGray)
-                            }
-                    })
+                    }
                     .frame(width: 44, height: 44)
-                    .disabled(true)
                     
-                    Button(action: {
+                    ColorPickCircleButton(color: viewStore.tertiaryColor, isDisabled: false) {
                         viewStore.send(.tertiaryColorButtonTapped)
-                    }, label: {
-                        Image(symbol: .circleFill)
-                            .resizable()
-                            .foregroundStyle(viewStore.tertiaryColor.gradient)
-                            .frame(width: 40, height: 40)
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 1)
-                                    .foregroundStyle(.paleGray)
-                            }
-                    })
+                    }
                     .frame(width: 44, height: 44)
                 }
                 .popover(store: store.scope(
                     state: \.$colorPicker, action: ColorToolFeature.Action.colorPicker),
-                         attachmentAnchor: .point(.center),
-                         arrowEdge: .top,
-                         content: ColorPickerView.init(store:)
+                    attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
+                    arrowEdge: .top,
+                    content: ColorPickerView.init(store:)
                 )
-                
                 Spacer()
             }
             .labelsHidden()
