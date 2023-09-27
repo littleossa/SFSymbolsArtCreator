@@ -31,6 +31,14 @@
 		97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2E2AC4244700648FD4 /* MenuToolBar.swift */; };
 		97671A322AC42A6400648FD4 /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A312AC42A6400648FD4 /* ActionBar.swift */; };
 		97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A332AC453EE00648FD4 /* ArtSymbol.swift */; };
+		97671A412AC45FB900648FD4 /* MovingDashFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */; };
+		97671A422AC45FB900648FD4 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A392AC45FB900648FD4 /* BoundingBox.swift */; };
+		97671A432AC45FB900648FD4 /* EditPointMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3B2AC45FB900648FD4 /* EditPointMark.swift */; };
+		97671A442AC45FB900648FD4 /* EditPointsFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3C2AC45FB900648FD4 /* EditPointsFramedRectangle.swift */; };
+		97671A452AC45FB900648FD4 /* EditPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3D2AC45FB900648FD4 /* EditPoint.swift */; };
+		97671A462AC45FB900648FD4 /* EditPointScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */; };
+		97671A472AC45FB900648FD4 /* EditPointPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */; };
+		97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A402AC45FB900648FD4 /* EditPointFrame.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -76,6 +84,14 @@
 		97671A2E2AC4244700648FD4 /* MenuToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolBar.swift; sourceTree = "<group>"; };
 		97671A312AC42A6400648FD4 /* ActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		97671A332AC453EE00648FD4 /* ArtSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbol.swift; sourceTree = "<group>"; };
+		97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingDashFramedRectangle.swift; sourceTree = "<group>"; };
+		97671A392AC45FB900648FD4 /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		97671A3B2AC45FB900648FD4 /* EditPointMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointMark.swift; sourceTree = "<group>"; };
+		97671A3C2AC45FB900648FD4 /* EditPointsFramedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointsFramedRectangle.swift; sourceTree = "<group>"; };
+		97671A3D2AC45FB900648FD4 /* EditPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPoint.swift; sourceTree = "<group>"; };
+		97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointScaling.swift; sourceTree = "<group>"; };
+		97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointPosition.swift; sourceTree = "<group>"; };
+		97671A402AC45FB900648FD4 /* EditPointFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointFrame.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -129,6 +145,7 @@
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
 				97671A332AC453EE00648FD4 /* ArtSymbol.swift */,
+				97671A372AC45FB900648FD4 /* BoundingBox */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
 				97671A302AC42A3600648FD4 /* ActionBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
@@ -277,6 +294,29 @@
 			path = ActionBar;
 			sourceTree = "<group>";
 		};
+		97671A372AC45FB900648FD4 /* BoundingBox */ = {
+			isa = PBXGroup;
+			children = (
+				97671A392AC45FB900648FD4 /* BoundingBox.swift */,
+				97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */,
+				97671A3A2AC45FB900648FD4 /* EditPoint */,
+			);
+			path = BoundingBox;
+			sourceTree = "<group>";
+		};
+		97671A3A2AC45FB900648FD4 /* EditPoint */ = {
+			isa = PBXGroup;
+			children = (
+				97671A3B2AC45FB900648FD4 /* EditPointMark.swift */,
+				97671A3C2AC45FB900648FD4 /* EditPointsFramedRectangle.swift */,
+				97671A3D2AC45FB900648FD4 /* EditPoint.swift */,
+				97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */,
+				97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */,
+				97671A402AC45FB900648FD4 /* EditPointFrame.swift */,
+			);
+			path = EditPoint;
+			sourceTree = "<group>";
+		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,18 +457,26 @@
 				97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */,
 				97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */,
 				97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */,
+				97671A432AC45FB900648FD4 /* EditPointMark.swift in Sources */,
 				97567A172ABC3D410057B0E2 /* SearchBar.swift in Sources */,
 				97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */,
 				97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */,
 				97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */,
 				97671A1F2AC385CB00648FD4 /* ColorPickRectangleButton.swift in Sources */,
 				97671A242AC3A54B00648FD4 /* DrawToolBar.swift in Sources */,
+				97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
+				97671A452AC45FB900648FD4 /* EditPoint.swift in Sources */,
+				97671A472AC45FB900648FD4 /* EditPointPosition.swift in Sources */,
 				97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */,
+				97671A412AC45FB900648FD4 /* MovingDashFramedRectangle.swift in Sources */,
+				97671A442AC45FB900648FD4 /* EditPointsFramedRectangle.swift in Sources */,
+				97671A422AC45FB900648FD4 /* BoundingBox.swift in Sources */,
 				97671A1D2AC3364100648FD4 /* ColorPickerView.swift in Sources */,
 				97671A172AC30F3100648FD4 /* ColorToolBar.swift in Sources */,
 				97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */,
+				97671A462AC45FB900648FD4 /* EditPointScaling.swift in Sources */,
 				97671A192AC32F9800648FD4 /* ColorPickCircleButton.swift in Sources */,
 				97FCD5542AC07C35002795F6 /* CatalogSettingsView.swift in Sources */,
 				975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */,
