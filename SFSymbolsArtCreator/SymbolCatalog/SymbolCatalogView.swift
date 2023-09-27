@@ -85,21 +85,19 @@ struct SymbolCatalogView: View {
     
     var body: some View {
         
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            VStack(spacing: 16) {
-                CatalogSettingsView(store: store.scope(
-                    state: \.catalogSettingsState,
-                    action: SymbolCatalogFeature.Action.catalogSettings)
-                )
-                
-                CatalogItemListView(store: store.scope(
-                    state: \.catalogItemListState,
-                    action: SymbolCatalogFeature.Action.catalogItemList)
-                )
-            }
-            .frame(width: 284)
-            .background(.heavyDarkGray)
+        VStack(spacing: 16) {
+            CatalogSettingsView(store: store.scope(
+                state: \.catalogSettingsState,
+                action: SymbolCatalogFeature.Action.catalogSettings)
+            )
+            
+            CatalogItemListView(store: store.scope(
+                state: \.catalogItemListState,
+                action: SymbolCatalogFeature.Action.catalogItemList)
+            )
         }
+        .frame(width: 284)
+        .background(.heavyDarkGray)
     }
 }
 
