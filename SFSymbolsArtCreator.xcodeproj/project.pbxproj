@@ -120,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
-				97671A252AC3E11000648FD4 /* DrawToolBar */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
+				97671A252AC3E11000648FD4 /* DrawToolBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
