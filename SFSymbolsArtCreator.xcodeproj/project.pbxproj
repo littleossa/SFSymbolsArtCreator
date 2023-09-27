@@ -27,6 +27,7 @@
 		97671A212AC39FC000648FD4 /* ColorToolFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A202AC39FC000648FD4 /* ColorToolFeatureTests.swift */; };
 		97671A242AC3A54B00648FD4 /* DrawToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A232AC3A54B00648FD4 /* DrawToolBar.swift */; };
 		97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */; };
+		97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -68,6 +69,7 @@
 		97671A202AC39FC000648FD4 /* ColorToolFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToolFeatureTests.swift; sourceTree = "<group>"; };
 		97671A232AC3A54B00648FD4 /* DrawToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolBar.swift; sourceTree = "<group>"; };
 		97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingMenuButton.swift; sourceTree = "<group>"; };
+		97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolFeatureTests.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		975679EE2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
 				97671A222AC3A2B100648FD4 /* ColorToolBarTests */,
 				97671A152AC25D4400648FD4 /* SymbolCatalogTests */,
 			);
@@ -239,6 +242,14 @@
 				97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		97671A292AC3E28300648FD4 /* DrawToolBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */,
+			);
+			path = DrawToolBarTests;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -403,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */,
 				97671A212AC39FC000648FD4 /* ColorToolFeatureTests.swift in Sources */,
 				97671A102AC2301700648FD4 /* CatalogItemListFeatureTests.swift in Sources */,
 				97671A142AC2575900648FD4 /* SymbolCatalogFeatureTests.swift in Sources */,
