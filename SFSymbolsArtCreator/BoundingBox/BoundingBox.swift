@@ -101,13 +101,3 @@ struct BoundingBox: View {
         }
     }
 }
-
-enum EditFormType: String, CaseIterable, Identifiable {
-        
-    case freeForm = "Free form"
-    case uniform = "Uniform"
-    
-    var id: String {
-        return self.rawValue
-    }
-}
