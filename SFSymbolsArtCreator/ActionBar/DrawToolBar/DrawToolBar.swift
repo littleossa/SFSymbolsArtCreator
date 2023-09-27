@@ -61,7 +61,7 @@ struct DrawToolBar: View {
                         .resizable()
                         .scaledToFit()
                 }
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundStyle(viewStore.isEditMode ? Color.accentColor : .paleGray)
                 
                 Button {
@@ -72,7 +72,7 @@ struct DrawToolBar: View {
                         .resizable()
                         .scaledToFit()
                 }
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundStyle(viewStore.isEraserMode ? Color.accentColor : .paleGray)
                 
                 Button {
@@ -82,14 +82,14 @@ struct DrawToolBar: View {
                         .resizable()
                         .scaledToFit()
                 }
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundStyle(viewStore.layerPanelIsPresented ? Color.accentColor : .paleGray)
                 
                 RenderingMenuButton(type: viewStore.renderingType) { type in
                     viewStore.send(.renderingChanged(type))
                 }
                 .bold()
-                .frame(width: 200, height: 48)
+                .frame(width: 180, height: 44)
                 .padding(.trailing)
             }
             .frame(height: 72)

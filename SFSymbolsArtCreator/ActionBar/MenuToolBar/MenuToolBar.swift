@@ -57,7 +57,7 @@ struct MenuToolBar: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.paleGray, .black)
                 }
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundStyle(.paleGray)
                 
                 Spacer()
