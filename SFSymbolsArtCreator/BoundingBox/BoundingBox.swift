@@ -3,101 +3,139 @@
 //  BoundingBox
 //
 
-
-import ComposableArchitecture
 import SwiftUI
 
-struct BoundingBoxFeature: Reducer {
-    struct State: Equatable {
-        let artSymbol: ArtSymbolFeature.State
-        let formType: EditFormType
+// MARK: - Initializer
+extension BoundingBox {
+    
+    init(formType: EditFormType,
+         isEditing: Bool,
+         width: Binding<CGFloat>,
+         height: Binding<CGFloat>,
+         position: Binding<CGPoint>,
+         @ViewBuilder content: () -> Content) {
         
-        var symbolHeight: CGFloat {
-            return artSymbol.height
-        }
-        
-        var symbolWidth: CGFloat {
-            return artSymbol.width
+        _width = width
+        _height = height
+        _position = position
+        self.formType = formType
+        self.isEditing = isEditing
+
+        self.content = content()
+    }
+}
+
+struct BoundingBox<Content: View>: View {
+    
+    @Binding var height: CGFloat
+    @Binding var width: CGFloat
+    @Binding var position: CGPoint
+    let isEditing: Bool
+    let content: Content
+    let formType: EditFormType
+    
+    private let minScalingWidth: CGFloat = 10
+    private let minScalingHeight: CGFloat = 10
+    
+    private var dragGesture: some Gesture {
+        DragGesture().onChanged { value in
+            position = value.location
         }
     }
     
-    enum Action: Equatable {
-        case delegate(Delegate)
-        case symbolMoved(CGPoint)
-        case symbolScaled(width: CGFloat, height: CGFloat)
+    var body: some View {
         
-        enum Delegate: Equatable {
-            case moveSymbol(CGPoint)
-            case scaleSymbol(width: CGFloat, height: CGFloat)
-        }
-    }
-    
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {
-            case .delegate:
-                return .none
-            case let .symbolMoved(position):
-                return .run { send in
-                    await send(.delegate(.moveSymbol(position)))
-                }
-            case let .symbolScaled(width, height):
-                return .run { send in
-                    await send(.delegate(.scaleSymbol(width: width, height: height)))
-                }
+        ZStack {
+            
+            if isEditing {
+                
+                content
+                    .overlay {
+                        MovingDashFramedRectangle()
+                        
+                        EditPointsFramedRectangle(width: width,
+                                                  height: height) { value in
+                            
+                            switch formType {
+                            case .freeForm:
+                                guard width + value.scaleSize.width > minScalingWidth,
+                                      height + value.scaleSize.height > minScalingHeight
+                                else { return }
+                                
+                                width += value.scaleSize.width
+                                height += value.scaleSize.height
+                                
+                            case .uniform:
+                                guard width + value.scaleValue > minScalingWidth,
+                                      height + value.scaleValue > minScalingHeight
+                                else { return }
+                                
+                                width += value.scaleValue
+                                height += value.scaleValue
+                            }
+                        }
+                    }
+                    .frame(width: width,
+                           height: height)
+                    .position(position)
+                    .gesture(dragGesture)
+                
+            } else {
+                
+                content
+                    .frame(width: width,
+                           height: height)
+                    .position(position)
             }
         }
     }
 }
 
-struct BoundingBox: View {
+#Preview {
+    BoundingBox(formType: .freeForm,
+                isEditing: true,
+                width: .constant(100),
+                height: .constant(100),
+                position: .constant(CGPoint(x: 100, y: 100))) {
+        Image(systemName: "circle")
+                        .resizable()
+    }
+}
+
+extension View {
     
-    let store: StoreOf<BoundingBoxFeature>
-    
-    private let minScalingHeight: CGFloat = 10
-    private let minScalingWidth: CGFloat = 10
-    
-    var body: some View {
+    func boundingBox(formType: EditFormType,
+                         isEditing: Bool,
+                         width: Binding<CGFloat>,
+                         height: Binding<CGFloat>,
+                         position: Binding<CGPoint>) -> some View {
         
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            
-            MovingDashFramedRectangle()
-                .overlay {
-                    
-                    EditPointsFramedRectangle(
-                        width: viewStore.state.symbolWidth,
-                        height: viewStore.state.symbolHeight
-                    ) { value in
-                        
-                        switch viewStore.formType {
-                        case .freeForm:
-                            guard viewStore.state.symbolWidth + value.scaleSize.width > minScalingWidth,
-                                  viewStore.state.symbolHeight + value.scaleSize.height > minScalingHeight
-                            else { return }
-                            
-                            viewStore.send(.symbolScaled(
-                                width: value.scaleSize.width,
-                                height: value.scaleSize.height)
-                            )
-                            
-                        case .uniform:
-                            guard viewStore.state.symbolWidth + value.scaleValue > minScalingWidth,
-                                  viewStore.state.symbolHeight + value.scaleValue > minScalingHeight
-                            else { return }
-                            
-                            viewStore.send(.symbolScaled(
-                                width: value.scaleValue,
-                                height: value.scaleValue)
-                            )
-                        }
-                    }
-                }
-                .frame(width: viewStore.symbolWidth,
-                       height: viewStore.symbolHeight)
-                .position(viewStore.state.artSymbol.location)
-                .gesture(DragGesture().onChanged { value in
-                    viewStore.send(.symbolMoved(value.location))
-                })
+        self.modifier(BondingBoxModifier(formType: formType,
+                                         isEditing: isEditing,
+                                         width: width,
+                                         height: height,
+                                         position: position))
+    }
+}
+
+struct BondingBoxModifier: ViewModifier {
+    
+    let formType: EditFormType
+    let isEditing: Bool
+    @Binding var width: CGFloat
+    @Binding var height: CGFloat
+    @Binding var position: CGPoint
+    
+    func body(content: Content) -> some View {
+        
+        BoundingBox(formType: formType,
+                    isEditing: isEditing,
+                    width: $width,
+                    height: $height,
+                    position: $position) {
+            content
         }
     }
 }
+
+

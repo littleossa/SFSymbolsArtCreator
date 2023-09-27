@@ -313,18 +313,19 @@
 				97671A3D2AC45FB900648FD4 /* EditPoint.swift */,
 				97671A3B2AC45FB900648FD4 /* EditPointMark.swift */,
 				97671A3C2AC45FB900648FD4 /* EditPointsFramedRectangle.swift */,
+				97671A4D2AC4734E00648FD4 /* Models */,
 			);
 			path = EditPoint;
 			sourceTree = "<group>";
 		};
-		97671A4D2AC4734E00648FD4 /* EditPoint */ = {
+		97671A4D2AC4734E00648FD4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				97671A402AC45FB900648FD4 /* EditPointFrame.swift */,
 				97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */,
 				97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */,
 			);
-			path = EditPoint;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		97671A4E2AC473A400648FD4 /* Components */ = {
@@ -350,7 +351,6 @@
 				97671A492AC4719900648FD4 /* EditFormType.swift */,
 				97671A4B2AC4724E00648FD4 /* FlipType.swift */,
 				97FCD5472ABDEC56002795F6 /* RenderingType.swift */,
-				97671A4D2AC4734E00648FD4 /* EditPoint */,
 			);
 			path = Models;
 			sourceTree = "<group>";
