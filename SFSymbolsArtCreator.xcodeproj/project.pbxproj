@@ -302,8 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				97671A392AC45FB900648FD4 /* BoundingBox.swift */,
-				97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */,
-				97671A3A2AC45FB900648FD4 /* EditPoint */,
+				97671A4E2AC473A400648FD4 /* Components */,
 			);
 			path = BoundingBox;
 			sourceTree = "<group>";
@@ -311,14 +310,30 @@
 		97671A3A2AC45FB900648FD4 /* EditPoint */ = {
 			isa = PBXGroup;
 			children = (
+				97671A3D2AC45FB900648FD4 /* EditPoint.swift */,
 				97671A3B2AC45FB900648FD4 /* EditPointMark.swift */,
 				97671A3C2AC45FB900648FD4 /* EditPointsFramedRectangle.swift */,
-				97671A3D2AC45FB900648FD4 /* EditPoint.swift */,
-				97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */,
-				97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */,
-				97671A402AC45FB900648FD4 /* EditPointFrame.swift */,
 			);
 			path = EditPoint;
+			sourceTree = "<group>";
+		};
+		97671A4D2AC4734E00648FD4 /* EditPoint */ = {
+			isa = PBXGroup;
+			children = (
+				97671A402AC45FB900648FD4 /* EditPointFrame.swift */,
+				97671A3F2AC45FB900648FD4 /* EditPointPosition.swift */,
+				97671A3E2AC45FB900648FD4 /* EditPointScaling.swift */,
+			);
+			path = EditPoint;
+			sourceTree = "<group>";
+		};
+		97671A4E2AC473A400648FD4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */,
+				97671A3A2AC45FB900648FD4 /* EditPoint */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -335,6 +350,7 @@
 				97671A492AC4719900648FD4 /* EditFormType.swift */,
 				97671A4B2AC4724E00648FD4 /* FlipType.swift */,
 				97FCD5472ABDEC56002795F6 /* RenderingType.swift */,
+				97671A4D2AC4734E00648FD4 /* EditPoint */,
 			);
 			path = Models;
 			sourceTree = "<group>";
