@@ -35,11 +35,11 @@ final class DrawToolFeatureTests: XCTestCase {
     func test_eraserButtonTapped() async {
         
         await store.send(.eraserButtonTapped) {
-            $0.inEraserMode = true
+            $0.isEraserMode = true
         }
         
         await store.send(.eraserButtonTapped) {
-            $0.inEraserMode = false
+            $0.isEraserMode = false
         }
     }
     

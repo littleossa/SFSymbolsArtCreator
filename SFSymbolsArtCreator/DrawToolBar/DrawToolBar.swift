@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DrawToolFeature: Reducer {
     struct State: Equatable {
-        var inEraserMode = false
+        var isEraserMode = false
         var isEditMode = false
         var layerPanelIsPresented = false
         var renderingType: RenderingType = .monochrome
@@ -29,7 +29,7 @@ struct DrawToolFeature: Reducer {
                 return .none
                 
             case .eraserButtonTapped:
-                state.inEraserMode.toggle()
+                state.isEraserMode.toggle()
                 return .none
                 
             case .layerButtonTapped:
@@ -73,7 +73,7 @@ struct DrawToolBar: View {
                         .scaledToFit()
                 }
                 .frame(width: 48, height: 48)
-                .foregroundStyle(viewStore.inEraserMode ? Color.accentColor : .paleGray)
+                .foregroundStyle(viewStore.isEraserMode ? Color.accentColor : .paleGray)
                 
                 Button {
                     store.send(.layerButtonTapped)
