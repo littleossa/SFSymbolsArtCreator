@@ -35,16 +35,19 @@ struct ActionBar: View {
     
     var body: some View {
         
-        HStack(spacing: 0) {
-            MenuToolBar(store: store.scope(
-                state: \.menuToolState,
-                action: ActionBarFeature.Action.menuTool))
-            
-            DrawToolBar(store: store.scope(
-                state: \.drawToolState,
-                action: ActionBarFeature.Action.drawTool))
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                MenuToolBar(store: store.scope(
+                    state: \.menuToolState,
+                    action: ActionBarFeature.Action.menuTool))
+                
+                DrawToolBar(store: store.scope(
+                    state: \.drawToolState,
+                    action: ActionBarFeature.Action.drawTool))
+            }
+            Divider()
+                .background(.black.opacity(0.9))
         }
-        .background(.heavyDarkGray)
     }
 }
 
