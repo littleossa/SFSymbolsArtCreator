@@ -28,6 +28,7 @@
 		97671A242AC3A54B00648FD4 /* DrawToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A232AC3A54B00648FD4 /* DrawToolBar.swift */; };
 		97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */; };
 		97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */; };
+		97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2E2AC4244700648FD4 /* MenuToolBar.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -70,6 +71,7 @@
 		97671A232AC3A54B00648FD4 /* DrawToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolBar.swift; sourceTree = "<group>"; };
 		97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingMenuButton.swift; sourceTree = "<group>"; };
 		97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolFeatureTests.swift; sourceTree = "<group>"; };
+		97671A2E2AC4244700648FD4 /* MenuToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolBar.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
 				97671A252AC3E11000648FD4 /* DrawToolBar */,
+				97671A2D2AC4242900648FD4 /* MenuToolBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
@@ -250,6 +253,14 @@
 				97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */,
 			);
 			path = DrawToolBarTests;
+			sourceTree = "<group>";
+		};
+		97671A2D2AC4242900648FD4 /* MenuToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				97671A2E2AC4244700648FD4 /* MenuToolBar.swift */,
+			);
+			path = MenuToolBar;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -390,6 +401,7 @@
 				97FCD5522AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift in Sources */,
 				97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */,
 				97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */,
+				97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */,
 				97567A172ABC3D410057B0E2 /* SearchBar.swift in Sources */,
 				97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */,
 				97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */,
