@@ -20,7 +20,6 @@ struct ColorPickRectangleButton: View {
             Image(symbol: .squareFill)
                 .resizable()
                 .foregroundStyle(color.gradient)
-                .frame(width: 40, height: 40)
                 .overlay {
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(lineWidth: 1)
@@ -34,5 +33,6 @@ struct ColorPickRectangleButton: View {
     Color.heavyDarkGray
         .overlay {
             ColorPickRectangleButton(color: .red, tapAction: {})
+                .frame(width: 44, height: 44)
         }
 }

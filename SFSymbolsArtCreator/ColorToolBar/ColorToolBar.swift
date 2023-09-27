@@ -142,11 +142,11 @@ struct ColorToolBar: View {
                 ColorPickRectangleButton(color: viewStore.canvasColor) {
                     viewStore.send(.canvasColorButtonTapped)
                 }
+                .frame(width: 44, height: 44)
                 
                 Spacer()
-                // TODO: レンダリングタイプによってdisableの切り替え
             }
-            .frame(width: 60)
+            .frame(width: 72)
             .background(.heavyDarkGray)
             .popover(store: store.scope(
                 state: \.$colorPicker,

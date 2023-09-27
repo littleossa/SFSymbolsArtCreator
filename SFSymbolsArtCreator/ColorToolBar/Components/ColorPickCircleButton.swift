@@ -23,12 +23,10 @@ struct ColorPickCircleButton: View {
                     .resizable()
                     .foregroundStyle(.paleGray)
                     .fontWeight(.thin)
-                    .frame(width: 40, height: 40)
             } else {
                 Image(symbol: .circleFill)
                     .resizable()
                     .foregroundStyle(color.gradient)
-                    .frame(width: 40, height: 40)
                     .overlay {
                         Circle()
                             .stroke(lineWidth: 1)
@@ -45,7 +43,10 @@ struct ColorPickCircleButton: View {
         .overlay {
             VStack {
                 ColorPickCircleButton(color: .red, isDisabled: true, tapAction: {})
+                    .frame(width: 44, height: 44)
+
                 ColorPickCircleButton(color: .red, isDisabled: false, tapAction: {})
+                    .frame(width: 44, height: 44)
             }
         }
 }
