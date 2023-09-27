@@ -41,6 +41,7 @@
 		97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A402AC45FB900648FD4 /* EditPointFrame.swift */; };
 		97671A4A2AC4719900648FD4 /* EditFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A492AC4719900648FD4 /* EditFormType.swift */; };
 		97671A4C2AC4724E00648FD4 /* FlipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4B2AC4724E00648FD4 /* FlipType.swift */; };
+		97671A502AC4F4F900648FD4 /* View+BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -96,6 +97,7 @@
 		97671A402AC45FB900648FD4 /* EditPointFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointFrame.swift; sourceTree = "<group>"; };
 		97671A492AC4719900648FD4 /* EditFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormType.swift; sourceTree = "<group>"; };
 		97671A4B2AC4724E00648FD4 /* FlipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipType.swift; sourceTree = "<group>"; };
+		97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BoundingBox.swift"; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				97671A392AC45FB900648FD4 /* BoundingBox.swift */,
+				97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */,
 				97671A4E2AC473A400648FD4 /* Components */,
 			);
 			path = BoundingBox;
@@ -506,6 +509,7 @@
 				975679DA2AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift in Sources */,
 				97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */,
 				97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */,
+				97671A502AC4F4F900648FD4 /* View+BoundingBox.swift in Sources */,
 				97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
