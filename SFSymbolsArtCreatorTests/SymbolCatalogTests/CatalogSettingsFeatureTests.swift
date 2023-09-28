@@ -14,16 +14,17 @@ final class CatalogSettingsFeatureTests: XCTestCase {
     func test_catalogSettings() async {
         let store = TestStore(
             initialState: CatalogSettingsFeature.State(
-                backgroundColor: .white,
+                catalogBackgroundColorItem: .white,
                 category: .all,
-                symbolWeight: .regular
+                symbolWeight: .regular,
+                currentCanvasColor: .white
             )
         ) {
             CatalogSettingsFeature()
         }
         
-        await store.send(.binding(.set(\.$backgroundColor, .black))) {
-            $0.backgroundColor = .black
+        await store.send(.binding(.set(\.$catalogBackgroundColorItem, .black))) {
+            $0.catalogBackgroundColorItem = .black
         }
         
         await store.send(.binding(.set(\.$category, .devices))) {

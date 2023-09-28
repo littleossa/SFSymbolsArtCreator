@@ -60,6 +60,8 @@ final class DrawToolFeatureTests: XCTestCase {
             $0.renderingType = .multiColor
         }
         
+        await store.receive(.delegate(.changeRenderingType(.multiColor)))
+        
         await store.send(.renderingChanged(.monochrome)) {
             $0.renderingType = .monochrome
         }

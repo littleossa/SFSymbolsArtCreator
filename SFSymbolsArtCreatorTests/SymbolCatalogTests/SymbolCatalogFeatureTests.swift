@@ -24,9 +24,9 @@ final class SymbolCatalogFeatureTests: XCTestCase {
     }
     
     func test_changeBackground() async {
-        await store.send(.catalogSettings(.binding(.set(\.$backgroundColor, .black)))) {
+        await store.send(.catalogSettings(.binding(.set(\.$catalogBackgroundColorItem, .black)))) {
             $0.catalogItemListState.backgroundColor = .black
-            $0.catalogSettingsState.backgroundColor = .black
+            $0.catalogSettingsState.catalogBackgroundColorItem = .black
         }
     }
     
