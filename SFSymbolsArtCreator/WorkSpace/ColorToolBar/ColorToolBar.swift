@@ -15,8 +15,8 @@ struct ColorToolFeature: Reducer {
         @PresentationState var colorPicker: ColorPickerFeature.State?
         var canvasColor: Color = .white
         var primaryColor: Color = .black
-        var secondaryColor: Color = .clear
-        var tertiaryColor: Color = .clear
+        var secondaryColor: Color = .accentColor
+        var tertiaryColor: Color = .white
         
         // Rect for a arrow of pop over
         var attachmentAnchorRect: CGRect {
