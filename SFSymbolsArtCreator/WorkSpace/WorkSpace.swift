@@ -52,6 +52,22 @@ struct WorkSpaceFeature: Reducer {
             case let .drawTool(.delegate(.changeRenderingType(renderingType))):
                 state.colorToolState.renderingType = renderingType
                 state.symbolCatalogState.catalogItemListState.renderingType = renderingType
+                
+                switch renderingType {
+                    
+                case .hierarchical, .monochrome, .multiColor:
+                    state.colorToolState.secondaryColor = .clear
+                    state.colorToolState.tertiaryColor = .clear
+                    state.symbolCatalogState.catalogItemListState.secondaryColor = .clear
+                    state.symbolCatalogState.catalogItemListState.tertiaryColor = .clear
+               
+                case .palette:
+                    state.colorToolState.secondaryColor = .accentColor
+                    state.colorToolState.tertiaryColor = .white
+                    state.symbolCatalogState.catalogItemListState.secondaryColor = .accentColor
+                    state.symbolCatalogState.catalogItemListState.tertiaryColor = .white
+                }
+                
                 return .none
             case .drawTool:
                 return .none
