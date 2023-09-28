@@ -10,15 +10,15 @@ import SwiftUI
 
 struct CatalogItemView: View {
     
+    let symbol: SFSymbols
+    let renderingType: RenderingType
+    let primaryColor: Color
+    let secondaryColor: Color
+    let tertiaryColor: Color
     let backgroundColor: Color
     let fontWeight: Font.Weight
-    let primaryColor: Color
-    let renderingType: RenderingType
-    let secondaryColor: Color
     let squareLength: CGFloat
-    let symbol: SFSymbols
     let selectAction: () -> Void
-    let tertiaryColor: Color
     
     init(symbol: SFSymbols,
          weight: Font.Weight,

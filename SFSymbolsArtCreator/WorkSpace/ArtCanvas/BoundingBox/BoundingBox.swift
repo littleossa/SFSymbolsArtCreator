@@ -27,12 +27,12 @@ extension BoundingBox {
 
 struct BoundingBox<Content: View>: View {
     
-    @Binding var height: CGFloat
     @Binding var width: CGFloat
+    @Binding var height: CGFloat
     @Binding var position: CGPoint
     let isEditing: Bool
-    let content: Content
     let formType: EditFormType
+    let content: Content
     
     private let minScalingWidth: CGFloat = 10
     private let minScalingHeight: CGFloat = 10

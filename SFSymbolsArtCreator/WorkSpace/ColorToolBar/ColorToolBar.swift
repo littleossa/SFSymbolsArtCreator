@@ -10,9 +10,9 @@ import SwiftUI
 struct ColorToolFeature: Reducer {
     
     struct State: Equatable {
-        var renderingType: RenderingType = .monochrome
-        
         @PresentationState var colorPicker: ColorPickerFeature.State?
+
+        var renderingType: RenderingType = .monochrome
         var canvasColor: Color = .white
         var primaryColor: Color = .black
         var secondaryColor: Color = .accentColor

@@ -9,21 +9,21 @@ import SwiftUI
 
 struct ArtSymbolFeature: Reducer {
     struct State: Equatable, Identifiable {
-        var editFormType: EditFormType
-        var flipType: FlipType = .none
+        @BindingState var width: CGFloat
         @BindingState var height: CGFloat
-        var id: UUID
-        var isEditing = true
-        var isHidden = false
-        let name: String
         @BindingState var position: CGPoint
-        var primaryColor: Color
+        var id: UUID
+        let name: String
         var renderingType: RenderingType
-        var rotationDegrees: Double = 0
+        var primaryColor: Color
         var secondaryColor: Color
         var tertiaryColor: Color
         var weight: Font.Weight
-        @BindingState var width: CGFloat
+        var flipType: FlipType = .none
+        var rotationDegrees: Double = 0
+        var editFormType: EditFormType
+        var isEditing = true
+        var isHidden = false
         
         init(id: UUID,
              symbolName: String,

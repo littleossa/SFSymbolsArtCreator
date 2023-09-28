@@ -8,9 +8,9 @@ import SwiftUI
 
 struct AccordionSettingView<Content: View>: View {
     
-    let content: Content
     @State private var isOpen = false
     let title: LocalizedStringKey
+    let content: Content
     
     init(title: LocalizedStringKey,
          @ViewBuilder content: () -> Content) {

@@ -11,14 +11,14 @@ import SwiftUI
 struct CatalogItemListFeature: Reducer {
     
     struct State: Equatable {
+        @BindingState var searchText = ""
         var backgroundColor: Color
         var category: SFSymbols.Category
-        var fontWeight: Font.Weight
-        var primaryColor: Color
         var renderingType: RenderingType
+        var primaryColor: Color
         var secondaryColor: Color
-        @BindingState var searchText = ""
         var tertiaryColor: Color
+        var fontWeight: Font.Weight
         
         init(fontWeight: Font.Weight,
              primaryColor: Color,
