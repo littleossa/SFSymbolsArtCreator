@@ -39,7 +39,7 @@ struct ColorToolFeature: Reducer {
         }
         
         var isOnlyPrimaryColorEnabled: Bool {
-            return renderingType != .multiColor
+            return renderingType != .palette
         }
     }
     

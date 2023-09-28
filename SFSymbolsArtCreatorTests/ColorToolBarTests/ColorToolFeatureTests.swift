@@ -42,11 +42,11 @@ final class ColorToolFeatureTests: XCTestCase {
             XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
-        XCTContext.runActivity(named: "MultiColor is not only primary color enabled") { _ in
+        XCTContext.runActivity(named: "MultiColor is only primary color enabled") { _ in
             let store = TestStore(initialState: ColorToolFeature.State(renderingType: .multiColor)) {
                 ColorToolFeature()
             }
-            XCTAssertFalse(store.state.isOnlyPrimaryColorEnabled)
+            XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
         XCTContext.runActivity(named: "Hierarchical is only primary color enabled") { _ in
@@ -56,11 +56,11 @@ final class ColorToolFeatureTests: XCTestCase {
             XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
-        XCTContext.runActivity(named: "Palette is only primary color enabled") { _ in
+        XCTContext.runActivity(named: "Palette is not only primary color enabled") { _ in
             let store = TestStore(initialState: ColorToolFeature.State(renderingType: .palette)) {
                 ColorToolFeature()
             }
-            XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
+            XCTAssertFalse(store.state.isOnlyPrimaryColorEnabled)
         }
     }
 }
