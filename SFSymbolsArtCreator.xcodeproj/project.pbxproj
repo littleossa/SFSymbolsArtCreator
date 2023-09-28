@@ -29,7 +29,6 @@
 		97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */; };
 		97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */; };
 		97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2E2AC4244700648FD4 /* MenuToolBar.swift */; };
-		97671A322AC42A6400648FD4 /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A312AC42A6400648FD4 /* ActionBar.swift */; };
 		97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A332AC453EE00648FD4 /* ArtSymbol.swift */; };
 		97671A412AC45FB900648FD4 /* MovingDashFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */; };
 		97671A422AC45FB900648FD4 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A392AC45FB900648FD4 /* BoundingBox.swift */; };
@@ -87,7 +86,6 @@
 		97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingMenuButton.swift; sourceTree = "<group>"; };
 		97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolFeatureTests.swift; sourceTree = "<group>"; };
 		97671A2E2AC4244700648FD4 /* MenuToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolBar.swift; sourceTree = "<group>"; };
-		97671A312AC42A6400648FD4 /* ActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		97671A332AC453EE00648FD4 /* ArtSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbol.swift; sourceTree = "<group>"; };
 		97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingDashFramedRectangle.swift; sourceTree = "<group>"; };
 		97671A392AC45FB900648FD4 /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
@@ -290,16 +288,6 @@
 			path = MenuToolBar;
 			sourceTree = "<group>";
 		};
-		97671A302AC42A3600648FD4 /* ActionBar */ = {
-			isa = PBXGroup;
-			children = (
-				97671A312AC42A6400648FD4 /* ActionBar.swift */,
-				97671A252AC3E11000648FD4 /* DrawToolBar */,
-				97671A2D2AC4242900648FD4 /* MenuToolBar */,
-			);
-			path = ActionBar;
-			sourceTree = "<group>";
-		};
 		97671A372AC45FB900648FD4 /* BoundingBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,9 +342,10 @@
 			isa = PBXGroup;
 			children = (
 				97671A552AC54BE200648FD4 /* WorkSpace.swift */,
-				97671A302AC42A3600648FD4 /* ActionBar */,
 				97671A532AC4FA8400648FD4 /* ArtCanvas */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
+				97671A252AC3E11000648FD4 /* DrawToolBar */,
+				97671A2D2AC4242900648FD4 /* MenuToolBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 			);
 			path = WorkSpace;
@@ -500,7 +489,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				97FCD5522AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift in Sources */,
-				97671A322AC42A6400648FD4 /* ActionBar.swift in Sources */,
 				97671A4C2AC4724E00648FD4 /* FlipType.swift in Sources */,
 				97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */,
 				97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */,
