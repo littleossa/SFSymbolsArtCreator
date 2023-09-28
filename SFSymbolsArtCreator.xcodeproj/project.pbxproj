@@ -42,6 +42,7 @@
 		97671A4A2AC4719900648FD4 /* EditFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A492AC4719900648FD4 /* EditFormType.swift */; };
 		97671A4C2AC4724E00648FD4 /* FlipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4B2AC4724E00648FD4 /* FlipType.swift */; };
 		97671A502AC4F4F900648FD4 /* View+BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */; };
+		97671A522AC4F64900648FD4 /* ArtCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A512AC4F64900648FD4 /* ArtCanvasView.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -98,6 +99,7 @@
 		97671A492AC4719900648FD4 /* EditFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormType.swift; sourceTree = "<group>"; };
 		97671A4B2AC4724E00648FD4 /* FlipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipType.swift; sourceTree = "<group>"; };
 		97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BoundingBox.swift"; sourceTree = "<group>"; };
+		97671A512AC4F64900648FD4 /* ArtCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCanvasView.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -150,8 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
-				97671A332AC453EE00648FD4 /* ArtSymbol.swift */,
-				97671A372AC45FB900648FD4 /* BoundingBox */,
+				97671A532AC4FA8400648FD4 /* ArtCanvas */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
 				97671A302AC42A3600648FD4 /* ActionBar */,
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
@@ -340,6 +341,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		97671A532AC4FA8400648FD4 /* ArtCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				97671A512AC4F64900648FD4 /* ArtCanvasView.swift */,
+				97671A332AC453EE00648FD4 /* ArtSymbol.swift */,
+				97671A372AC45FB900648FD4 /* BoundingBox */,
+			);
+			path = ArtCanvas;
+			sourceTree = "<group>";
+		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +512,7 @@
 				97671A442AC45FB900648FD4 /* EditPointsFramedRectangle.swift in Sources */,
 				97671A422AC45FB900648FD4 /* BoundingBox.swift in Sources */,
 				97671A1D2AC3364100648FD4 /* ColorPickerView.swift in Sources */,
+				97671A522AC4F64900648FD4 /* ArtCanvasView.swift in Sources */,
 				97671A172AC30F3100648FD4 /* ColorToolBar.swift in Sources */,
 				97FCD5502AC06B1D002795F6 /* SymbolWeightSettingView.swift in Sources */,
 				97671A462AC45FB900648FD4 /* EditPointScaling.swift in Sources */,

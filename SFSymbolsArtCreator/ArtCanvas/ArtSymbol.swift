@@ -8,7 +8,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct ArtSymbolFeature: Reducer {
-    struct State: Equatable {
+    struct State: Equatable, Identifiable {
         var editFormType: EditFormType
         var flipType: FlipType = .none
         @BindingState var height: CGFloat
