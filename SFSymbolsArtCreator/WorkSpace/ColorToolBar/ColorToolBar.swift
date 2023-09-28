@@ -10,7 +10,7 @@ import SwiftUI
 struct ColorToolFeature: Reducer {
     
     struct State: Equatable {
-        let renderingType: RenderingType = .monochrome
+        var renderingType: RenderingType = .monochrome
         
         @PresentationState var colorPicker: ColorPickerFeature.State?
         var canvasColor: Color = .white
@@ -46,9 +46,17 @@ struct ColorToolFeature: Reducer {
     enum Action: Equatable {
         case canvasColorButtonTapped
         case colorPicker(PresentationAction<ColorPickerFeature.Action>)
+        case delegate(Delegate)
         case primaryColorButtonTapped
         case secondaryColorButtonTapped
         case tertiaryColorButtonTapped
+        
+        enum Delegate: Equatable {
+            case changeCanvasColor(Color)
+            case changePrimaryColor(Color)
+            case changeSecondaryColor(Color)
+            case changeTertiaryColor(Color)
+        }
     }
     
     var body: some ReducerOf<Self> {
@@ -71,9 +79,24 @@ struct ColorToolFeature: Reducer {
                 case .tertiary:
                     state.tertiaryColor = color
                 }
-                return .none
+                
+                return .run { send in
+                    switch type {
+                    case .canvas:
+                        await send(.delegate(.changeCanvasColor(color)))
+                    case .primary:
+                        await send(.delegate(.changePrimaryColor(color)))
+                    case .secondary:
+                        await send(.delegate(.changeSecondaryColor(color)))
+                    case .tertiary:
+                        await send(.delegate(.changeTertiaryColor(color)))
+                    }
+                }
                 
             case .colorPicker:
+                return .none
+                
+            case .delegate:
                 return .none
                 
             case .primaryColorButtonTapped:

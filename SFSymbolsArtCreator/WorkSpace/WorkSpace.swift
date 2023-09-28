@@ -25,6 +25,46 @@ struct WorkSpaceFeature: Reducer {
     }
     
     var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .artCanvas:
+                return .none
+                
+            case let .colorTool(.delegate(.changeCanvasColor(color))):
+                state.artCanvasState.canvasColor = color
+                return .none
+                
+            case let .colorTool(.delegate(.changePrimaryColor(color))):
+                state.symbolCatalogState.catalogItemListState.primaryColor = color
+                return .none
+                
+            case let .colorTool(.delegate(.changeSecondaryColor(color))):
+                state.symbolCatalogState.catalogItemListState.secondaryColor = color
+                return .none
+                
+            case let .colorTool(.delegate(.changeTertiaryColor(color))):
+                state.symbolCatalogState.catalogItemListState.tertiaryColor = color
+                return .none
+                
+            case .colorTool:
+                return .none
+                
+            case let .drawTool(.delegate(.changeRenderingType(renderingType))):
+                state.colorToolState.renderingType = renderingType
+                state.symbolCatalogState.catalogItemListState.renderingType = renderingType
+                return .none
+            case .drawTool:
+                return .none
+                
+            case .menuTool:
+                return .none
+            case let .symbolCatalog(.delegate(.selectSymbol(symbol))):
+                print("⚠️TODO: add symbols into art symbol array:", symbol)
+                return .none
+            case .symbolCatalog:
+                return .none
+            }
+        }
         Scope(state: \.artCanvasState, action: /Action.artCanvas) {
             ArtCanvasFeature()
         }

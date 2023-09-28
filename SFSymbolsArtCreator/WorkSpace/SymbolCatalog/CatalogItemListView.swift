@@ -14,11 +14,11 @@ struct CatalogItemListFeature: Reducer {
         var backgroundColor: Color
         var category: SFSymbols.Category
         var fontWeight: Font.Weight
-        let primaryColor: Color
-        let renderingType: RenderingType
-        let secondaryColor: Color
+        var primaryColor: Color
+        var renderingType: RenderingType
+        var secondaryColor: Color
         @BindingState var searchText = ""
-        let tertiaryColor: Color
+        var tertiaryColor: Color
         
         init(fontWeight: Font.Weight,
              primaryColor: Color,

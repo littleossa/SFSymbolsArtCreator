@@ -57,7 +57,6 @@ struct SymbolCatalogFeature: Reducer {
             case let .catalogItemList(.symbolTapped(symbol)):
                 return .run { send in
                     await send(.delegate(.selectSymbol(symbol)))
-                    print("⚠️TODO: add symbols into art symbol array:", symbol)
                 }
             case .catalogItemList:
                 return .none

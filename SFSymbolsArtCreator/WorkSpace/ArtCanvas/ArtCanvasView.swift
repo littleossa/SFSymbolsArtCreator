@@ -10,7 +10,7 @@ import SwiftUI
 struct ArtCanvasFeature: Reducer {
     struct State: Equatable {
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
-        let canvasColor: Color
+        var canvasColor: Color
     }
     enum Action: Equatable {
         case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)

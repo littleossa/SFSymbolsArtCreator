@@ -17,8 +17,13 @@ struct DrawToolFeature: Reducer {
     enum Action: Equatable {
         case editButtonTapped
         case eraserButtonTapped
+        case delegate(Delegate)
         case layerButtonTapped
         case renderingChanged(RenderingType)
+        
+        enum Delegate: Equatable {
+            case changeRenderingType(RenderingType)
+        }
     }
     
     var body: some ReducerOf<Self> {
@@ -32,13 +37,18 @@ struct DrawToolFeature: Reducer {
                 state.isEraserMode.toggle()
                 return .none
                 
+            case .delegate:
+                return .none
+                
             case .layerButtonTapped:
                 state.layerPanelIsPresented.toggle()
                 return .none
                 
             case let .renderingChanged(renderingType):
                 state.renderingType = renderingType
-                return .none
+                return .run { send in
+                    await send(.delegate(.changeRenderingType(renderingType)))
+                }
             }
         }
     }
