@@ -43,6 +43,7 @@
 		97671A4C2AC4724E00648FD4 /* FlipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4B2AC4724E00648FD4 /* FlipType.swift */; };
 		97671A502AC4F4F900648FD4 /* View+BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */; };
 		97671A522AC4F64900648FD4 /* ArtCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A512AC4F64900648FD4 /* ArtCanvasView.swift */; };
+		97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A552AC54BE200648FD4 /* WorkSpace.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -100,6 +101,7 @@
 		97671A4B2AC4724E00648FD4 /* FlipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipType.swift; sourceTree = "<group>"; };
 		97671A4F2AC4F4F900648FD4 /* View+BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BoundingBox.swift"; sourceTree = "<group>"; };
 		97671A512AC4F64900648FD4 /* ArtCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCanvasView.swift; sourceTree = "<group>"; };
+		97671A552AC54BE200648FD4 /* WorkSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpace.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -152,10 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
-				97671A532AC4FA8400648FD4 /* ArtCanvas */,
-				97671A1A2AC3359600648FD4 /* ColorToolBar */,
-				97671A302AC42A3600648FD4 /* ActionBar */,
-				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
+				97671A542AC54A3600648FD4 /* WorkSpace */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
 				97FCD5492ABE35F5002795F6 /* Models */,
@@ -351,6 +350,18 @@
 			path = ArtCanvas;
 			sourceTree = "<group>";
 		};
+		97671A542AC54A3600648FD4 /* WorkSpace */ = {
+			isa = PBXGroup;
+			children = (
+				97671A552AC54BE200648FD4 /* WorkSpace.swift */,
+				97671A302AC42A3600648FD4 /* ActionBar */,
+				97671A532AC4FA8400648FD4 /* ArtCanvas */,
+				97671A1A2AC3359600648FD4 /* ColorToolBar */,
+				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
+			);
+			path = WorkSpace;
+			sourceTree = "<group>";
+		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +516,7 @@
 				97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
+				97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */,
 				97671A452AC45FB900648FD4 /* EditPoint.swift in Sources */,
 				97671A472AC45FB900648FD4 /* EditPointPosition.swift in Sources */,
 				97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */,

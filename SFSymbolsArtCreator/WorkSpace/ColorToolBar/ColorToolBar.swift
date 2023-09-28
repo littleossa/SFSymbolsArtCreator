@@ -10,7 +10,7 @@ import SwiftUI
 struct ColorToolFeature: Reducer {
     
     struct State: Equatable {
-        let renderingType: RenderingType
+        let renderingType: RenderingType = .monochrome
         
         @PresentationState var colorPicker: ColorPickerFeature.State?
         var canvasColor: Color = .white
@@ -165,13 +165,7 @@ struct ColorToolBar: View {
         
         HStack {
             ColorToolBar(store: .init(
-                initialState: ColorToolFeature.State(renderingType: .monochrome)
-            ) {
-                ColorToolFeature()
-            })
-            
-            ColorToolBar(store: .init(
-                initialState: ColorToolFeature.State(renderingType: .multiColor)
+                initialState: ColorToolFeature.State()
             ) {
                 ColorToolFeature()
             })
