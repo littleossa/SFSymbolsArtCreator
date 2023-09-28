@@ -39,7 +39,7 @@ struct ArtCanvasView: View {
             
                 Rectangle()
                     .fill(viewStore.canvasColor)
-                    .frame(width: 500, height: 500)
+                    .shadow(color: .white, radius: 4)
                     .overlay {
                         ForEachStore(store.scope(state: \.artSymbols, action: ArtCanvasFeature.Action.artSymbol)) {
                             ArtSymbolView(store: $0)
