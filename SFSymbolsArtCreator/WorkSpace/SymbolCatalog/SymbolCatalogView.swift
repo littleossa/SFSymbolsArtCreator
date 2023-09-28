@@ -14,23 +14,24 @@ struct SymbolCatalogFeature: Reducer {
         var catalogSettingsState: CatalogSettingsFeature.State
         
         init() {
-            let defaultBackgroundColor: Color = .white
+            let defaultCatalogBackgroundColorItem: ColorItem = .white
             let defaultCategory: SFSymbols.Category = .all
             let defaultFontWeight: Font.Weight = .regular
             
             catalogSettingsState = .init(
-                backgroundColor: defaultBackgroundColor,
+                catalogBackgroundColorItem: defaultCatalogBackgroundColorItem,
                 category: defaultCategory,
-                symbolWeight: defaultFontWeight
+                symbolWeight: defaultFontWeight,
+                currentCanvasColor: .white
             )
             
             catalogItemListState = .init(
                 fontWeight: defaultFontWeight,
                 primaryColor: .black,
-                secondaryColor: .black,
+                secondaryColor: .clear,
                 tertiaryColor: .clear,
                 renderingType: .monochrome,
-                backgroundColor: defaultBackgroundColor,
+                backgroundColor: defaultCatalogBackgroundColorItem.color,
                 category: defaultCategory)
         }
     }
@@ -60,8 +61,8 @@ struct SymbolCatalogFeature: Reducer {
                 }
             case .catalogItemList:
                 return .none
-            case .catalogSettings(.binding(\.$backgroundColor)):
-                state.catalogItemListState.backgroundColor = state.catalogSettingsState.backgroundColor
+            case .catalogSettings(.binding(\.$catalogBackgroundColorItem)):
+                state.catalogItemListState.backgroundColor = state.catalogSettingsState.catalogBackgroundColorItem.color
                 return .none
             case .catalogSettings(.binding(\.$category)):
                 state.catalogItemListState.category = state.catalogSettingsState.category

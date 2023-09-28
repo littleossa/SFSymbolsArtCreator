@@ -8,27 +8,32 @@ import SwiftUI
 
 struct CatalogBackgroundColorSettingView: View {
     
-    @Binding var color: Color
-    private let selection: [Color] = [
-        .white,
-        .black
-    ]
+    @Binding var backgroundColorItem: ColorItem
+    let canvasColor: Color
+    
+    private var selectionItems: [ColorItem] {
+        return [
+            .white,
+            .black,
+            .init(canvasColor: canvasColor)
+        ]
+    }
     
     var body: some View {
         AccordionSettingView(title: "Background") {
             
             HStack(spacing: 16) {
-                ForEach(selection, id: \.self) { color in
+                ForEach(selectionItems) { item in
                     
                     Button {
-                        self.color = color
+                        backgroundColorItem = item
                     } label: {
                         Circle()
-                            .fill(color)
+                            .fill(item.color)
                     }
                     .frame(width: 44, height: 44)
                     .overlay {
-                        if self.color == color {
+                        if backgroundColorItem.id == item.id {
                             Circle()
                                 .stroke(lineWidth: 4)
                                 .foregroundStyle(.tint)
@@ -46,7 +51,10 @@ struct CatalogBackgroundColorSettingView: View {
 #Preview {
     Color.heavyDarkGray
         .overlay {
-            CatalogBackgroundColorSettingView(color: .constant(.black))
-                .frame(width: 284, height: 500)
+            CatalogBackgroundColorSettingView(
+                backgroundColorItem: .constant(.white),
+                canvasColor: .black
+            )
+            .frame(width: 284, height: 500)
         }
 }

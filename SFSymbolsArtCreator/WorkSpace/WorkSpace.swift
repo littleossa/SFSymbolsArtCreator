@@ -32,6 +32,12 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .colorTool(.delegate(.changeCanvasColor(color))):
                 state.artCanvasState.canvasColor = color
+                state.symbolCatalogState.catalogSettingsState.currentCanvasColor = color
+                
+                let isCanvasColor = state.symbolCatalogState.catalogSettingsState.catalogBackgroundColorItem.isCanvasColor
+                if isCanvasColor {
+                    state.symbolCatalogState.catalogItemListState.backgroundColor = color
+                }
                 return .none
                 
             case let .colorTool(.delegate(.changePrimaryColor(color))):

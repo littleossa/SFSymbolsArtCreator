@@ -10,9 +10,10 @@ import SwiftUI
 
 struct CatalogSettingsFeature: Reducer {
     struct State: Equatable {
-        @BindingState var backgroundColor: Color
+        @BindingState var catalogBackgroundColorItem: ColorItem
         @BindingState var category: SFSymbols.Category
         @BindingState var symbolWeight: Font.Weight
+        var currentCanvasColor: Color
     }
     
     enum Action: BindableAction, Equatable {        
@@ -34,7 +35,10 @@ struct CatalogSettingsView: View {
             VStack {
                 CategorySettingView(selectedCategory: viewStore.$category)
                 SymbolWeightSettingView(weight: viewStore.$symbolWeight)
-                CatalogBackgroundColorSettingView(color: viewStore.$backgroundColor)
+                CatalogBackgroundColorSettingView(
+                    backgroundColorItem: viewStore.$catalogBackgroundColorItem,
+                    canvasColor: viewStore.currentCanvasColor
+                )
             }
             .padding(.leading)
         }
@@ -46,9 +50,10 @@ struct CatalogSettingsView: View {
         .overlay {
             CatalogSettingsView(store: .init(
                 initialState: CatalogSettingsFeature.State(
-                    backgroundColor: .white,
+                    catalogBackgroundColorItem: .white,
                     category: .all,
-                    symbolWeight: .regular
+                    symbolWeight: .regular,
+                    currentCanvasColor: .white
                 ), reducer: {
                     CatalogSettingsFeature()
                 })
