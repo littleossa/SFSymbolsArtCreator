@@ -44,6 +44,7 @@
 		97671A522AC4F64900648FD4 /* ArtCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A512AC4F64900648FD4 /* ArtCanvasView.swift */; };
 		97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A552AC54BE200648FD4 /* WorkSpace.swift */; };
 		97671A582AC5C15800648FD4 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A572AC5C15800648FD4 /* ColorItem.swift */; };
+		97671A5B2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A5A2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -102,6 +103,7 @@
 		97671A512AC4F64900648FD4 /* ArtCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCanvasView.swift; sourceTree = "<group>"; };
 		97671A552AC54BE200648FD4 /* WorkSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpace.swift; sourceTree = "<group>"; };
 		97671A572AC5C15800648FD4 /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
+		97671A5A2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceFeatureTests.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
 				97671A222AC3A2B100648FD4 /* ColorToolBarTests */,
 				97671A152AC25D4400648FD4 /* SymbolCatalogTests */,
+				97671A592AC5C73100648FD4 /* WorkSpaceTests */,
 			);
 			path = SFSymbolsArtCreatorTests;
 			sourceTree = "<group>";
@@ -351,6 +354,14 @@
 				97567A0A2AB9C5B90057B0E2 /* SymbolCatalog */,
 			);
 			path = WorkSpace;
+			sourceTree = "<group>";
+		};
+		97671A592AC5C73100648FD4 /* WorkSpaceTests */ = {
+			isa = PBXGroup;
+			children = (
+				97671A5A2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift */,
+			);
+			path = WorkSpaceTests;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -534,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97671A5B2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift in Sources */,
 				97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */,
 				97671A212AC39FC000648FD4 /* ColorToolFeatureTests.swift in Sources */,
 				97671A102AC2301700648FD4 /* CatalogItemListFeatureTests.swift in Sources */,

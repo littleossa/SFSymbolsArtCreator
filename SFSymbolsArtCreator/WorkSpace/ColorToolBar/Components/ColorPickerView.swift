@@ -33,7 +33,7 @@ struct ColorPickerFeature: Reducer {
             case selectColor(State.ColorType, Color)
         }
     }
-    
+        
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
