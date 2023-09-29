@@ -17,13 +17,7 @@ final class WorkSpaceFeatureTests: XCTestCase {
     
     override func setUpWithError() throws {
         store = TestStore(
-            initialState: WorkSpaceFeature.State(
-                artCanvasState: .init(artSymbols: [], canvasColor: .white),
-                colorToolState: .init(),
-                drawToolState: .init(),
-                menuToolState: .init(),
-                symbolCatalogState: .init())
-        ) {
+            initialState: WorkSpaceFeature.State()) {
             WorkSpaceFeature()
         }
     }

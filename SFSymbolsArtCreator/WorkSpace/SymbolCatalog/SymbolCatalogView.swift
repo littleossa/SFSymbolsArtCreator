@@ -13,26 +13,30 @@ struct SymbolCatalogFeature: Reducer {
         var catalogItemListState: CatalogItemListFeature.State
         var catalogSettingsState: CatalogSettingsFeature.State
         
-        init() {
-            let defaultCatalogBackgroundColorItem: ColorItem = .white
-            let defaultCategory: SFSymbols.Category = .all
-            let defaultFontWeight: Font.Weight = .regular
-            
+        init(catalogBackgroundColorItem: ColorItem = .white,
+             category: SFSymbols.Category = .all,
+             fontWeight: Font.Weight = .regular,
+             renderingType: RenderingType,
+             primaryColor: Color,
+             secondaryColor: Color,
+             tertiaryColor: Color,
+             canvasColor: Color
+        ) {
             catalogSettingsState = .init(
-                catalogBackgroundColorItem: defaultCatalogBackgroundColorItem,
-                category: defaultCategory,
-                symbolWeight: defaultFontWeight,
-                currentCanvasColor: .white
+                catalogBackgroundColorItem: catalogBackgroundColorItem,
+                category: category,
+                symbolWeight: fontWeight,
+                currentCanvasColor: canvasColor
             )
             
             catalogItemListState = .init(
-                fontWeight: defaultFontWeight,
-                primaryColor: .black,
-                secondaryColor: .clear,
-                tertiaryColor: .clear,
-                renderingType: .monochrome,
-                backgroundColor: defaultCatalogBackgroundColorItem.color,
-                category: defaultCategory)
+                fontWeight: fontWeight,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                tertiaryColor: tertiaryColor,
+                renderingType: renderingType,
+                backgroundColor: catalogBackgroundColorItem.color,
+                category: category)
         }
     }
     
@@ -105,9 +109,14 @@ struct SymbolCatalogView: View {
     Color.black
         .overlay {
             SymbolCatalogView(store: .init(
-                initialState: SymbolCatalogFeature.State()) {
-                    SymbolCatalogFeature()
-                }
-            )
+                initialState: SymbolCatalogFeature.State(
+                    renderingType: .monochrome,
+                    primaryColor: .black,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .white,
+                    canvasColor: .white)
+            ) {
+                SymbolCatalogFeature()
+            })
         }
 }

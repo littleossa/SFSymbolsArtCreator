@@ -14,6 +14,28 @@ struct WorkSpaceFeature: Reducer {
         var drawToolState: DrawToolFeature.State
         var menuToolState: MenuToolFeature.State
         var symbolCatalogState: SymbolCatalogFeature.State
+        
+        init(renderingType: RenderingType = .monochrome,
+             primaryColor: Color = .black,
+             secondaryColor: Color = .accentColor,
+             tertiaryColor: Color = .white,
+             canvasColor: Color = .white
+        ) {
+            self.artCanvasState = .init(artSymbols: [],
+                                        canvasColor: canvasColor)
+            self.colorToolState = .init(renderingType: renderingType,
+                                        canvasColor: canvasColor,
+                                        primaryColor: primaryColor,
+                                        secondaryColor: secondaryColor,
+                                        tertiaryColor: tertiaryColor)
+            self.drawToolState = .init(renderingType: renderingType)
+            self.menuToolState = .init()
+            self.symbolCatalogState = .init(renderingType: renderingType,
+                                            primaryColor: primaryColor,
+                                            secondaryColor: secondaryColor,
+                                            tertiaryColor: tertiaryColor,
+                                            canvasColor: canvasColor)
+        }
     }
     
     enum Action: Equatable {
@@ -164,15 +186,7 @@ struct WorkSpaceView: View {
 
 #Preview {
     WorkSpaceView(store: .init(
-        initialState: WorkSpaceFeature.State(
-            artCanvasState: ArtCanvasFeature.State(
-                artSymbols: [],
-                canvasColor: .white
-            ),
-            colorToolState: ColorToolFeature.State(),
-            drawToolState: DrawToolFeature.State(),
-            menuToolState: MenuToolFeature.State(),
-            symbolCatalogState: SymbolCatalogFeature.State())) {
+        initialState: WorkSpaceFeature.State()) {
                 WorkSpaceFeature()
             }
     )
