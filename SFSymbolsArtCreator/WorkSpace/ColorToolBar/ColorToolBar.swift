@@ -12,11 +12,11 @@ struct ColorToolFeature: Reducer {
     struct State: Equatable {
         @PresentationState var colorPicker: ColorPickerFeature.State?
 
-        var renderingType: RenderingType = .monochrome
-        var canvasColor: Color = .white
-        var primaryColor: Color = .black
-        var secondaryColor: Color = .accentColor
-        var tertiaryColor: Color = .white
+        var renderingType: RenderingType
+        var canvasColor: Color
+        var primaryColor: Color
+        var secondaryColor: Color
+        var tertiaryColor: Color
         
         // Rect for a arrow of pop over
         var attachmentAnchorRect: CGRect {
@@ -188,7 +188,12 @@ struct ColorToolBar: View {
         
         HStack {
             ColorToolBar(store: .init(
-                initialState: ColorToolFeature.State()
+                initialState: ColorToolFeature.State(
+                    renderingType: .monochrome,
+                    canvasColor: .white,
+                    primaryColor: .black,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .white)
             ) {
                 ColorToolFeature()
             })

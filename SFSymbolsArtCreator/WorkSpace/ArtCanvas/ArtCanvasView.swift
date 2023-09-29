@@ -48,3 +48,24 @@ struct ArtCanvasView: View {
         }
     }
 }
+
+#Preview {
+    
+    ZStack(alignment: .center) {
+        
+        Rectangle()
+            .fill(.black)
+            .opacity(0.9)
+            .blur(radius: 2)
+            .ignoresSafeArea(edges: .bottom)
+        
+        ArtCanvasView(store: .init(
+            initialState: ArtCanvasFeature.State(
+                artSymbols: [],
+                canvasColor: .white)
+        ) {
+            ArtCanvasFeature()
+        })
+        .frame(width: 400, height: 400)
+    }
+}

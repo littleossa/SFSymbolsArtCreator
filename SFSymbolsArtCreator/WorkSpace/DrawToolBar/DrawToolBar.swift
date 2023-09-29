@@ -12,7 +12,7 @@ struct DrawToolFeature: Reducer {
         var isEraserMode = false
         var isEditMode = false
         var layerPanelIsPresented = false
-        var renderingType: RenderingType = .monochrome
+        var renderingType: RenderingType
     }
     enum Action: Equatable {
         case editButtonTapped
@@ -112,7 +112,7 @@ struct DrawToolBar: View {
     Color.black
         .overlay {
             DrawToolBar(store: .init(
-                initialState: DrawToolFeature.State()
+                initialState: DrawToolFeature.State(renderingType: .monochrome)
             ) {
                 DrawToolFeature()
             })

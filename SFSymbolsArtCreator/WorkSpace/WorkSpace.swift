@@ -171,7 +171,8 @@ struct WorkSpaceView: View {
                             state: \.artCanvasState,
                             action: WorkSpaceFeature.Action.artCanvas)
                         )
-                        .frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
+                        .frame(width: geometry.size.width * 0.7,
+                               height: geometry.size.width * 0.7)
                     }
                 }
                 
