@@ -23,13 +23,6 @@ struct SymbolWeightSettingView: View {
             .padding(.bottom)
             .padding(.trailing)
         }
-        .onAppear(perform: {
-            print(weight)
-        })
-        .onChange(of: weight) { newValue in
-            print(newValue)
-            print(newValue.sliderValue)
-        }
     }
 }
 
