@@ -16,7 +16,7 @@ final class DrawToolFeatureTests: XCTestCase {
     }()
 
     override func setUpWithError() throws {
-        store = TestStore(initialState: DrawToolFeature.State()) {
+        store = TestStore(initialState: DrawToolFeature.State(renderingType: .monochrome)) {
             DrawToolFeature()
         }
     }

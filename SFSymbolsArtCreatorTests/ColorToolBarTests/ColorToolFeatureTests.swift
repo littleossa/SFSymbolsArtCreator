@@ -12,7 +12,14 @@ import XCTest
 final class ColorToolFeatureTests: XCTestCase {
 
     func test_colorButtonTapped() async {
-        let store = TestStore(initialState: ColorToolFeature.State(renderingType: .monochrome)) {
+        let store = TestStore(
+            initialState: ColorToolFeature.State(
+                renderingType: .monochrome,
+                canvasColor: .white,
+                primaryColor: .black,
+                secondaryColor: .accentColor,
+                tertiaryColor: .white)
+        ) {
             ColorToolFeature()
         }
         
@@ -36,31 +43,40 @@ final class ColorToolFeatureTests: XCTestCase {
     func test_isOnlyPrimaryColorEnabled() async {
         
         XCTContext.runActivity(named: "Monochrome is only primary color enabled") { _ in
-            let store = TestStore(initialState: ColorToolFeature.State(renderingType: .monochrome)) {
-                ColorToolFeature()
-            }
+            let store = makeTestStore(renderingType: .monochrome)
             XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
         XCTContext.runActivity(named: "MultiColor is only primary color enabled") { _ in
-            let store = TestStore(initialState: ColorToolFeature.State(renderingType: .multiColor)) {
-                ColorToolFeature()
-            }
+            let store = makeTestStore(renderingType: .multiColor)
             XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
         XCTContext.runActivity(named: "Hierarchical is only primary color enabled") { _ in
-            let store = TestStore(initialState: ColorToolFeature.State(renderingType: .hierarchical)) {
-                ColorToolFeature()
-            }
+            let store = makeTestStore(renderingType: .hierarchical)
             XCTAssertTrue(store.state.isOnlyPrimaryColorEnabled)
         }
         
         XCTContext.runActivity(named: "Palette is not only primary color enabled") { _ in
-            let store = TestStore(initialState: ColorToolFeature.State(renderingType: .palette)) {
-                ColorToolFeature()
-            }
+            let store = makeTestStore(renderingType: .palette)
             XCTAssertFalse(store.state.isOnlyPrimaryColorEnabled)
+        }
+    }
+}
+
+// MARK: - Helper method
+extension ColorToolFeatureTests {
+    
+    private func makeTestStore(renderingType: RenderingType) -> TestStore<ColorToolFeature.State, ColorToolFeature.Action> {
+        return TestStore(
+            initialState: ColorToolFeature.State(
+                renderingType: renderingType,
+                canvasColor: .white,
+                primaryColor: .black,
+                secondaryColor: .accentColor,
+                tertiaryColor: .white)
+        ) {
+            ColorToolFeature()
         }
     }
 }

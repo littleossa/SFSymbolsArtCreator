@@ -17,7 +17,13 @@ final class SymbolCatalogFeatureTests: XCTestCase {
 
     override func setUpWithError() throws {
         store = TestStore(
-            initialState: SymbolCatalogFeature.State()
+            initialState: SymbolCatalogFeature.State(
+                renderingType: .monochrome,
+                primaryColor: .black,
+                secondaryColor: .accentColor,
+                tertiaryColor: .white,
+                canvasColor: .white
+            )
         ) {
             SymbolCatalogFeature()
         }
