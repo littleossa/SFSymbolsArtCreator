@@ -63,4 +63,26 @@ final class WorkSpaceFeatureTests: XCTestCase {
             $0.symbolCatalogState.catalogItemListState.tertiaryColor = .green
         }
     }
+    
+    func test_changeRenderingType() async {
+        
+        store.exhaustivity = .off
+        await store.send(.drawTool(.delegate(.changeRenderingType(.hierarchical))))
+        store.assert {
+            $0.symbolCatalogState.catalogItemListState.renderingType = .hierarchical
+        }
+        XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
+        
+        await store.send(.drawTool(.delegate(.changeRenderingType(.multiColor))))
+        store.assert {
+            $0.symbolCatalogState.catalogItemListState.renderingType = .multiColor
+        }
+        XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
+        
+        await store.send(.drawTool(.delegate(.changeRenderingType(.palette))))
+        store.assert {
+            $0.symbolCatalogState.catalogItemListState.renderingType = .palette
+        }
+        XCTAssertFalse(store.state.colorToolState.isOnlyPrimaryColorEnabled)
+    }
 }
