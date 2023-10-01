@@ -49,4 +49,31 @@ final class SymbolCatalogFeatureTests: XCTestCase {
             $0.catalogSettingsState.symbolWeight = .light
         }
     }
+    
+    func test_changeRenderingType() async {
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(.palette))))) {
+            $0.catalogItemListState.renderingType = .palette
+            $0.catalogItemListState.secondaryColor = .accentColor
+            $0.catalogItemListState.tertiaryColor = .white
+            $0.catalogSettingsState.catalogSymbolColorSettingState.secondaryColor = .accentColor
+            $0.catalogSettingsState.catalogSymbolColorSettingState.tertiaryColor = .white
+        }
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(.monochrome))))) {
+            $0.catalogItemListState.renderingType = .monochrome
+            $0.catalogItemListState.secondaryColor = .clear
+            $0.catalogItemListState.tertiaryColor = .clear
+            $0.catalogSettingsState.catalogSymbolColorSettingState.secondaryColor = .clear
+            $0.catalogSettingsState.catalogSymbolColorSettingState.tertiaryColor = .clear
+
+        }
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(.multiColor))))) {
+            $0.catalogItemListState.renderingType = .multiColor
+        }
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(.hierarchical))))) {
+            $0.catalogItemListState.renderingType = .hierarchical
+        }
+    }
 }
