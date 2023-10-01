@@ -218,9 +218,13 @@
 		97567A132ABA4D790057B0E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */,
+				97FCD5512AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift */,
 				97567A142ABA4E1C0057B0E2 /* CatalogItemView.swift */,
+				97FCD54D2AC061F6002795F6 /* CategorySettingView.swift */,
+				97671A5E2AC9603600648FD4 /* CatalogSymbolColorSettingView.swift */,
 				97567A162ABC3D410057B0E2 /* SearchBar.swift */,
-				97FCD54C2AC060C8002795F6 /* AccordionSetting */,
+				97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -383,18 +387,6 @@
 				97671A572AC5C15800648FD4 /* ColorItem.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		97FCD54C2AC060C8002795F6 /* AccordionSetting */ = {
-			isa = PBXGroup;
-			children = (
-				97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */,
-				97FCD5512AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift */,
-				97671A5E2AC9603600648FD4 /* CatalogSymbolColorSettingView.swift */,
-				97FCD54D2AC061F6002795F6 /* CategorySettingView.swift */,
-				97FCD54F2AC06B1D002795F6 /* SymbolWeightSettingView.swift */,
-			);
-			path = AccordionSetting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
