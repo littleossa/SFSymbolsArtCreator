@@ -76,4 +76,19 @@ final class SymbolCatalogFeatureTests: XCTestCase {
             $0.catalogItemListState.renderingType = .hierarchical
         }
     }
+    
+    func test_changeForegroundColor() async {
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changePrimaryColor(.blue))))) {
+            $0.catalogItemListState.primaryColor = .blue
+        }
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changeSecondaryColor(.yellow))))) {
+            $0.catalogItemListState.secondaryColor = .yellow
+        }
+        
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changeTertiaryColor(.red))))) {
+            $0.catalogItemListState.tertiaryColor = .red
+        }
+    }
 }
