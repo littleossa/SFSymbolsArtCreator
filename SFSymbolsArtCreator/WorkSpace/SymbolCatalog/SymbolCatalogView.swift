@@ -93,6 +93,21 @@ struct SymbolCatalogFeature: Reducer {
                 
             case let .catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(renderingType)))):
                 state.catalogItemListState.renderingType = renderingType
+                
+                switch renderingType {
+                    
+                case .hierarchical, .monochrome, .multiColor:
+                    state.catalogItemListState.secondaryColor = .clear
+                    state.catalogItemListState.tertiaryColor = .clear
+                    state.catalogSettingsState.catalogSymbolColorSettingState.secondaryColor = .clear
+                    state.catalogSettingsState.catalogSymbolColorSettingState.tertiaryColor = .clear
+               
+                case .palette:
+                    state.catalogItemListState.secondaryColor = .accentColor
+                    state.catalogItemListState.tertiaryColor = .white
+                    state.catalogSettingsState.catalogSymbolColorSettingState.secondaryColor = .accentColor
+                    state.catalogSettingsState.catalogSymbolColorSettingState.tertiaryColor = .white
+                }
                 return .none
                 
             case .catalogSettings(.binding(\.$symbolWeight)):
