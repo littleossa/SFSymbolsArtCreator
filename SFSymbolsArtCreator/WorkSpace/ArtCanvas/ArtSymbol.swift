@@ -78,6 +78,7 @@ struct ArtSymbolImage: View {
         
         Image(systemName: state.name)
             .resizable()
+            .fontWeight(state.weight)
             .rotation3DEffect(.degrees(180),
                               axis: state.flipType.rotationEffectAxis,
                               anchorZ: 1)
@@ -101,6 +102,7 @@ struct ArtSymbolEditorView: View {
                 
                 Image(systemName: viewStore.name)
                     .resizable()
+                    .fontWeight(viewStore.weight)
                     .rotation3DEffect(.degrees(180),
                                       axis: viewStore.flipType.rotationEffectAxis,
                                       anchorZ: 1)
