@@ -12,11 +12,13 @@ struct SFSymbolsArtCreatorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SymbolCatalogView(store: .init(
-                initialState: SymbolCatalogFeature.State()) {
-                    SymbolCatalogFeature()
-                        ._printChanges()
-                })
+            WorkSpaceView(store: .init(initialState: WorkSpaceFeature.State()) {
+                WorkSpaceFeature()
+                    ._printChanges()
+            })
+            .onAppear {
+                print("onAppear")
+            }
         }
     }
 }
