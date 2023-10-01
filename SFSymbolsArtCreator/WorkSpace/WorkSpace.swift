@@ -114,22 +114,16 @@ struct WorkSpaceFeature: Reducer {
                 
             case .menuTool:
                 return .none
-            case let .symbolCatalog(.delegate(.selectSymbol(symbol))):
+            case let .symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))):
                 let uuid = UUID()
                 state.artCanvasState.artSymbols.append(.init(
                     id: uuid,
-                    symbolName: symbol.rawValue,
+                    catalogItem: item,
                     width: 60,
                     height: 60,
-                    weight: state.symbolCatalogState.catalogSettingsState.symbolWeight,
-                    position: CGPoint(x: 50, y: 50),
-                    renderingType: state.drawToolState.renderingType,
-                    primaryColor: state.colorToolState.primaryColor,
-                    secondaryColor: state.colorToolState.secondaryColor,
-                    tertiaryColor: state.colorToolState.tertiaryColor
+                    position: CGPoint(x: 50, y: 50)
                 ))
                 state.artCanvasState.editSymbolID = uuid
-                state.drawToolState.isEditMode = true
                 return .none
             case .symbolCatalog:
                 return .none

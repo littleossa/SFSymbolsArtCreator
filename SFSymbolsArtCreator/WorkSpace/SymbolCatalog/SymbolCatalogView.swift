@@ -47,11 +47,6 @@ struct SymbolCatalogFeature: Reducer {
     enum Action: Equatable {
         case catalogItemList(CatalogItemListFeature.Action)
         case catalogSettings(CatalogSettingsFeature.Action)
-        case delegate(Delegate)
-        
-        enum Delegate: Equatable {
-            case selectSymbol(SFSymbols)
-        }
     }
     
     var body: some ReducerOf<Self> {
@@ -63,11 +58,6 @@ struct SymbolCatalogFeature: Reducer {
         }
         Reduce { state, action in
             switch action {
-            case let .catalogItemList(.symbolTapped(symbol)):
-                return .run { send in
-                    await send(.delegate(.selectSymbol(symbol)))
-                }
-                
             case .catalogItemList:
                 return .none
                 
@@ -115,8 +105,6 @@ struct SymbolCatalogFeature: Reducer {
                 return .none
                 
             case .catalogSettings:
-                return .none
-            case .delegate:
                 return .none
             }
         }

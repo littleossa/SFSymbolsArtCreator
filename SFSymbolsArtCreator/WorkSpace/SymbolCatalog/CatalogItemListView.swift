@@ -53,7 +53,12 @@ struct CatalogItemListFeature: Reducer {
     
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
+        case delegate(Delegate)
         case symbolTapped(SFSymbols)
+        
+        enum Delegate: Equatable {
+            case catalogItemSelected(CatalogItem)
+        }
     }
     
     var body: some ReducerOf<Self> {
@@ -63,8 +68,19 @@ struct CatalogItemListFeature: Reducer {
                 
             case .binding:
                 return .none
-            case .symbolTapped:
+            case .delegate:
                 return .none
+            case let .symbolTapped(symbol):
+                
+                let item = CatalogItem(symbolName: symbol.rawValue,
+                                       renderingType: state.renderingType,
+                                       primaryColor: state.primaryColor,
+                                       secondaryColor: state.secondaryColor,
+                                       tertiaryColor: state.tertiaryColor,
+                                       fontWeight: state.fontWeight)
+                return .run { send in
+                    await send(.delegate(.catalogItemSelected(item)))
+                }
             }
         }
     }
