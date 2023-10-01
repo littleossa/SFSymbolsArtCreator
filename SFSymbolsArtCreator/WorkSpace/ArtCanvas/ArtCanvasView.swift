@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ArtCanvasFeature: Reducer {
     struct State: Equatable {
+        let minScalingWidth: CGFloat = 10
+        let minScalingHeight: CGFloat = 10
+        
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
         var canvasColor: Color
+        var editFormType: EditFormType
+        var editSymbolID: UUID?
     }
     enum Action: Equatable {
         case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)
@@ -19,7 +24,38 @@ struct ArtCanvasFeature: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .artSymbol(id, action):
+            case let .artSymbol(id: id, action: .symbolSizeScaled(value)):
+                
+                guard let symbolState = state.artSymbols[id: id]
+                else { return .none }
+                
+                let scaledWidth: CGFloat
+                let scaledHeight: CGFloat
+                
+                switch state.editFormType {
+                case .freeForm:
+                    guard symbolState.width + value.scaleSize.width > state.minScalingWidth,
+                          symbolState.height + value.scaleSize.height > state.minScalingHeight
+                    else { return .none }
+                    
+                    scaledWidth = symbolState.width + value.scaleSize.width
+                    scaledHeight = symbolState.height + value.scaleSize.height
+                    
+                case .uniform:
+                    guard symbolState.width + value.scaleValue > state.minScalingWidth,
+                          symbolState.height + value.scaleValue > state.minScalingHeight
+                    else { return .none }
+                    
+                    scaledWidth = symbolState.width + value.scaleValue
+                    scaledHeight = symbolState.height + value.scaleValue
+                }
+                
+                state.artSymbols[id: id]?.width = scaledWidth
+                state.artSymbols[id: id]?.height = scaledHeight
+                
+                return .none
+                
+            case .artSymbol(id: _, action: _):
                 return .none
             }
         }
@@ -37,14 +73,28 @@ struct ArtCanvasView: View {
         
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             
-                Rectangle()
-                    .fill(viewStore.canvasColor)
-                    .shadow(color: .white, radius: 4)
-                    .overlay {
-                        ForEachStore(store.scope(state: \.artSymbols, action: ArtCanvasFeature.Action.artSymbol)) {
-                            ArtSymbolView(store: $0)
+            Rectangle()
+                .fill(viewStore.canvasColor)
+                .shadow(color: .white, radius: 4)
+                .overlay {
+                    ForEachStore(store.scope(state: \.artSymbols, action: ArtCanvasFeature.Action.artSymbol)) { store in
+                        
+                        store.withState { state in
+                            
+                            ZStack {
+                                if viewStore.editSymbolID == state.id {
+                                    ZStack {
+                                        ArtSymbolEditorView(store: store)
+                                    }
+                                } else {
+                                    ZStack {
+                                        ArtSymbolImage(state: state)
+                                    }
+                                }
+                            }
                         }
                     }
+                }
         }
     }
 }
@@ -62,7 +112,8 @@ struct ArtCanvasView: View {
         ArtCanvasView(store: .init(
             initialState: ArtCanvasFeature.State(
                 artSymbols: [],
-                canvasColor: .white)
+                canvasColor: .white,
+                editFormType: .freeForm)
         ) {
             ArtCanvasFeature()
         })

@@ -8,35 +8,31 @@ import SwiftUI
 
 extension View {
     
-    func boundingBox(formType: EditFormType,
-                         isEditing: Bool,
-                         width: Binding<CGFloat>,
-                         height: Binding<CGFloat>,
-                         position: Binding<CGPoint>) -> some View {
+    func boundingBox(position: Binding<CGPoint>,
+                     width: CGFloat,
+                     height: CGFloat,
+                     scaleAction: @escaping (EditPointScaling.Value) -> Void) -> some View {
         
-        self.modifier(BondingBoxModifier(formType: formType,
-                                         isEditing: isEditing,
+        self.modifier(BondingBoxModifier(position: position,
                                          width: width,
                                          height: height,
-                                         position: position))
+                                         scaleAction: scaleAction))
     }
 }
 
 struct BondingBoxModifier: ViewModifier {
     
-    let formType: EditFormType
-    let isEditing: Bool
-    @Binding var width: CGFloat
-    @Binding var height: CGFloat
     @Binding var position: CGPoint
+    let width: CGFloat
+    let height: CGFloat
+    let scaleAction: (_ scaleValue: EditPointScaling.Value) -> Void
     
     func body(content: Content) -> some View {
         
-        BoundingBox(formType: formType,
-                    isEditing: isEditing,
-                    width: $width,
-                    height: $height,
-                    position: $position) {
+        BoundingBox(position: $position,
+                    width: width,
+                    height: height,
+                    scaleAction: scaleAction) {
             content
         }
     }

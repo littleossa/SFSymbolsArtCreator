@@ -60,7 +60,7 @@ struct EditPointScaling {
         }
     }
     
-    struct Value {
+    struct Value: Equatable {
         let scaleValue: CGFloat
         let scaleSize: CGSize
     }

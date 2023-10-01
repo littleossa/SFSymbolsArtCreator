@@ -8,34 +8,26 @@ import SwiftUI
 // MARK: - Initializer
 extension BoundingBox {
     
-    init(formType: EditFormType,
-         isEditing: Bool,
-         width: Binding<CGFloat>,
-         height: Binding<CGFloat>,
-         position: Binding<CGPoint>,
+    init(position: Binding<CGPoint>,
+         width: CGFloat,
+         height: CGFloat,
+         scaleAction: @escaping (EditPointScaling.Value) -> Void,
          @ViewBuilder content: () -> Content) {
-        
-        _width = width
-        _height = height
         _position = position
-        self.formType = formType
-        self.isEditing = isEditing
-
+        self.width = width
+        self.height = height
+        self.scaleAction = scaleAction
         self.content = content()
     }
 }
 
 struct BoundingBox<Content: View>: View {
     
-    @Binding var width: CGFloat
-    @Binding var height: CGFloat
     @Binding var position: CGPoint
-    let isEditing: Bool
-    let formType: EditFormType
+    let width: CGFloat
+    let height: CGFloat
+    let scaleAction: (_ scaleValue: EditPointScaling.Value) -> Void
     let content: Content
-    
-    private let minScalingWidth: CGFloat = 10
-    private let minScalingHeight: CGFloat = 10
     
     private var dragGesture: some Gesture {
         DragGesture().onChanged { value in
@@ -45,59 +37,27 @@ struct BoundingBox<Content: View>: View {
     
     var body: some View {
         
-        ZStack {
-            
-            if isEditing {
+        content
+            .overlay {
+                MovingDashFramedRectangle()
                 
-                content
-                    .overlay {
-                        MovingDashFramedRectangle()
-                        
-                        EditPointsFramedRectangle(width: width,
-                                                  height: height) { value in
-                            
-                            switch formType {
-                            case .freeForm:
-                                guard width + value.scaleSize.width > minScalingWidth,
-                                      height + value.scaleSize.height > minScalingHeight
-                                else { return }
-                                
-                                width += value.scaleSize.width
-                                height += value.scaleSize.height
-                                
-                            case .uniform:
-                                guard width + value.scaleValue > minScalingWidth,
-                                      height + value.scaleValue > minScalingHeight
-                                else { return }
-                                
-                                width += value.scaleValue
-                                height += value.scaleValue
-                            }
-                        }
-                    }
-                    .frame(width: width,
-                           height: height)
-                    .position(position)
-                    .gesture(dragGesture)
-                
-            } else {
-                
-                content
-                    .frame(width: width,
-                           height: height)
-                    .position(position)
+                EditPointsFramedRectangle(width: width,
+                                          height: height) { value in
+                    scaleAction(value)
+                }
             }
-        }
+            .frame(width: width,
+                   height: height)
+            .position(position)
+            .gesture(dragGesture)
     }
 }
 
 #Preview {
-    BoundingBox(formType: .freeForm,
-                isEditing: true,
-                width: .constant(100),
-                height: .constant(100),
-                position: .constant(CGPoint(x: 100, y: 100))) {
+    BoundingBox(position: .constant(CGPoint(x: 100, y: 100)),
+                width: 100,
+                height: 100) { _ in } content: {
         Image(systemName: "circle")
-                        .resizable()
+            .resizable()
     }
 }

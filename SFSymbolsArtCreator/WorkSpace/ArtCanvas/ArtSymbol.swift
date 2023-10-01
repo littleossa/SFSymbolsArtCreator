@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ArtSymbolFeature: Reducer {
     struct State: Equatable, Identifiable {
-        @BindingState var width: CGFloat
-        @BindingState var height: CGFloat
-        @BindingState var position: CGPoint
         var id: UUID
         let name: String
         var renderingType: RenderingType
@@ -19,10 +16,11 @@ struct ArtSymbolFeature: Reducer {
         var secondaryColor: Color
         var tertiaryColor: Color
         var weight: Font.Weight
+        var width: CGFloat
+        var height: CGFloat
+        @BindingState var position: CGPoint
         var flipType: FlipType = .none
         var rotationDegrees: Double = 0
-        var editFormType: EditFormType
-        var isEditing = true
         var isHidden = false
         
         init(id: UUID,
@@ -37,14 +35,10 @@ struct ArtSymbolFeature: Reducer {
              tertiaryColor: Color,
              rotationDegrees: Double = 0,
              flipType: FlipType = .none,
-             editFormType: EditFormType,
-             isEditing: Bool = true,
              isHidden: Bool = false) {
-            self.editFormType = editFormType
             self.flipType = flipType
             self.height = height
             self.id = id
-            self.isEditing = isEditing
             self.isHidden = isHidden
             self.position = position
             self.name = symbolName
@@ -61,6 +55,7 @@ struct ArtSymbolFeature: Reducer {
     // TODO: Add Action
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
+        case symbolSizeScaled(EditPointScaling.Value)
     }
     
     var body: some ReducerOf<Self> {
@@ -69,12 +64,35 @@ struct ArtSymbolFeature: Reducer {
             switch action {
             case .binding:
                 return .none
+            case .symbolSizeScaled:
+                return .none
             }
         }
     }
 }
 
-struct ArtSymbolView: View {
+struct ArtSymbolImage: View {
+    let state: ArtSymbolFeature.State
+    
+    var body: some View {
+        
+        Image(systemName: state.name)
+            .resizable()
+            .rotation3DEffect(.degrees(180),
+                              axis: state.flipType.rotationEffectAxis,
+                              anchorZ: 1)
+            .rotation3DEffect(.degrees(state.rotationDegrees),
+                              axis: (x: 0, y: 0, z: -1), anchorZ: 1)
+            .symbolRenderingMode(state.renderingType.renderingMode)
+            .foregroundStyle(state.primaryColor,
+                             state.secondaryColor,
+                             state.tertiaryColor)
+            .frame(width: state.width, height: state.height)
+            .position(state.position)
+    }
+}
+
+struct ArtSymbolEditorView: View {
     
     let store: StoreOf<ArtSymbolFeature>
     
@@ -92,19 +110,18 @@ struct ArtSymbolView: View {
                     .foregroundStyle(viewStore.primaryColor,
                                      viewStore.secondaryColor,
                                      viewStore.tertiaryColor)
-                    .boundingBox(formType: viewStore.editFormType,
-                                 isEditing: viewStore.isEditing,
-                                 width: viewStore.$width,
-                                 height: viewStore.$height,
-                                 position: viewStore.$position)
+                    .boundingBox(position: viewStore.$position,
+                                 width: viewStore.width,
+                                 height: viewStore.height) { value in
+                        store.send(.symbolSizeScaled(value))
+                    }
         }
     }
 }
 
 #Preview {
-    
     ZStack {
-        ArtSymbolView(store: .init(
+        ArtSymbolEditorView(store: .init(
             initialState: ArtSymbolFeature.State(
                 id: UUID(),
                 symbolName: "checkmark.icloud",
@@ -115,11 +132,27 @@ struct ArtSymbolView: View {
                 renderingType: .monochrome,
                 primaryColor: .black,
                 secondaryColor: .clear,
-                tertiaryColor: .clear,
-                editFormType: .freeForm
+                tertiaryColor: .clear
             )) {
                 ArtSymbolFeature()
             }
         )
     }
+    .previewDisplayName("ArtSymbolEditorView")
+}
+
+#Preview {
+    ArtSymbolImage(state: .init(
+        id: UUID(),
+        symbolName: "checkmark.icloud",
+        width: 44,
+        height: 44,
+        weight: .regular,
+        position: CGPoint(x: 50, y: 50),
+        renderingType: .monochrome,
+        primaryColor: .black,
+        secondaryColor: .clear,
+        tertiaryColor: .clear)
+    )
+    .previewDisplayName("ArtSymbolImage")
 }

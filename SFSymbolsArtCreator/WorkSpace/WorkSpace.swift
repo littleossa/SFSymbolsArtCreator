@@ -19,10 +19,12 @@ struct WorkSpaceFeature: Reducer {
              primaryColor: Color = .black,
              secondaryColor: Color = .accentColor,
              tertiaryColor: Color = .white,
-             canvasColor: Color = .white
+             canvasColor: Color = .white,
+             editFormType: EditFormType = .freeForm
         ) {
             self.artCanvasState = .init(artSymbols: [],
-                                        canvasColor: canvasColor)
+                                        canvasColor: canvasColor,
+                                        editFormType: editFormType)
             self.colorToolState = .init(renderingType: renderingType,
                                         canvasColor: canvasColor,
                                         primaryColor: primaryColor,
@@ -103,7 +105,19 @@ struct WorkSpaceFeature: Reducer {
             case .menuTool:
                 return .none
             case let .symbolCatalog(.delegate(.selectSymbol(symbol))):
-                print("⚠️TODO: add symbols into art symbol array:", symbol)
+                let uuid = UUID()
+                state.artCanvasState.artSymbols.insert(.init(id: uuid,
+                                                             symbolName: symbol.rawValue,
+                                                             width: 60,
+                                                             height: 60,
+                                                             weight: .regular,
+                                                             position: CGPoint(x: 50, y: 50),
+                                                             renderingType: .monochrome,
+                                                             primaryColor: .black,
+                                                             secondaryColor: .accentColor,
+                                                             tertiaryColor: .white),
+                                                       at: 0)
+                state.artCanvasState.editSymbolID = uuid
                 return .none
             case .symbolCatalog:
                 return .none
