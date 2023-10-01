@@ -26,6 +26,10 @@ struct SymbolCatalogFeature: Reducer {
                 catalogBackgroundColorItem: catalogBackgroundColorItem,
                 category: category,
                 symbolWeight: fontWeight,
+                catalogSymbolColorSettingState: .init(renderingType: renderingType,
+                                                      primaryColor: primaryColor,
+                                                      secondaryColor: secondaryColor,
+                                                      tertiaryColor: tertiaryColor),
                 currentCanvasColor: canvasColor
             )
             
@@ -71,6 +75,18 @@ struct SymbolCatalogFeature: Reducer {
             case .catalogSettings(.binding(\.$category)):
                 state.catalogItemListState.category = state.catalogSettingsState.category
                 return .none
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changePrimaryColor(color)))):
+                state.catalogItemListState.primaryColor = color
+                return .none
+                
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changeSecondaryColor(color)))):
+                state.catalogItemListState.secondaryColor = color
+                return .none
+                
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changeTertiaryColor(color)))):
+                state.catalogItemListState.tertiaryColor = color
+                return .none
+                
             case .catalogSettings(.binding(\.$symbolWeight)):
                 state.catalogItemListState.fontWeight = state.catalogSettingsState.symbolWeight
                 return .none

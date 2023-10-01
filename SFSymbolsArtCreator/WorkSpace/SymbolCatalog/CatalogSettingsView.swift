@@ -13,15 +13,21 @@ struct CatalogSettingsFeature: Reducer {
         @BindingState var catalogBackgroundColorItem: ColorItem
         @BindingState var category: SFSymbols.Category
         @BindingState var symbolWeight: Font.Weight
+        var catalogSymbolColorSettingState: CatalogSymbolColorSettingFeature.State
         var currentCanvasColor: Color
     }
     
     enum Action: BindableAction, Equatable {        
         case binding(BindingAction<State>)
+        case catalogSymbolColorSetting(CatalogSymbolColorSettingFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
         BindingReducer()
+        Scope(state: \.catalogSymbolColorSettingState,
+              action: /Action.catalogSymbolColorSetting) {
+            CatalogSymbolColorSettingFeature()
+        }
     }
 }
 
@@ -39,6 +45,10 @@ struct CatalogSettingsView: View {
                     backgroundColorItem: viewStore.$catalogBackgroundColorItem,
                     canvasColor: viewStore.currentCanvasColor
                 )
+                CatalogSymbolColorSettingView(store: store.scope(
+                    state: \.catalogSymbolColorSettingState,
+                    action: CatalogSettingsFeature.Action.catalogSymbolColorSetting)
+                )
             }
             .padding(.leading)
         }
@@ -53,6 +63,10 @@ struct CatalogSettingsView: View {
                     catalogBackgroundColorItem: .white,
                     category: .all,
                     symbolWeight: .regular,
+                    catalogSymbolColorSettingState: .init(renderingType: .monochrome,
+                                                          primaryColor: .white,
+                                                          secondaryColor: .accentColor,
+                                                          tertiaryColor: .white),
                     currentCanvasColor: .white
                 ), reducer: {
                     CatalogSettingsFeature()
