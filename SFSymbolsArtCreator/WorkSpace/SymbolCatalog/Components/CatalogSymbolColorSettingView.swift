@@ -105,6 +105,18 @@ struct CatalogSymbolColorSettingFeature: Reducer {
             
             case let .renderingTypeSelected(renderingType):
                 state.renderingType = renderingType
+                
+                switch renderingType {
+                    
+                case .hierarchical, .monochrome, .multiColor:
+                    state.secondaryColor = .clear
+                    state.tertiaryColor = .clear
+               
+                case .palette:
+                    state.secondaryColor = .accentColor
+                    state.tertiaryColor = .white
+                }
+                
                 return .run { send in
                     await send(.delegate(.renderingTypeSelected(renderingType)))
                 }
