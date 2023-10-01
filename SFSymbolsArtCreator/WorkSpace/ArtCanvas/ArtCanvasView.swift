@@ -16,6 +16,20 @@ struct ArtCanvasFeature: Reducer {
         var canvasColor: Color
         var editFormType: EditFormType
         var editSymbolID: UUID?
+        
+        var editingSymbol: ArtSymbolFeature.State? {
+            get {
+                if let editSymbolID {
+                    return artSymbols[id: editSymbolID]
+                }
+                return nil
+            }
+            set {
+                if let editSymbolID {
+                    artSymbols[id: editSymbolID] = newValue
+                }
+            }
+        }
     }
     enum Action: Equatable {
         case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)

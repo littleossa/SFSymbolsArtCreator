@@ -66,14 +66,17 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .colorTool(.delegate(.changePrimaryColor(color))):
                 state.symbolCatalogState.catalogItemListState.primaryColor = color
+                state.artCanvasState.editingSymbol?.primaryColor = color
                 return .none
                 
             case let .colorTool(.delegate(.changeSecondaryColor(color))):
                 state.symbolCatalogState.catalogItemListState.secondaryColor = color
+                state.artCanvasState.editingSymbol?.secondaryColor = color
                 return .none
                 
             case let .colorTool(.delegate(.changeTertiaryColor(color))):
                 state.symbolCatalogState.catalogItemListState.tertiaryColor = color
+                state.artCanvasState.editingSymbol?.tertiaryColor = color
                 return .none
                 
             case .colorTool:
@@ -82,6 +85,7 @@ struct WorkSpaceFeature: Reducer {
             case let .drawTool(.delegate(.changeRenderingType(renderingType))):
                 state.colorToolState.renderingType = renderingType
                 state.symbolCatalogState.catalogItemListState.renderingType = renderingType
+                state.artCanvasState.editingSymbol?.renderingType = renderingType
                 
                 switch renderingType {
                     
@@ -106,17 +110,18 @@ struct WorkSpaceFeature: Reducer {
                 return .none
             case let .symbolCatalog(.delegate(.selectSymbol(symbol))):
                 let uuid = UUID()
-                state.artCanvasState.artSymbols.insert(.init(id: uuid,
-                                                             symbolName: symbol.rawValue,
-                                                             width: 60,
-                                                             height: 60,
-                                                             weight: .regular,
-                                                             position: CGPoint(x: 50, y: 50),
-                                                             renderingType: .monochrome,
-                                                             primaryColor: .black,
-                                                             secondaryColor: .accentColor,
-                                                             tertiaryColor: .white),
-                                                       at: 0)
+                state.artCanvasState.artSymbols.insert(.init(
+                    id: uuid,
+                    symbolName: symbol.rawValue,
+                    width: 60,
+                    height: 60,
+                    weight: state.symbolCatalogState.catalogSettingsState.symbolWeight,
+                    position: CGPoint(x: 50, y: 50),
+                    renderingType: state.drawToolState.renderingType,
+                    primaryColor: state.colorToolState.primaryColor,
+                    secondaryColor: state.colorToolState.secondaryColor,
+                    tertiaryColor: state.colorToolState.tertiaryColor
+                ), at: 0)
                 state.artCanvasState.editSymbolID = uuid
                 return .none
             case .symbolCatalog:
