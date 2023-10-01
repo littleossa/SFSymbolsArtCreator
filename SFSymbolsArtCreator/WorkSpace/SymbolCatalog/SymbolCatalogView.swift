@@ -67,14 +67,18 @@ struct SymbolCatalogFeature: Reducer {
                 return .run { send in
                     await send(.delegate(.selectSymbol(symbol)))
                 }
+                
             case .catalogItemList:
                 return .none
+                
             case .catalogSettings(.binding(\.$catalogBackgroundColorItem)):
                 state.catalogItemListState.backgroundColor = state.catalogSettingsState.catalogBackgroundColorItem.color
                 return .none
+                
             case .catalogSettings(.binding(\.$category)):
                 state.catalogItemListState.category = state.catalogSettingsState.category
                 return .none
+                
             case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changePrimaryColor(color)))):
                 state.catalogItemListState.primaryColor = color
                 return .none
@@ -86,6 +90,7 @@ struct SymbolCatalogFeature: Reducer {
             case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changeTertiaryColor(color)))):
                 state.catalogItemListState.tertiaryColor = color
                 return .none
+                
             case let .catalogSettings(.catalogSymbolColorSetting(.delegate(.renderingTypeSelected(renderingType)))):
                 state.catalogItemListState.renderingType = renderingType
                 return .none
@@ -93,6 +98,7 @@ struct SymbolCatalogFeature: Reducer {
             case .catalogSettings(.binding(\.$symbolWeight)):
                 state.catalogItemListState.fontWeight = state.catalogSettingsState.symbolWeight
                 return .none
+                
             case .catalogSettings:
                 return .none
             case .delegate:
