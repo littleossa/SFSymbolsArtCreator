@@ -88,10 +88,14 @@ struct WorkSpaceFeature: Reducer {
                 case .hierarchical, .monochrome, .multiColor:
                     state.colorToolState.secondaryColor = .clear
                     state.colorToolState.tertiaryColor = .clear
+                    state.artCanvasState.editingSymbol?.secondaryColor = .clear
+                    state.artCanvasState.editingSymbol?.tertiaryColor = .clear
                
                 case .palette:
                     state.colorToolState.secondaryColor = .accentColor
                     state.colorToolState.tertiaryColor = .white
+                    state.artCanvasState.editingSymbol?.secondaryColor = .accentColor
+                    state.artCanvasState.editingSymbol?.tertiaryColor = .white
                 }
                 
                 return .none

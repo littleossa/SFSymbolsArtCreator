@@ -23,13 +23,16 @@ final class DrawToolFeatureTests: XCTestCase {
     
     func test_editButtonTapped() async {
         
+        store.exhaustivity = .off
         await store.send(.editButtonTapped) {
             $0.isEditMode = true
         }
+        await store.send(.delegate(.editButtonToggled(true)))
         
         await store.send(.editButtonTapped) {
             $0.isEditMode = false
         }
+        await store.send(.delegate(.editButtonToggled(false)))
     }
     
     func test_eraserButtonTapped() async {

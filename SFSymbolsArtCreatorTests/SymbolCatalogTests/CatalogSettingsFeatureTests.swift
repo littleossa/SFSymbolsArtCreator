@@ -17,6 +17,10 @@ final class CatalogSettingsFeatureTests: XCTestCase {
                 catalogBackgroundColorItem: .white,
                 category: .all,
                 symbolWeight: .regular,
+                catalogSymbolColorSettingState: .init(renderingType: .monochrome,
+                                                      primaryColor: .black,
+                                                      secondaryColor: .accentColor,
+                                                      tertiaryColor: .white),
                 currentCanvasColor: .white
             )
         ) {
