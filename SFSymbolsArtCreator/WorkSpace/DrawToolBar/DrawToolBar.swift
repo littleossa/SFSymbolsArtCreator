@@ -23,6 +23,7 @@ struct DrawToolFeature: Reducer {
         
         enum Delegate: Equatable {
             case changeRenderingType(RenderingType)
+            case editButtonToggled(Bool)
         }
     }
     
@@ -31,7 +32,9 @@ struct DrawToolFeature: Reducer {
             switch action {
             case .editButtonTapped:
                 state.isEditMode.toggle()
-                return .none
+                return .run { [isEditMode = state.isEditMode] send in
+                    await send(.delegate(.editButtonToggled(isEditMode)))
+                }
                 
             case .eraserButtonTapped:
                 state.isEraserMode.toggle()
