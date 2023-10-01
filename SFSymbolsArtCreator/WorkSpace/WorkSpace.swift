@@ -120,7 +120,7 @@ struct WorkSpaceFeature: Reducer {
                 return .none
             case let .symbolCatalog(.delegate(.selectSymbol(symbol))):
                 let uuid = UUID()
-                state.artCanvasState.artSymbols.insert(.init(
+                state.artCanvasState.artSymbols.append(.init(
                     id: uuid,
                     symbolName: symbol.rawValue,
                     width: 60,
@@ -131,7 +131,7 @@ struct WorkSpaceFeature: Reducer {
                     primaryColor: state.colorToolState.primaryColor,
                     secondaryColor: state.colorToolState.secondaryColor,
                     tertiaryColor: state.colorToolState.tertiaryColor
-                ), at: 0)
+                ))
                 state.artCanvasState.editSymbolID = uuid
                 state.drawToolState.isEditMode = true
                 return .none
