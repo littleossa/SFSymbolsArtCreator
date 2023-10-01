@@ -54,7 +54,7 @@ struct WorkSpaceFeature: Reducer {
             case .artCanvas:
                 return .none
                 
-            case let .colorTool(.delegate(.changeCanvasColor(color))):
+            case let .colorTool(.delegate(.canvasColorChanged(color))):
                 state.artCanvasState.canvasColor = color
                 state.symbolCatalogState.catalogSettingsState.currentCanvasColor = color
                 
@@ -64,26 +64,26 @@ struct WorkSpaceFeature: Reducer {
                 }
                 return .none
                 
-            case let .colorTool(.delegate(.changePrimaryColor(color))):
+            case let .colorTool(.delegate(.primaryColorChanged(color))):
                 state.artCanvasState.editingSymbol?.primaryColor = color
                 return .none
                 
-            case let .colorTool(.delegate(.changeSecondaryColor(color))):
+            case let .colorTool(.delegate(.secondaryColorChanged(color))):
                 state.artCanvasState.editingSymbol?.secondaryColor = color
                 return .none
                 
-            case let .colorTool(.delegate(.changeTertiaryColor(color))):
+            case let .colorTool(.delegate(.tertiaryColorChanged(color))):
                 state.artCanvasState.editingSymbol?.tertiaryColor = color
                 return .none
                 
             case .colorTool:
                 return .none
                 
-            case let .drawTool(.delegate(.changeRenderingType(renderingType))):
-                state.colorToolState.renderingType = renderingType
-                state.artCanvasState.editingSymbol?.renderingType = renderingType
+            case let .drawTool(.renderingTypeChanged(type)):
+                state.colorToolState.renderingType = type
+                state.artCanvasState.editingSymbol?.renderingType = type
                 
-                switch renderingType {
+                switch type {
                     
                 case .hierarchical, .monochrome, .multiColor:
                     state.colorToolState.secondaryColor = .clear

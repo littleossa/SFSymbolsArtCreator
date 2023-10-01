@@ -51,9 +51,9 @@ struct CatalogSymbolColorSettingFeature: Reducer {
         case tertiaryColorButtonTapped
         
         enum Delegate: Equatable {
-            case changePrimaryColor(Color)
-            case changeSecondaryColor(Color)
-            case changeTertiaryColor(Color)
+            case primaryColorChanged(Color)
+            case secondaryColorChanged(Color)
+            case tertiaryColorChanged(Color)
             case renderingTypeSelected(RenderingType)
         }
     }
@@ -80,11 +80,11 @@ struct CatalogSymbolColorSettingFeature: Reducer {
                     case .canvas:
                         break
                     case .primary:
-                        await send(.delegate(.changePrimaryColor(color)))
+                        await send(.delegate(.primaryColorChanged(color)))
                     case .secondary:
-                        await send(.delegate(.changeSecondaryColor(color)))
+                        await send(.delegate(.secondaryColorChanged(color)))
                     case .tertiary:
-                        await send(.delegate(.changeTertiaryColor(color)))
+                        await send(.delegate(.tertiaryColorChanged(color)))
                     }
                 }
                 

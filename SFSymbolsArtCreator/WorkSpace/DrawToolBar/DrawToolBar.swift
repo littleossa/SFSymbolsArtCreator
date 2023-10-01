@@ -19,10 +19,9 @@ struct DrawToolFeature: Reducer {
         case eraserButtonTapped
         case delegate(Delegate)
         case layerButtonTapped
-        case renderingChanged(RenderingType)
+        case renderingTypeChanged(RenderingType)
         
         enum Delegate: Equatable {
-            case changeRenderingType(RenderingType)
             case editButtonToggled(Bool)
         }
     }
@@ -47,11 +46,9 @@ struct DrawToolFeature: Reducer {
                 state.layerPanelIsPresented.toggle()
                 return .none
                 
-            case let .renderingChanged(renderingType):
+            case let .renderingTypeChanged(renderingType):
                 state.renderingType = renderingType
-                return .run { send in
-                    await send(.delegate(.changeRenderingType(renderingType)))
-                }
+                return .none
             }
         }
     }
@@ -68,7 +65,7 @@ struct DrawToolBar: View {
                 Spacer()
                 
                 Button {
-                    store.send(.editButtonTapped)
+                    viewStore.send(.editButtonTapped)
                 } label: {
                     Image(symbol: .squareshapeSquareshapeDashed)
                         .resizable()
@@ -78,7 +75,7 @@ struct DrawToolBar: View {
                 .foregroundStyle(viewStore.isEditMode ? Color.accentColor : .paleGray)
                 
                 Button {
-                    store.send(.eraserButtonTapped)
+                    viewStore.send(.eraserButtonTapped)
                 } label: {
                     // FIXME: SFUserFriendlySymbols is not supported for eraser
                     Image(systemName: "eraser.fill")
@@ -89,7 +86,7 @@ struct DrawToolBar: View {
                 .foregroundStyle(viewStore.isEraserMode ? Color.accentColor : .paleGray)
                 
                 Button {
-                    store.send(.layerButtonTapped)
+                    viewStore.send(.layerButtonTapped)
                 } label: {
                     Image(symbol: .square3Stack3DTopFilled)
                         .resizable()
@@ -99,7 +96,7 @@ struct DrawToolBar: View {
                 .foregroundStyle(viewStore.layerPanelIsPresented ? Color.accentColor : .paleGray)
                 
                 RenderingMenuButton(type: viewStore.renderingType) { type in
-                    viewStore.send(.renderingChanged(type))
+                    viewStore.send(.renderingTypeChanged(type))
                 }
                 .bold()
                 .frame(width: 180, height: 44)

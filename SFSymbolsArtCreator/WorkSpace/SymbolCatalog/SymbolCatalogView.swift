@@ -69,15 +69,15 @@ struct SymbolCatalogFeature: Reducer {
                 state.catalogItemListState.category = state.catalogSettingsState.category
                 return .none
                 
-            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changePrimaryColor(color)))):
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.primaryColorChanged(color)))):
                 state.catalogItemListState.primaryColor = color
                 return .none
                 
-            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changeSecondaryColor(color)))):
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.secondaryColorChanged(color)))):
                 state.catalogItemListState.secondaryColor = color
                 return .none
                 
-            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.changeTertiaryColor(color)))):
+            case let  .catalogSettings(.catalogSymbolColorSetting(.delegate(.tertiaryColorChanged(color)))):
                 state.catalogItemListState.tertiaryColor = color
                 return .none
                 

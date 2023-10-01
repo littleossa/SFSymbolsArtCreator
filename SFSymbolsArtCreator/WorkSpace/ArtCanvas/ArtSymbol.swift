@@ -24,7 +24,6 @@ struct ArtSymbolFeature: Reducer {
         var isHidden = false
     }
     
-    // TODO: Add Action
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case symbolSizeScaled(EditPointScaling.Value)
@@ -32,14 +31,6 @@ struct ArtSymbolFeature: Reducer {
     
     var body: some ReducerOf<Self> {
         BindingReducer()
-        Reduce { state, action in
-            switch action {
-            case .binding:
-                return .none
-            case .symbolSizeScaled:
-                return .none
-            }
-        }
     }
 }
 
@@ -87,7 +78,7 @@ struct ArtSymbolEditorView: View {
                     .boundingBox(position: viewStore.$position,
                                  width: viewStore.width,
                                  height: viewStore.height) { value in
-                        store.send(.symbolSizeScaled(value))
+                        viewStore.send(.symbolSizeScaled(value))
                     }
         }
     }

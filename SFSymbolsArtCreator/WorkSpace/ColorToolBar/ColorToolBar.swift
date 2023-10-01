@@ -52,10 +52,10 @@ struct ColorToolFeature: Reducer {
         case tertiaryColorButtonTapped
         
         enum Delegate: Equatable {
-            case changeCanvasColor(Color)
-            case changePrimaryColor(Color)
-            case changeSecondaryColor(Color)
-            case changeTertiaryColor(Color)
+            case canvasColorChanged(Color)
+            case primaryColorChanged(Color)
+            case secondaryColorChanged(Color)
+            case tertiaryColorChanged(Color)
         }
     }
     
@@ -83,13 +83,13 @@ struct ColorToolFeature: Reducer {
                 return .run { send in
                     switch type {
                     case .canvas:
-                        await send(.delegate(.changeCanvasColor(color)))
+                        await send(.delegate(.canvasColorChanged(color)))
                     case .primary:
-                        await send(.delegate(.changePrimaryColor(color)))
+                        await send(.delegate(.primaryColorChanged(color)))
                     case .secondary:
-                        await send(.delegate(.changeSecondaryColor(color)))
+                        await send(.delegate(.secondaryColorChanged(color)))
                     case .tertiary:
-                        await send(.delegate(.changeTertiaryColor(color)))
+                        await send(.delegate(.tertiaryColorChanged(color)))
                     }
                 }
                 
