@@ -101,9 +101,17 @@ struct WorkSpaceFeature: Reducer {
                 return .none
                 
             case let .drawTool(.delegate(.editButtonToggled(isEditMode))):
-                if isEditMode {
-                    let lastSymbol = state.artCanvasState.artSymbols.last
-                    state.artCanvasState.editSymbolID = lastSymbol?.id
+                
+                if isEditMode,
+                   let lastSymbol = state.artCanvasState.artSymbols.last {
+                    
+                    state.artCanvasState.editSymbolID = lastSymbol.id
+                    
+                    state.drawToolState.renderingType = lastSymbol.renderingType
+                    state.colorToolState.primaryColor = lastSymbol.primaryColor
+                    state.colorToolState.secondaryColor = lastSymbol.secondaryColor
+                    state.colorToolState.tertiaryColor = lastSymbol.tertiaryColor
+                    
                 } else {
                     state.artCanvasState.editSymbolID = nil
                 }
@@ -124,7 +132,13 @@ struct WorkSpaceFeature: Reducer {
                     position: CGPoint(x: 50, y: 50)
                 ))
                 state.artCanvasState.editSymbolID = uuid
+                
+                state.drawToolState.renderingType = item.renderingType
+                state.colorToolState.primaryColor = item.primaryColor
+                state.colorToolState.secondaryColor = item.secondaryColor
+                state.colorToolState.tertiaryColor = item.tertiaryColor
                 return .none
+                
             case .symbolCatalog:
                 return .none
             }
