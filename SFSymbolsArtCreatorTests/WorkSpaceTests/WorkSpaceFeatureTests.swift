@@ -131,4 +131,39 @@ final class WorkSpaceFeatureTests: XCTestCase {
         }
         XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
     }
+    
+    func test_editButtonToggled() async {
+        
+        store.exhaustivity = .off
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .palette,
+                               primaryColor: .red,
+                               secondaryColor: .yellow,
+                               tertiaryColor: .green,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))))
+        await store.send(.drawTool(.editButtonTapped)) {
+            $0.drawToolState.isEditMode = false
+        }
+        await store.send(.drawTool(.delegate(.editButtonToggled(false)))) {
+            $0.artCanvasState.editSymbolID = nil
+        }
+        
+        await store.send(.drawTool(.renderingTypeChanged(.monochrome))) {
+            $0.drawToolState.renderingType = .monochrome
+            $0.colorToolState.primaryColor = .red
+            $0.colorToolState.secondaryColor = .clear
+            $0.colorToolState.tertiaryColor = .clear
+        }
+        await store.send(.drawTool(.editButtonTapped)) {
+            $0.drawToolState.isEditMode = true
+        }
+        await store.send(.drawTool(.delegate(.editButtonToggled(true)))) {
+            $0.artCanvasState.editSymbolID = $0.artCanvasState.artSymbols.last?.id
+            $0.drawToolState.renderingType = .palette
+            $0.colorToolState.primaryColor = .red
+            $0.colorToolState.secondaryColor = .yellow
+            $0.colorToolState.tertiaryColor = .green
+        }
+    }
 }
