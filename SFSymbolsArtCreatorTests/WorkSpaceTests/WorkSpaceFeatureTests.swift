@@ -21,6 +21,26 @@ final class WorkSpaceFeatureTests: XCTestCase {
             WorkSpaceFeature()
         }
     }
+    
+    func test_catalogItemSelected() async {
+        
+        store.exhaustivity = .off
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .palette,
+                               primaryColor: .red,
+                               secondaryColor: .yellow,
+                               tertiaryColor: .green,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item))))) {
+            $0.drawToolState.isEditMode = true
+            
+            $0.drawToolState.renderingType = .palette
+            $0.colorToolState.primaryColor = .red
+            $0.colorToolState.secondaryColor = .yellow
+            $0.colorToolState.tertiaryColor = .green
+        }
+        XCTAssertNotNil(store.state.artCanvasState.editSymbolID)
+    }
 
     func test_changePrimaryColor() async {
         

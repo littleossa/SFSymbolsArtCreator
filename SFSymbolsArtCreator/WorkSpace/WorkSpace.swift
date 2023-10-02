@@ -132,6 +132,7 @@ struct WorkSpaceFeature: Reducer {
                     position: CGPoint(x: 50, y: 50)
                 ))
                 state.artCanvasState.editSymbolID = uuid
+                state.drawToolState.isEditMode = true
                 
                 state.drawToolState.renderingType = item.renderingType
                 state.colorToolState.primaryColor = item.primaryColor
