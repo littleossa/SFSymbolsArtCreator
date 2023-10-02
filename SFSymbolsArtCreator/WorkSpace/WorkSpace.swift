@@ -210,22 +210,3 @@ struct WorkSpaceView: View {
             }
     )
 }
-
-struct TestView: View {
-    
-    var body: some View {
-        
-        ZStack {
-            Color.black
-            Text("")
-                .frame(width: 500, height: 500)
-                .padding()
-                .background(.ultraThickMaterial, in: RoundedRectangle(cornerRadius: 8))
-                .preferredColorScheme(.dark)
-        }
-    }
-}
-
-#Preview {
-    TestView()
-}
