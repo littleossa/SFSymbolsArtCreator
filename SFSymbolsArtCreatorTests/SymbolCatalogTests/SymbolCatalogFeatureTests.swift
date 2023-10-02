@@ -79,15 +79,15 @@ final class SymbolCatalogFeatureTests: XCTestCase {
     
     func test_changeForegroundColor() async {
         
-        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changePrimaryColor(.blue))))) {
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.primaryColorChanged(.blue))))) {
             $0.catalogItemListState.primaryColor = .blue
         }
         
-        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changeSecondaryColor(.yellow))))) {
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.secondaryColorChanged(.yellow))))) {
             $0.catalogItemListState.secondaryColor = .yellow
         }
         
-        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.changeTertiaryColor(.red))))) {
+        await store.send(.catalogSettings(.catalogSymbolColorSetting(.delegate(.tertiaryColorChanged(.red))))) {
             $0.catalogItemListState.tertiaryColor = .red
         }
     }

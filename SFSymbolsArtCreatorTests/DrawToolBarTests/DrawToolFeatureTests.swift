@@ -59,13 +59,11 @@ final class DrawToolFeatureTests: XCTestCase {
     
     func test_renderingChanged() async {
         
-        await store.send(.renderingChanged(.multiColor)) {
+        await store.send(.renderingTypeChanged(.multiColor)) {
             $0.renderingType = .multiColor
         }
-        
-        await store.receive(.delegate(.changeRenderingType(.multiColor)))
-        
-        await store.send(.renderingChanged(.monochrome)) {
+                
+        await store.send(.renderingTypeChanged(.monochrome)) {
             $0.renderingType = .monochrome
         }
     }

@@ -26,12 +26,18 @@ final class WorkSpaceFeatureTests: XCTestCase {
         
         store.exhaustivity = .off
         
-        await store.send(.symbolCatalog(.delegate(.selectSymbol(._00Circle))))
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .monochrome,
+                               primaryColor: .black,
+                               secondaryColor: .accentColor,
+                               tertiaryColor: .white,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))))
         await store.send(.colorTool(.primaryColorButtonTapped)) {
             $0.colorToolState.colorPicker = .init(colorType: .primary, selectedColor: .black)
         }
         await store.send(.colorTool(.colorPicker(.presented(.delegate(.selectColor(.primary, .yellow))))))
-        await store.send(.colorTool(.delegate(.changePrimaryColor(.yellow))))
+        await store.send(.colorTool(.delegate(.primaryColorChanged(.yellow))))
         store.assert {
             $0.colorToolState.primaryColor = .yellow
             $0.artCanvasState.editingSymbol?.primaryColor = .yellow
@@ -42,12 +48,18 @@ final class WorkSpaceFeatureTests: XCTestCase {
         
         store.exhaustivity = .off
         
-        await store.send(.symbolCatalog(.delegate(.selectSymbol(._00Circle))))
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .monochrome,
+                               primaryColor: .black,
+                               secondaryColor: .accentColor,
+                               tertiaryColor: .white,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))))
         await store.send(.colorTool(.secondaryColorButtonTapped)) {
             $0.colorToolState.colorPicker = .init(colorType: .secondary, selectedColor: .accentColor)
         }
         await store.send(.colorTool(.colorPicker(.presented(.delegate(.selectColor(.secondary, .red))))))
-        await store.send(.colorTool(.delegate(.changeSecondaryColor(.red))))
+        await store.send(.colorTool(.delegate(.secondaryColorChanged(.red))))
         store.assert {
             $0.colorToolState.secondaryColor = .red
             $0.artCanvasState.editingSymbol?.secondaryColor = .red
@@ -58,12 +70,18 @@ final class WorkSpaceFeatureTests: XCTestCase {
         
         store.exhaustivity = .off
         
-        await store.send(.symbolCatalog(.delegate(.selectSymbol(._00Circle))))
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .monochrome,
+                               primaryColor: .black,
+                               secondaryColor: .accentColor,
+                               tertiaryColor: .white,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))))
         await store.send(.colorTool(.tertiaryColorButtonTapped)) {
             $0.colorToolState.colorPicker = .init(colorType: .tertiary, selectedColor: .white)
         }
         await store.send(.colorTool(.colorPicker(.presented(.delegate(.selectColor(.tertiary, .green))))))
-        await store.send(.colorTool(.delegate(.changeTertiaryColor(.green))))
+        await store.send(.colorTool(.delegate(.tertiaryColorChanged(.green))))
         store.assert {
             $0.colorToolState.tertiaryColor = .green
             $0.artCanvasState.editingSymbol?.tertiaryColor = .green
@@ -74,10 +92,14 @@ final class WorkSpaceFeatureTests: XCTestCase {
         
         store.exhaustivity = .off
         
-        await store.send(.symbolCatalog(.delegate(.selectSymbol(._00Circle))))
-        
-        await store.send(.drawTool(.renderingChanged(.palette)))
-        await store.send(.drawTool(.delegate(.changeRenderingType(.palette))))
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .monochrome,
+                               primaryColor: .black,
+                               secondaryColor: .accentColor,
+                               tertiaryColor: .white,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))))
+        await store.send(.drawTool(.renderingTypeChanged(.palette)))
         store.assert {
             $0.drawToolState.renderingType = .palette
             $0.colorToolState.renderingType = .palette
@@ -86,8 +108,7 @@ final class WorkSpaceFeatureTests: XCTestCase {
         }
         XCTAssertFalse(store.state.colorToolState.isOnlyPrimaryColorEnabled)
         
-        await store.send(.drawTool(.renderingChanged(.hierarchical)))
-        await store.send(.drawTool(.delegate(.changeRenderingType(.hierarchical))))
+        await store.send(.drawTool(.renderingTypeChanged(.hierarchical)))
         store.assert {
             $0.drawToolState.renderingType = .hierarchical
             $0.colorToolState.renderingType = .hierarchical
@@ -96,16 +117,14 @@ final class WorkSpaceFeatureTests: XCTestCase {
         }
         XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
         
-        await store.send(.drawTool(.renderingChanged(.monochrome)))
-        await store.send(.drawTool(.delegate(.changeRenderingType(.monochrome))))
+        await store.send(.drawTool(.renderingTypeChanged(.monochrome)))
         store.assert {
             $0.drawToolState.renderingType = .monochrome
             $0.colorToolState.renderingType = .monochrome
         }
         XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
         
-        await store.send(.drawTool(.renderingChanged(.multiColor)))
-        await store.send(.drawTool(.delegate(.changeRenderingType(.multiColor))))
+        await store.send(.drawTool(.renderingTypeChanged(.multiColor)))
         store.assert {
             $0.drawToolState.renderingType = .multiColor
             $0.colorToolState.renderingType = .multiColor
