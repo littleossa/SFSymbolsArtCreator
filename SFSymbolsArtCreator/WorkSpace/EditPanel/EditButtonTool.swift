@@ -9,33 +9,91 @@ import SwiftUI
 
 struct EditButtonToolFeature: Reducer {
     struct State: Equatable {
-        var flipType: FlipType
         var fontWight: Font.Weight
-        var rotationDegree: Double
+        var isFlippedHorizontal: Bool
+        var isFlippedVertical: Bool
+        var rotationDegrees: Double
+        
+        var decrementWeightButtonDisabled: Bool {
+            return fontWight == .ultraLight
+        }
+        
+        var incrementWeightButtonDisabled: Bool {
+            return fontWight == .black
+        }
     }
     
     enum Action: Equatable {
+        case decrementWeightButtonTapped
+        case delegate(Delegate)
         case flipHorizontalButtonTapped
         case flipVerticalButtonTapped
-        case fontWeightDownButtonTapped
-        case fontWeightUpButtonTapped
+        case incrementWeightButtonTapped
         case rotateButtonTapped
+        
+        enum Delegate: Equatable {
+            case degreesRotated(Double)
+            case flipTypeChanged(FlipType)
+            case fontWeightChanged(Font.Weight)
+        }
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+                
+            case .decrementWeightButtonTapped:
+                if state.decrementWeightButtonDisabled {
+                    return .none
+                }
+                let decreasedWeight = state.fontWight.decreased()
+                state.fontWight = decreasedWeight
+                
+                return sendFontWeightChanged(state: state)
+                
+            case .delegate:
+                return .none
+                
             case .flipHorizontalButtonTapped:
-                return .none
+                state.isFlippedHorizontal.toggle()
+                return sendFlipTypeChanged(state: state)
+                
             case .flipVerticalButtonTapped:
-                return .none
-            case .fontWeightDownButtonTapped:
-                return .none
-            case .fontWeightUpButtonTapped:
-                return .none
+                state.isFlippedHorizontal.toggle()
+                return sendFlipTypeChanged(state: state)
+            
+            case .incrementWeightButtonTapped:
+                if state.incrementWeightButtonDisabled {
+                    return .none
+                }
+                let increasedWeight = state.fontWight.increased()
+                state.fontWight = increasedWeight
+                
+                return sendFontWeightChanged(state: state)
+                
             case .rotateButtonTapped:
-                return .none
+                let rotatedDegrees = state.rotationDegrees.rotatingWithin360ByDegrees(45)
+                state.rotationDegrees = rotatedDegrees
+                
+                return .run { [degrees = state.rotationDegrees] send in
+                    await send(.delegate(.degreesRotated(degrees)))
+                }
             }
+        }
+    }
+    
+    func sendFlipTypeChanged(state: State) -> Effect<Action> {
+        let flipType = FlipType(isFlippedHorizontal: state.isFlippedHorizontal,
+                                isFlippedVertical: state.isFlippedVertical)
+        return .run { send in
+            await send(.delegate(.flipTypeChanged(flipType)))
+        }
+    }
+    
+    func sendFontWeightChanged(state: State) -> Effect<Action> {
+        let weight = state.fontWight
+        return .run { send in
+            await send(.delegate(.fontWeightChanged(weight)))
         }
     }
 }
@@ -74,7 +132,7 @@ struct EditButtonToolView: View {
                     .frame(width: 88, height: 44)
                     
                     VerticalLabelButton(title: "Up Weight", action: {
-                        viewStore.send(.fontWeightUpButtonTapped)
+                        viewStore.send(.incrementWeightButtonTapped)
                     }, content: {
                         HStack(spacing: 0) {
                             Image(symbol: .arrowUp)
@@ -86,9 +144,10 @@ struct EditButtonToolView: View {
                         }
                     })
                     .frame(width: 88, height: 44)
+                    .disabled(viewStore.incrementWeightButtonDisabled)
                     
                     VerticalLabelButton(title: "Down Weight", action: {
-                        viewStore.send(.fontWeightDownButtonTapped)
+                        viewStore.send(.decrementWeightButtonTapped)
                     }, content: {
                         HStack(spacing: 0) {
                             Image(symbol: .arrowDown)
@@ -100,6 +159,7 @@ struct EditButtonToolView: View {
                         }
                     })
                     .frame(width: 88, height: 44)
+                    .disabled(viewStore.decrementWeightButtonDisabled)
                 }
                 .bold()
                 .foregroundStyle(.white)
@@ -111,9 +171,10 @@ struct EditButtonToolView: View {
 #Preview {
     EditButtonToolView(store: .init(
         initialState: EditButtonToolFeature.State(
-            flipType: .none,
             fontWight: .regular,
-            rotationDegree: 0)
+            isFlippedHorizontal: false,
+            isFlippedVertical: false,
+            rotationDegrees: 0)
     ) {
         EditButtonToolFeature()
     })

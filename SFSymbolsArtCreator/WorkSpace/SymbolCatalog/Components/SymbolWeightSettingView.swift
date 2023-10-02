@@ -34,7 +34,7 @@ struct SymbolWeightSettingView: View {
     }
 }
 
-private extension Font.Weight {
+extension Font.Weight {
     
     var sliderValue: CGFloat {
         switch self {
@@ -86,5 +86,29 @@ private extension Font.Weight {
         default:
             self = .regular
         }
+    }
+    
+    /// Decrease Font.Weight if the weight is not ultra light
+    func decreased() -> Font.Weight {
+        if self == .ultraLight {
+            return self
+        }
+        
+        let value = self.sliderValue
+        let decreasedValue = value - 1
+        
+        return Font.Weight(sliderValue: decreasedValue)
+    }
+    
+    /// increase Font.Weight if the weight is not black
+    func increased() -> Font.Weight {
+        if self == .black {
+            return self
+        }
+        
+        let value = self.sliderValue
+        let increasedValue = value + 1
+        
+        return Font.Weight(sliderValue: increasedValue)
     }
 }

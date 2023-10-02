@@ -6,6 +6,22 @@
 
 import Foundation
 
+extension FlipType {
+    
+    init(isFlippedHorizontal: Bool, isFlippedVertical: Bool) {
+        if isFlippedHorizontal,
+           isFlippedVertical {
+            self = .horizontalAndVertical
+        } else if isFlippedHorizontal {
+            self = .horizontal
+        } else if isFlippedVertical {
+            self = .vertical
+        } else {
+            self = .none
+        }
+    }
+}
+
 enum FlipType {
     case horizontal
     case horizontalAndVertical
