@@ -6,6 +6,7 @@
 
 import SwiftUI
 
+// Since using SymbolRenderingMode directly led to poor performance, I switched to using renderingType and then calling SymbolRenderingMode from there
 enum RenderingType: String, Equatable, CaseIterable, Identifiable {
     case hierarchical
     case monochrome
