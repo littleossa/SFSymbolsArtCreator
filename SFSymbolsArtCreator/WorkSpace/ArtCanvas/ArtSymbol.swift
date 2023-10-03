@@ -43,9 +43,9 @@ struct ArtSymbolImage: View {
             .resizable()
             .fontWeight(state.weight)
             .rotation3DEffect(.degrees(180),
-                              axis: (x: state.flipType.rotationEffectAxis.x,
-                                     y: state.flipType.rotationEffectAxis.y,
-                                     z: state.flipType.rotationEffectAxis.z),
+                              axis: (x: state.flipType.value.rotationEffectAxis.x,
+                                     y: state.flipType.value.rotationEffectAxis.y,
+                                     z: state.flipType.value.rotationEffectAxis.z),
                               anchorZ: 1)
             .rotation3DEffect(.degrees(state.rotationDegrees),
                               axis: (x: 0, y: 0, z: -1), anchorZ: 1)
@@ -69,9 +69,9 @@ struct ArtSymbolEditorView: View {
                     .resizable()
                     .fontWeight(viewStore.weight)
                     .rotation3DEffect(.degrees(180),
-                                      axis: (x: viewStore.flipType.rotationEffectAxis.x,
-                                             y: viewStore.flipType.rotationEffectAxis.y,
-                                             z: viewStore.flipType.rotationEffectAxis.z),
+                                      axis: (x: viewStore.flipType.value.rotationEffectAxis.x,
+                                             y: viewStore.flipType.value.rotationEffectAxis.y,
+                                             z: viewStore.flipType.value.rotationEffectAxis.z),
                                       anchorZ: 1)
                     .rotation3DEffect(.degrees(viewStore.rotationDegrees),
                                       axis: (x: 0, y: 0, z: -1), anchorZ: 1)

@@ -28,43 +28,30 @@ enum FlipType {
     case none
     case vertical
     
-    var isFlippedHorizontal: Bool {
+    var value: Self.Value {
         switch self {
         case .horizontal:
-            return true
+            return Value(isFlippedHorizontal: true,
+                         isFlippedVertical: false,
+                         rotationEffectAxis: .init(x: 0, y: 1, z: 0))
         case .horizontalAndVertical:
-            return true
+            return Value(isFlippedHorizontal: true,
+                         isFlippedVertical: true,
+                         rotationEffectAxis: .init(x: 0, y: 0, z: 1))
         case .none:
-            return false
+            return Value(isFlippedHorizontal: false,
+                         isFlippedVertical: false,
+                         rotationEffectAxis: .init(x: 0, y: 0, z: 0))
         case .vertical:
-            return false
+            return Value(isFlippedHorizontal: false,
+                         isFlippedVertical: true,
+                         rotationEffectAxis: .init(x: 1, y: 0, z: 0))
         }
     }
     
-    var isFlippedVertical: Bool {
-        switch self {
-        case .horizontal:
-            return false
-        case .horizontalAndVertical:
-            return true
-        case .none:
-            return false
-        case .vertical:
-            return true
-        }
-    }
-    
-    var rotationEffectAxis: RotationEffectAxis {
-        
-        switch self {
-        case .horizontal:
-            return .init(x: 0, y: 1, z: 0)
-        case .horizontalAndVertical:
-            return .init(x: 0, y: 0, z: 1)
-        case .none:
-            return .init(x: 0, y: 0, z: 0)
-        case .vertical:
-            return .init(x: 1, y: 0, z: 0)
-        }
+    struct Value {
+        let isFlippedHorizontal: Bool
+        let isFlippedVertical: Bool
+        let rotationEffectAxis: RotationEffectAxis
     }
 }

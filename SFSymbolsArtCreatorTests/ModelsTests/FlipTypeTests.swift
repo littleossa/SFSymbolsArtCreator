@@ -27,15 +27,15 @@ final class FlipTypeTests: XCTestCase {
     func test_rotationEffectAxis() {
         
         XCTAssertEqual(RotationEffectAxis(x: 0, y: 1, z: 0),
-                       FlipType.horizontal.rotationEffectAxis)
+                       FlipType.horizontal.value.rotationEffectAxis)
         
         XCTAssertEqual(RotationEffectAxis(x: 0, y: 0, z: 1),
-                       FlipType.horizontalAndVertical.rotationEffectAxis)
+                       FlipType.horizontalAndVertical.value.rotationEffectAxis)
         
         XCTAssertEqual(RotationEffectAxis(x: 1, y: 0, z: 0),
-                       FlipType.vertical.rotationEffectAxis)
+                       FlipType.vertical.value.rotationEffectAxis)
         
         XCTAssertEqual(RotationEffectAxis(x: 0, y: 0, z: 0),
-                       FlipType.none.rotationEffectAxis)
+                       FlipType.none.value.rotationEffectAxis)
     }
 }
