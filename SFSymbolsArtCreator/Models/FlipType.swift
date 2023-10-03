@@ -28,6 +28,32 @@ enum FlipType {
     case none
     case vertical
     
+    var isFlippedHorizontal: Bool {
+        switch self {
+        case .horizontal:
+            return true
+        case .horizontalAndVertical:
+            return true
+        case .none:
+            return false
+        case .vertical:
+            return false
+        }
+    }
+    
+    var isFlippedVertical: Bool {
+        switch self {
+        case .horizontal:
+            return false
+        case .horizontalAndVertical:
+            return true
+        case .none:
+            return false
+        case .vertical:
+            return true
+        }
+    }
+    
     var rotationEffectAxis: RotationEffectAxis {
         
         switch self {
