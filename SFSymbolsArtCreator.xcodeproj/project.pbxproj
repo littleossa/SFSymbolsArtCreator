@@ -61,6 +61,7 @@
 		97671A7F2ACCB5EA00648FD4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A7E2ACCB5EA00648FD4 /* AppConfig.swift */; };
 		97671A812ACCB69F00648FD4 /* EditValueStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A802ACCB69F00648FD4 /* EditValueStepper.swift */; };
 		97671A832ACCB76500648FD4 /* EditPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A822ACCB76500648FD4 /* EditPanelView.swift */; };
+		97671A852ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A842ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -136,6 +137,7 @@
 		97671A7E2ACCB5EA00648FD4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		97671A802ACCB69F00648FD4 /* EditValueStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValueStepper.swift; sourceTree = "<group>"; };
 		97671A822ACCB76500648FD4 /* EditPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPanelView.swift; sourceTree = "<group>"; };
+		97671A842ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */,
 				97671A6C2ACB87B500648FD4 /* Double+Extension.swift */,
 				97671A6E2ACB8A1F00648FD4 /* FontWeight+Extension.swift */,
+				97671A842ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				97671A7C2ACBC58B00648FD4 /* EditStepperTool.swift in Sources */,
 				97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */,
 				97671A5F2AC9603600648FD4 /* CatalogSymbolColorSettingView.swift in Sources */,
+				97671A852ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift in Sources */,
 				97671A1F2AC385CB00648FD4 /* ColorPickRectangleButton.swift in Sources */,
 				97671A242AC3A54B00648FD4 /* DrawToolBar.swift in Sources */,
 				97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */,
