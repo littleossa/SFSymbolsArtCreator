@@ -18,26 +18,6 @@ struct ColorToolFeature: Reducer {
         var secondaryColor: Color
         var tertiaryColor: Color
         
-        // Rect for a arrow of pop over
-        var attachmentAnchorRect: CGRect {
-            
-            var height: CGFloat = 0
-            
-            if let colorPicker {
-                switch colorPicker.colorType {
-                case .canvas:
-                    height = 488
-                case .primary:
-                    height = 30
-                case .secondary:
-                    height = 90
-                case .tertiary:
-                    height = 148
-                }
-            }
-            return CGRect(x: 0, y: 0, width: 60, height: height)
-        }
-        
         var isOnlyPrimaryColorEnabled: Bool {
             return renderingType != .palette
         }
@@ -174,7 +154,6 @@ struct ColorToolBar: View {
             .popover(store: store.scope(
                 state: \.$colorPicker,
                 action: ColorToolFeature.Action.colorPicker),
-                     attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
                      arrowEdge: .top) {
                 ColorPickerView(store: $0)
                     .preferredColorScheme(.dark)

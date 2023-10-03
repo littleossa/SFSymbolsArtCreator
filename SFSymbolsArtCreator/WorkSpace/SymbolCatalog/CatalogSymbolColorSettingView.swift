@@ -17,26 +17,6 @@ struct CatalogSymbolColorSettingFeature: Reducer {
         var secondaryColor: Color
         var tertiaryColor: Color
         
-        // Rect for a arrow of pop over
-        var attachmentAnchorRect: CGRect {
-            
-            var width: CGFloat = 0
-            
-            if let colorPicker {
-                switch colorPicker.colorType {
-                case .canvas:
-                    break
-                case .primary:
-                    width = 44
-                case .secondary:
-                    width = 96
-                case .tertiary:
-                    width = 156
-                }
-            }
-            return CGRect(x: 0, y: 0, width: width, height: -8)
-        }
-        
         var isOnlyPrimaryColorEnabled: Bool {
             return renderingType != .palette
         }
@@ -186,7 +166,6 @@ struct CatalogSymbolColorSettingView: View {
                     .popover(store: store.scope(
                         state: \.$colorPicker,
                         action: CatalogSymbolColorSettingFeature.Action.colorPicker),
-                             attachmentAnchor: .rect(.rect(viewStore.attachmentAnchorRect)),
                              arrowEdge: .top) {
                         ColorPickerView(store: $0)
                             .preferredColorScheme(.dark)
