@@ -242,8 +242,3 @@ struct EditValueStepper: View {
             .frame(width: 94)
         }
 }
-
-struct AppConfig {
-    static let minScalingWidth: CGFloat = 10
-    static let minScalingHeight: CGFloat = 10
-}
