@@ -11,8 +11,6 @@ extension Font.Weight {
     
     init(sliderValue: CGFloat) {
         switch sliderValue {
-        case 0:
-            self = .regular
         case 1:
             self = .ultraLight
         case 2:

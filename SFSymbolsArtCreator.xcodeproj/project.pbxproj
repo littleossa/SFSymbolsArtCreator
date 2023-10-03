@@ -53,6 +53,7 @@
 		97671A6B2ACB0A4800648FD4 /* VerticalSymbolLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A6A2ACB0A4800648FD4 /* VerticalSymbolLabelButton.swift */; };
 		97671A6D2ACB87B500648FD4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A6C2ACB87B500648FD4 /* Double+Extension.swift */; };
 		97671A6F2ACB8A1F00648FD4 /* FontWeight+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A6E2ACB8A1F00648FD4 /* FontWeight+Extension.swift */; };
+		97671A722ACB8BA200648FD4 /* FontWeightExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -120,6 +121,7 @@
 		97671A6A2ACB0A4800648FD4 /* VerticalSymbolLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSymbolLabelButton.swift; sourceTree = "<group>"; };
 		97671A6C2ACB87B500648FD4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		97671A6E2ACB8A1F00648FD4 /* FontWeight+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontWeight+Extension.swift"; sourceTree = "<group>"; };
+		97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeightExtensionTests.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -193,8 +195,9 @@
 		975679EE2AB9C26B0057B0E2 /* SFSymbolsArtCreatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
 				97671A222AC3A2B100648FD4 /* ColorToolBarTests */,
+				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
+				97671A702ACB8B6100648FD4 /* ExtensionsTest */,
 				97671A152AC25D4400648FD4 /* SymbolCatalogTests */,
 				97671A592AC5C73100648FD4 /* WorkSpaceTests */,
 			);
@@ -404,6 +407,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		97671A702ACB8B6100648FD4 /* ExtensionsTest */ = {
+			isa = PBXGroup;
+			children = (
+				97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */,
+			);
+			path = ExtensionsTest;
+			sourceTree = "<group>";
+		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97671A722ACB8BA200648FD4 /* FontWeightExtensionTests.swift in Sources */,
 				97671A612ACA14E200648FD4 /* CatalogSymbolColorSettingFeatureTests.swift in Sources */,
 				97671A5B2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift in Sources */,
 				97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */,
