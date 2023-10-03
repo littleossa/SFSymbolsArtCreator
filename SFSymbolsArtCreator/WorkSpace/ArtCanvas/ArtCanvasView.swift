@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ArtCanvasFeature: Reducer {
     struct State: Equatable {
-        let minScalingWidth: CGFloat = 10
-        let minScalingHeight: CGFloat = 10
-        
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
         var canvasColor: Color
         var editFormType: EditFormType
@@ -48,16 +45,16 @@ struct ArtCanvasFeature: Reducer {
                 
                 switch state.editFormType {
                 case .freeForm:
-                    guard symbolState.width + value.scaleSize.width > state.minScalingWidth,
-                          symbolState.height + value.scaleSize.height > state.minScalingHeight
+                    guard symbolState.width + value.scaleSize.width > AppConfig.minScalingWidth,
+                          symbolState.height + value.scaleSize.height > AppConfig.minScalingHeight
                     else { return .none }
                     
                     scaledWidth = symbolState.width + value.scaleSize.width
                     scaledHeight = symbolState.height + value.scaleSize.height
                     
                 case .uniform:
-                    guard symbolState.width + value.scaleValue > state.minScalingWidth,
-                          symbolState.height + value.scaleValue > state.minScalingHeight
+                    guard symbolState.width + value.scaleValue > AppConfig.minScalingWidth,
+                          symbolState.height + value.scaleValue > AppConfig.minScalingHeight
                     else { return .none }
                     
                     scaledWidth = symbolState.width + value.scaleValue
