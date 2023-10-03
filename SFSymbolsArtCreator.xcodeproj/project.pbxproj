@@ -199,7 +199,7 @@
 			children = (
 				97671A222AC3A2B100648FD4 /* ColorToolBarTests */,
 				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
-				97671A702ACB8B6100648FD4 /* ExtensionsTest */,
+				97671A702ACB8B6100648FD4 /* ExtensionsTests */,
 				97671A152AC25D4400648FD4 /* SymbolCatalogTests */,
 				97671A592AC5C73100648FD4 /* WorkSpaceTests */,
 			);
@@ -409,13 +409,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		97671A702ACB8B6100648FD4 /* ExtensionsTest */ = {
+		97671A702ACB8B6100648FD4 /* ExtensionsTests */ = {
 			isa = PBXGroup;
 			children = (
 				97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */,
 				97671A732ACB992B00648FD4 /* DoubleExtensionTests.swift */,
 			);
-			path = ExtensionsTest;
+			path = ExtensionsTests;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
