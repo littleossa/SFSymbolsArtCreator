@@ -56,6 +56,7 @@
 		97671A722ACB8BA200648FD4 /* FontWeightExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */; };
 		97671A742ACB992B00648FD4 /* DoubleExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A732ACB992B00648FD4 /* DoubleExtensionTests.swift */; };
 		97671A782ACB9B5500648FD4 /* FlipTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A772ACB9B5500648FD4 /* FlipTypeTests.swift */; };
+		97671A7A2ACBA11900648FD4 /* RotationEffectAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A792ACBA11900648FD4 /* RotationEffectAxis.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -126,6 +127,7 @@
 		97671A712ACB8BA200648FD4 /* FontWeightExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeightExtensionTests.swift; sourceTree = "<group>"; };
 		97671A732ACB992B00648FD4 /* DoubleExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionTests.swift; sourceTree = "<group>"; };
 		97671A772ACB9B5500648FD4 /* FlipTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTypeTests.swift; sourceTree = "<group>"; };
+		97671A792ACBA11900648FD4 /* RotationEffectAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationEffectAxis.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				97671A622ACA3A7800648FD4 /* CatalogItem.swift */,
 				97671A4B2AC4724E00648FD4 /* FlipType.swift */,
 				97FCD5472ABDEC56002795F6 /* RenderingType.swift */,
+				97671A792ACBA11900648FD4 /* RotationEffectAxis.swift */,
 				97671A572AC5C15800648FD4 /* ColorItem.swift */,
 			);
 			path = Models;
@@ -592,6 +595,7 @@
 				97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */,
 				97671A452AC45FB900648FD4 /* EditPoint.swift in Sources */,
 				97671A472AC45FB900648FD4 /* EditPointPosition.swift in Sources */,
+				97671A7A2ACBA11900648FD4 /* RotationEffectAxis.swift in Sources */,
 				97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */,
 				97671A412AC45FB900648FD4 /* MovingDashFramedRectangle.swift in Sources */,
 				97671A442AC45FB900648FD4 /* EditPointsFramedRectangle.swift in Sources */,
