@@ -129,9 +129,8 @@ struct EditStepperToolView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             
-            HStack {
+            HStack(spacing: 20) {
                 EditValueStepper(
-                    symbol: .arrowLeftAndRightSquareFill,
                     title: "Width"
                 ) {
                     viewStore.send(.incrementWidthButtonTapped)
@@ -140,7 +139,6 @@ struct EditStepperToolView: View {
                 }
                 
                 EditValueStepper(
-                    symbol: .arrowUpAndDownSquareFill,
                     title: "Height"
                 ) {
                     viewStore.send(.incrementHeightButtonTapped)
@@ -149,7 +147,6 @@ struct EditStepperToolView: View {
                 }
 
                 EditValueStepper(
-                    symbol: .xSquareFill,
                     title: "X"
                 ) {
                     viewStore.send(.incrementXPositionButtonTapped)
@@ -158,7 +155,6 @@ struct EditStepperToolView: View {
                 }
 
                 EditValueStepper(
-                    symbol: .ySquareFill,
                     title: "Y"
                 ) {
                     viewStore.send(.incrementYPositionButtonTapped)
@@ -167,7 +163,6 @@ struct EditStepperToolView: View {
                 }
 
                 EditValueStepper(
-                    symbol: .arrowClockwiseCircleFill,
                     title: "Degrees"
                 ) {
                     viewStore.send(.incrementDegreesButtonTapped)

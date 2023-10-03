@@ -9,20 +9,15 @@ import SwiftUI
 
 struct EditValueStepper: View {
     
-    let symbol: SFSymbols
     let title: LocalizedStringKey
     let incrementAction: () -> Void
     let decrementAction: () -> Void
     
     var body: some View {
         VStack(alignment: .center) {
-            Image(symbol: symbol)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 40, height: 40)
             
             Text(title)
-                .font(.caption)
+                .bold()
             
             Stepper(title) {
                 incrementAction()
@@ -31,11 +26,10 @@ struct EditValueStepper: View {
             }
             .labelsHidden()
             .background(RoundedRectangle(cornerRadius: 6)
-                .fill(.white)
+                .fill(.paleGray)
                 .frame(width: 94, height: 32))
 
         }
-        .bold()
         .foregroundStyle(.white)
     }
 }
@@ -43,8 +37,7 @@ struct EditValueStepper: View {
 #Preview {
     Color.heavyDarkGray
         .overlay {
-            EditValueStepper(symbol: .arrowLeftCircleFill,
-                             title: "width",
+            EditValueStepper(title: "width",
                              incrementAction: {},
                              decrementAction: {}
             )
