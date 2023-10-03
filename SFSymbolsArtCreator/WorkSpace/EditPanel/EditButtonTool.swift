@@ -106,14 +106,13 @@ struct EditButtonToolView: View {
         
         WithViewStore(self.store, observe: { $0 }) { viewStore in
                 
-                HStack {
+            HStack(spacing: 20) {
                     VerticalSymbolLabelButton(
                         title: "Flip Horizontal",
                         symbol: .arrowLeftAndRightRighttriangleLeftRighttriangleRightFill
                     ) {
                         viewStore.send(.flipHorizontalButtonTapped)
                     }
-                    .frame(width: 88, height: 44)
                     
                     VerticalSymbolLabelButton(
                         title: "Flip Vertical",
@@ -121,7 +120,6 @@ struct EditButtonToolView: View {
                     ) {
                         viewStore.send(.flipVerticalButtonTapped)
                     }
-                    .frame(width: 88, height: 44)
                     
                     VerticalSymbolLabelButton(
                         title: "Rotate 45°",
@@ -129,7 +127,6 @@ struct EditButtonToolView: View {
                     ) {
                         viewStore.send(.rotateButtonTapped)
                     }
-                    .frame(width: 88, height: 44)
                     
                     VerticalLabelButton(title: "Up Weight", action: {
                         viewStore.send(.incrementWeightButtonTapped)
@@ -143,7 +140,6 @@ struct EditButtonToolView: View {
                                 .frame(width: 40, height: 40)
                         }
                     })
-                    .frame(width: 88, height: 44)
                     .disabled(viewStore.incrementWeightButtonDisabled)
                     
                     VerticalLabelButton(title: "Down Weight", action: {
@@ -158,11 +154,9 @@ struct EditButtonToolView: View {
                                 .frame(width: 40, height: 40)
                         }
                     })
-                    .frame(width: 88, height: 44)
                     .disabled(viewStore.decrementWeightButtonDisabled)
                 }
                 .bold()
-                .foregroundStyle(.white)
                 .padding()
             }
     }

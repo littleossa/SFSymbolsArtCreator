@@ -28,10 +28,13 @@ struct VerticalLabelButton<Content: View>: View {
             }, label: {
                 content
             })
+            .foregroundStyle(.paleGray)
             
             Text(title)
                 .font(.caption)
+                .foregroundStyle(.white)
         }
+        .frame(width: 94, height: 44)
     }
 }
 
