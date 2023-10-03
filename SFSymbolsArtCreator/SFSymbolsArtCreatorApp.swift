@@ -16,9 +16,6 @@ struct SFSymbolsArtCreatorApp: App {
                 WorkSpaceFeature()
                     ._printChanges()
             })
-            .onAppear {
-                print("onAppear")
-            }
         }
     }
 }
