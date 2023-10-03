@@ -24,6 +24,20 @@ final class FlipTypeTests: XCTestCase {
         XCTAssertEqual(value, .none)
     }
     
+    func test_isFlippedHorizontal() {
+        XCTAssertTrue(FlipType.horizontal.value.isFlippedHorizontal)
+        XCTAssertTrue(FlipType.horizontalAndVertical.value.isFlippedHorizontal)
+        XCTAssertFalse(FlipType.none.value.isFlippedHorizontal)
+        XCTAssertFalse(FlipType.vertical.value.isFlippedHorizontal)
+    }
+    
+    func test_isFlippedVertical() {
+        XCTAssertFalse(FlipType.horizontal.value.isFlippedVertical)
+        XCTAssertTrue(FlipType.horizontalAndVertical.value.isFlippedVertical)
+        XCTAssertFalse(FlipType.none.value.isFlippedVertical)
+        XCTAssertTrue(FlipType.vertical.value.isFlippedVertical)
+    }
+    
     func test_rotationEffectAxis() {
         
         XCTAssertEqual(RotationEffectAxis(x: 0, y: 1, z: 0),
