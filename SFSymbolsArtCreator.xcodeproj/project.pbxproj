@@ -65,6 +65,7 @@
 		97671A872ACD19FF00648FD4 /* ResizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A862ACD19FF00648FD4 /* ResizeButton.swift */; };
 		97671A8A2ACD1FC700648FD4 /* EditButtonToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A892ACD1FC700648FD4 /* EditButtonToolTests.swift */; };
 		97671A8C2ACD96CB00648FD4 /* EditStepperToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */; };
+		97671A8E2ACDA4E800648FD4 /* EditPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -144,6 +145,7 @@
 		97671A862ACD19FF00648FD4 /* ResizeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeButton.swift; sourceTree = "<group>"; };
 		97671A892ACD1FC700648FD4 /* EditButtonToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonToolTests.swift; sourceTree = "<group>"; };
 		97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepperToolTests.swift; sourceTree = "<group>"; };
+		97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPanelTests.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			children = (
 				97671A892ACD1FC700648FD4 /* EditButtonToolTests.swift */,
 				97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */,
+				97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */,
 			);
 			path = EditPanelTests;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				97671A722ACB8BA200648FD4 /* FontWeightExtensionTests.swift in Sources */,
 				97671A612ACA14E200648FD4 /* CatalogSymbolColorSettingFeatureTests.swift in Sources */,
 				97671A5B2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift in Sources */,
+				97671A8E2ACDA4E800648FD4 /* EditPanelTests.swift in Sources */,
 				97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */,
 				97671A212AC39FC000648FD4 /* ColorToolFeatureTests.swift in Sources */,
 				97671A102AC2301700648FD4 /* CatalogItemListFeatureTests.swift in Sources */,
