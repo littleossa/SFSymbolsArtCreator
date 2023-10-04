@@ -61,8 +61,8 @@ struct ArtCanvasFeature: Reducer {
                     scaledHeight = symbolState.height + value.scaleValue
                 }
                 
-                state.artSymbols[id: id]?.width = scaledWidth
-                state.artSymbols[id: id]?.height = scaledHeight
+                state.editingSymbol?.width = scaledWidth
+                state.editingSymbol?.height = scaledHeight
                 
                 return .none
                 
