@@ -48,7 +48,7 @@ struct ArtSymbolImage: View {
                                      z: state.flipType.value.rotationEffectAxis.z),
                               anchorZ: 1)
             .rotation3DEffect(.degrees(state.rotationDegrees),
-                              axis: (x: 0, y: 0, z: -1), anchorZ: 1)
+                              axis: (x: 0, y: 0, z: 1), anchorZ: 1)
             .symbolRenderingMode(state.renderingType.renderingMode)
             .foregroundStyle(state.primaryColor,
                              state.secondaryColor,
@@ -74,14 +74,17 @@ struct ArtSymbolEditorView: View {
                                              z: viewStore.flipType.value.rotationEffectAxis.z),
                                       anchorZ: 1)
                     .rotation3DEffect(.degrees(viewStore.rotationDegrees),
-                                      axis: (x: 0, y: 0, z: -1), anchorZ: 1)
+                                      axis: (x: 0, y: 0, z: 1), anchorZ: 1)
                     .symbolRenderingMode(viewStore.renderingType.renderingMode)
                     .foregroundStyle(viewStore.primaryColor,
                                      viewStore.secondaryColor,
                                      viewStore.tertiaryColor)
-                    .boundingBox(position: viewStore.$position,
-                                 width: viewStore.width,
-                                 height: viewStore.height) { value in
+                    .boundingBox(
+                        position: viewStore.$position,
+                        width: viewStore.width,
+                        height: viewStore.height,
+                        degrees: viewStore.rotationDegrees
+                    ) { value in
                         viewStore.send(.symbolSizeScaled(value))
                     }
         }
