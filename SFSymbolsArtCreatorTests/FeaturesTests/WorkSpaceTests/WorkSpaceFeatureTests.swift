@@ -186,4 +186,38 @@ final class WorkSpaceFeatureTests: XCTestCase {
             $0.colorToolState.tertiaryColor = .green
         }
     }
+    
+    func test_editFormType() async {
+        
+        XCTAssertEqual(store.state.artCanvasState.editFormType, .freeForm)
+        store.exhaustivity = .off
+        let item = CatalogItem(symbolName: "xmark",
+                               renderingType: .palette,
+                               primaryColor: .red,
+                               secondaryColor: .yellow,
+                               tertiaryColor: .green,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item))))) {
+            $0.editPanelState?.editFormType = .freeForm
+        }
+        await store.send(.editPanel(.binding(.set(\.$editFormType, .uniform)))) {
+            $0.editPanelState?.editFormType = .uniform
+        }
+        await store.send(.drawTool(.editButtonTapped))
+        await store.send(.drawTool(.editButtonTapped))
+        
+        XCTAssertEqual(store.state.artCanvasState.editFormType, .uniform)
+        XCTAssertEqual(store.state.artCanvasState.editFormType, .uniform)
+        
+        let item2 = CatalogItem(symbolName: "xmark",
+                               renderingType: .palette,
+                               primaryColor: .red,
+                               secondaryColor: .yellow,
+                               tertiaryColor: .green,
+                               fontWeight: .regular)
+        await store.send(.symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item2)))))
+        
+        XCTAssertEqual(store.state.artCanvasState.editFormType, .uniform)
+        XCTAssertEqual(store.state.artCanvasState.editFormType, .uniform)
+    }
 }
