@@ -19,7 +19,7 @@ struct VerticalSymbolLabelButton: View {
             Image(symbol: symbol)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 40, height: 40)
+                .frame(width: 28, height: 28)
         }
     }
 }

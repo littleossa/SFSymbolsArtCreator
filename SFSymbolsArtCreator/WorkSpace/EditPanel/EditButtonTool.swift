@@ -137,7 +137,7 @@ struct EditButtonToolView: View {
                             Image(symbol: .bold)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 28, height: 28)
                         }
                     })
                     .disabled(viewStore.incrementWeightButtonDisabled)
@@ -151,13 +151,12 @@ struct EditButtonToolView: View {
                             Image(symbol: .bold)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 28, height: 28)
                         }
                     })
                     .disabled(viewStore.decrementWeightButtonDisabled)
                 }
                 .bold()
-                .padding()
             }
     }
 }

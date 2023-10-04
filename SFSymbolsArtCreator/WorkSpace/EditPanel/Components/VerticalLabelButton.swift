@@ -34,7 +34,7 @@ struct VerticalLabelButton<Content: View>: View {
                 .font(.caption)
                 .foregroundStyle(.white)
         }
-        .frame(width: 94, height: 44)
+        .frame(width: 94, height: 28)
     }
 }
 

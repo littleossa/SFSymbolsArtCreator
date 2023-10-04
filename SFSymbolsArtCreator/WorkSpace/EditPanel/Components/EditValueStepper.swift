@@ -27,7 +27,7 @@ struct EditValueStepper: View {
             .labelsHidden()
             .background(RoundedRectangle(cornerRadius: 6)
                 .fill(.paleGray)
-                .frame(width: 94, height: 32))
+                .frame(width: 94, height: 28))
 
         }
         .foregroundStyle(.white)

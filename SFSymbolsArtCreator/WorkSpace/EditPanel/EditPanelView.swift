@@ -68,17 +68,27 @@ struct EditPanelView: View {
                 .frame(width: 320)
                 .padding(.bottom, 16)
                 
-                EditButtonToolView(store: store.scope(state: \.editButtonTool,
-                                                      action: EditPanelFeature.Action.editButtonTool))
+                EditButtonToolView(store: store.scope(
+                    state: \.editButtonTool,
+                    action: EditPanelFeature.Action.editButtonTool)
+                )
+                .padding(.bottom, 4)
+                
                 Divider()
                     .background(.gray)
-                    .padding(.bottom, 8)
-                EditStepperToolView(store: store.scope(state: \.editStepperTool,
-                                                       action: EditPanelFeature.Action.editStepperTool))
+                
+                EditStepperToolView(store: store.scope(
+                    state: \.editStepperTool,
+                    action: EditPanelFeature.Action.editStepperTool)
+                )
             }
             .frame(width: 560)
-            .padding(24)
-            .background(RoundedRectangle(cornerRadius: 16).fill(.heavyDarkGray))
+            .padding(8)
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.heavyDarkGray)
+                    .shadow(radius: 10)
+            }
         }
     }
 }
