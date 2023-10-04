@@ -126,7 +126,9 @@ struct WorkSpaceFeature: Reducer {
                     state.colorToolState.secondaryColor = lastSymbol.secondaryColor
                     state.colorToolState.tertiaryColor = lastSymbol.tertiaryColor
                     
-                    state.editPanelState = .init(artSymbol: lastSymbol)
+                    let editFormType = state.artCanvasState.editFormType
+                    state.editPanelState = .init(artSymbol: lastSymbol,
+                                                 editFormType: editFormType)
                     
                 } else {
                     state.artCanvasState.editSymbolID = nil
@@ -193,7 +195,9 @@ struct WorkSpaceFeature: Reducer {
                 state.colorToolState.secondaryColor = item.secondaryColor
                 state.colorToolState.tertiaryColor = item.tertiaryColor
                 
-                state.editPanelState = .init(artSymbol: artSymbol)
+                let editFormType = state.artCanvasState.editFormType
+                state.editPanelState = .init(artSymbol: artSymbol,
+                                             editFormType: editFormType)
                 return .none
                 
             case .symbolCatalog:
