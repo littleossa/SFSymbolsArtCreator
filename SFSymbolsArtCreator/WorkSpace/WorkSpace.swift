@@ -287,6 +287,7 @@ struct WorkSpaceView: View {
                 )
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

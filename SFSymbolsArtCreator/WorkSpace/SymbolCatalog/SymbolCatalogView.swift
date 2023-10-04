@@ -12,6 +12,7 @@ struct SymbolCatalogFeature: Reducer {
     struct State: Equatable {
         var catalogItemListState: CatalogItemListFeature.State
         var catalogSettingsState: CatalogSettingsFeature.State
+        var isKeyboardClosed: Bool
         
         init(catalogBackgroundColorItem: ColorItem = .white,
              category: SFSymbols.Category = .all,
@@ -20,7 +21,8 @@ struct SymbolCatalogFeature: Reducer {
              primaryColor: Color,
              secondaryColor: Color,
              tertiaryColor: Color,
-             canvasColor: Color
+             canvasColor: Color,
+             isKeyboardClosed: Bool = true
         ) {
             catalogSettingsState = .init(
                 catalogBackgroundColorItem: catalogBackgroundColorItem,
@@ -41,12 +43,16 @@ struct SymbolCatalogFeature: Reducer {
                 renderingType: renderingType,
                 backgroundColor: catalogBackgroundColorItem.color,
                 category: category)
+            
+            self.isKeyboardClosed = isKeyboardClosed
         }
     }
     
     enum Action: Equatable {
         case catalogItemList(CatalogItemListFeature.Action)
         case catalogSettings(CatalogSettingsFeature.Action)
+        case keyboardOpened
+        case keyboardClosed
     }
     
     var body: some ReducerOf<Self> {
@@ -106,6 +112,14 @@ struct SymbolCatalogFeature: Reducer {
                 
             case .catalogSettings:
                 return .none
+                
+            case .keyboardClosed:
+                state.isKeyboardClosed = false
+                return .none
+                
+            case .keyboardOpened:
+                state.isKeyboardClosed = true
+                return .none
             }
         }
     }
@@ -117,19 +131,32 @@ struct SymbolCatalogView: View {
     
     var body: some View {
         
-        VStack(spacing: 16) {
-            CatalogSettingsView(store: store.scope(
-                state: \.catalogSettingsState,
-                action: SymbolCatalogFeature.Action.catalogSettings)
-            )
-            
-            CatalogItemListView(store: store.scope(
-                state: \.catalogItemListState,
-                action: SymbolCatalogFeature.Action.catalogItemList)
-            )
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack(spacing: 16) {
+                
+                if viewStore.isKeyboardClosed {
+                    CatalogSettingsView(store: store.scope(
+                        state: \.catalogSettingsState,
+                        action: SymbolCatalogFeature.Action.catalogSettings)
+                    )
+                }
+                
+                CatalogItemListView(store: store.scope(
+                    state: \.catalogItemListState,
+                    action: SymbolCatalogFeature.Action.catalogItemList)
+                )
+                .padding(.top, viewStore.isKeyboardClosed ? 0 : 16)
+            }
+            .frame(width: 284)
+            .background(.heavyDarkGray)
+            .onReceive(
+                NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                    viewStore.send(.keyboardClosed,animation: .smooth)
+            }.onReceive(
+                NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
+                    viewStore.send(.keyboardOpened,animation: .smooth)
+            }
         }
-        .frame(width: 284)
-        .background(.heavyDarkGray)
     }
 }
 
