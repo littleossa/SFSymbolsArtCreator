@@ -31,7 +31,7 @@ struct EditPanelFeature: Reducer {
                 positionY: artSymbol.position.y,
                 rotationDegrees: artSymbol.rotationDegrees
             )
-            self.isDisplayAllEditToolOptions = false
+            self.isDisplayAllEditToolOptions = isDisplayAllEditToolOptions
         }
     }
     
