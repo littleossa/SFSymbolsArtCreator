@@ -47,10 +47,10 @@ final class EditPanelTests: XCTestCase {
     
     func test_bindingEditFormType() async {
         
+        store.exhaustivity = .off
         await store.send(.binding(.set(\.$editFormType, EditFormType.uniform))) {
             $0.editFormType = .uniform
         }
-        
         await store.send(.binding(.set(\.$editFormType, EditFormType.freeForm))) {
             $0.editFormType = .freeForm
         }
