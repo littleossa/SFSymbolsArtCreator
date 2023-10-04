@@ -16,6 +16,9 @@ struct SFSymbolsArtCreatorApp: App {
                 WorkSpaceFeature()
                     ._printChanges()
             })
+            .onAppear {
+                UISegmentedControl.setAppearance()
+            }
         }
     }
 }
