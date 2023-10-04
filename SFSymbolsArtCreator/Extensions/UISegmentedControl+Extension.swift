@@ -13,7 +13,8 @@ extension UISegmentedControl {
         
         self.appearance().selectedSegmentTintColor = .tintColor
         self.appearance().setTitleTextAttributes(
-            [.foregroundColor : UIColor.paleGray],
+            [.font: UIFont.systemFont(ofSize: 16.0, weight: .bold),
+             .foregroundColor : UIColor.paleGray],
             for: .selected
         )
         self.appearance().setTitleTextAttributes(
