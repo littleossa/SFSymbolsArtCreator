@@ -29,7 +29,7 @@ struct EditButtonToolFeature: Reducer {
         case flipHorizontalButtonTapped
         case flipVerticalButtonTapped
         case incrementWeightButtonTapped
-        case rotateButtonTapped
+        case rotate45ButtonTapped
         
         enum Delegate: Equatable {
             case degreesRotated(Double)
@@ -71,7 +71,7 @@ struct EditButtonToolFeature: Reducer {
                 
                 return sendFontWeightChanged(state: state)
                 
-            case .rotateButtonTapped:
+            case .rotate45ButtonTapped:
                 let rotatedDegrees = state.rotationDegrees.rotatingWithin360ByDegrees(45)
                 state.rotationDegrees = rotatedDegrees
                 
@@ -125,7 +125,7 @@ struct EditButtonToolView: View {
                         title: "Rotate 45°",
                         symbol: .rotateRightFill
                     ) {
-                        viewStore.send(.rotateButtonTapped)
+                        viewStore.send(.rotate45ButtonTapped)
                     }
                     
                     VerticalLabelButton(title: "Up Weight", action: {
