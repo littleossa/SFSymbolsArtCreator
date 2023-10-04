@@ -59,7 +59,7 @@ struct EditButtonToolFeature: Reducer {
                 return sendFlipTypeChanged(state: state)
                 
             case .flipVerticalButtonTapped:
-                state.isFlippedHorizontal.toggle()
+                state.isFlippedVertical.toggle()
                 return sendFlipTypeChanged(state: state)
             
             case .incrementWeightButtonTapped:
