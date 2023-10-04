@@ -12,6 +12,24 @@ struct EditPanelFeature: Reducer {
         @BindingState var editFormType: EditFormType
         var editButtonTool: EditButtonToolFeature.State
         var editStepperTool: EditStepperToolFeature.State
+        
+        init(artSymbol: ArtSymbolFeature.State,
+             editFormType: EditFormType = .freeForm) {
+            self.editFormType = editFormType
+            self.editButtonTool = .init(
+                fontWight: artSymbol.weight,
+                isFlippedHorizontal: artSymbol.flipType.value.isFlippedHorizontal,
+                isFlippedVertical: artSymbol.flipType.value.isFlippedVertical,
+                rotationDegrees: artSymbol.rotationDegrees
+            )
+            self.editStepperTool = .init(
+                width: artSymbol.width,
+                height: artSymbol.height,
+                positionX: artSymbol.position.x,
+                positionY: artSymbol.position.y,
+                rotationDegrees: artSymbol.rotationDegrees
+            )
+        }
     }
     
     enum Action: Equatable, BindableAction {
@@ -70,23 +88,21 @@ struct EditPanelView: View {
         .overlay {
             EditPanelView(store: .init(
                 initialState: EditPanelFeature.State(
-                    editFormType: .freeForm,
-                    editButtonTool: .init(
-                        fontWight: .regular,
-                        isFlippedHorizontal: false,
-                        isFlippedVertical: false,
-                        rotationDegrees: 0
-                    ),
-                    editStepperTool: .init(
+                    artSymbol: .init(
+                        id: UUID(),
+                        name: "xmark",
+                        renderingType: .monochrome,
+                        primaryColor: .red,
+                        secondaryColor: .clear,
+                        tertiaryColor: .clear,
+                        weight: .regular,
                         width: 100,
                         height: 100,
-                        positionX: 100,
-                        positionY: 100,
-                        rotationDegrees: 0)
-                )) {
-                    EditPanelFeature()
-                }
-            )
+                        position: CGPoint(x: 100, y: 100)
+                    ),
+                    editFormType: .freeForm)) {
+                        EditPanelFeature()
+                    })
         }
         .onAppear {
             UISegmentedControl.setAppearance()
