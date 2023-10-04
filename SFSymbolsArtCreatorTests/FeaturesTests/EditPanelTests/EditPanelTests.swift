@@ -27,7 +27,8 @@ final class EditPanelTests: XCTestCase {
                                  weight: .regular,
                                  width: 100,
                                  height: 100,
-                                 position: CGPoint(x: 10, y: 10)
+                                 position: CGPoint(x: 10, y: 10),
+                                 rotationDegrees: 0
                                 )
             )) {
                 EditPanelFeature()
@@ -54,5 +55,19 @@ final class EditPanelTests: XCTestCase {
         await store.send(.binding(.set(\.$editFormType, EditFormType.freeForm))) {
             $0.editFormType = .freeForm
         }
+    }
+    
+    func test_editButtonToolChangedItsDegrees() async {
+        
+        store.exhaustivity = .off
+        await store.send(.editButtonTool(.delegate(.degreesRotated(45))))
+        await store.send(.editStepperTool(.incrementDegreesButtonTapped))
+        store.assert {
+            $0.editStepperTool.rotationDegrees = 46
+        }
+        await store.send(.editStepperTool(.decrementDegreesButtonTapped)) {
+            $0.editStepperTool.rotationDegrees = 45
+        }
+
     }
 }
