@@ -37,9 +37,14 @@ struct EditPanelFeature: Reducer {
     
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
+        case delegate(Delegate)
         case editButtonTool(EditButtonToolFeature.Action)
         case editStepperTool(EditStepperToolFeature.Action)
         case resizeButtonTapped
+        
+        enum Delegate: Equatable {
+            case editFormTypeChanged(EditFormType)
+        }
     }
     
     var body: some ReducerOf<Self> {
@@ -52,8 +57,13 @@ struct EditPanelFeature: Reducer {
         }
         Reduce { state, action in
             switch action {
-                
+            case .binding(\.$editFormType):
+                return .run { [editFormType = state.editFormType] send in
+                    await send(.delegate(.editFormTypeChanged(editFormType)))
+                }
             case .binding:
+                return .none
+            case .delegate:
                 return .none
             case .editButtonTool:
                 return .none
