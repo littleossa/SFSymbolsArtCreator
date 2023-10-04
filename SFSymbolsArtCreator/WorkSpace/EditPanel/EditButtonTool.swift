@@ -171,6 +171,7 @@ struct EditButtonToolView: View {
     ) {
         EditButtonToolFeature()
     })
+    .frame(height: 100)
     .background {
         RoundedRectangle(cornerRadius: 8)
             .fill(.heavyDarkGray)
