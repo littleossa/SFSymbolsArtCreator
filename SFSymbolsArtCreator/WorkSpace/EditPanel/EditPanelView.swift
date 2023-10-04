@@ -12,9 +12,11 @@ struct EditPanelFeature: Reducer {
         @BindingState var editFormType: EditFormType
         var editButtonTool: EditButtonToolFeature.State
         var editStepperTool: EditStepperToolFeature.State
+        var isDisplayAllEditToolOptions: Bool
         
         init(artSymbol: ArtSymbolFeature.State,
-             editFormType: EditFormType = .freeForm) {
+             editFormType: EditFormType = .freeForm,
+             isDisplayAllEditToolOptions: Bool = true) {
             self.editFormType = editFormType
             self.editButtonTool = .init(
                 fontWight: artSymbol.weight,
@@ -29,6 +31,7 @@ struct EditPanelFeature: Reducer {
                 positionY: artSymbol.position.y,
                 rotationDegrees: artSymbol.rotationDegrees
             )
+            self.isDisplayAllEditToolOptions = false
         }
     }
     
@@ -36,6 +39,7 @@ struct EditPanelFeature: Reducer {
         case binding(BindingAction<State>)
         case editButtonTool(EditButtonToolFeature.Action)
         case editStepperTool(EditStepperToolFeature.Action)
+        case resizeButtonTapped
     }
     
     var body: some ReducerOf<Self> {
@@ -45,6 +49,20 @@ struct EditPanelFeature: Reducer {
         }
         Scope(state: \.editStepperTool, action: /Action.editStepperTool) {
             EditStepperToolFeature()
+        }
+        Reduce { state, action in
+            switch action {
+                
+            case .binding:
+                return .none
+            case .editButtonTool:
+                return .none
+            case .editStepperTool:
+                return .none
+            case .resizeButtonTapped:
+                state.isDisplayAllEditToolOptions.toggle()
+                return .none
+            }
         }
     }
 }
@@ -58,29 +76,56 @@ struct EditPanelView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack(spacing: 16) {
                 
-                Picker("Edit Form", selection: viewStore.$editFormType) {
-                    ForEach(EditFormType.allCases) {
-                        Text($0.rawValue)
-                            .tag($0)
+                HStack {
+                    
+                    Button {
+                        viewStore.send(.resizeButtonTapped, animation: .bouncy)
+                    } label: {
+                        ZStack {
+                            Image(symbol: .circleFill)
+                                .resizable()
+                                .foregroundStyle(.black)
+                            
+                            Image(symbol: viewStore.isDisplayAllEditToolOptions ? .minusCircleFill : .arrowUpLeftAndArrowDownRightCircleFill)
+                                .resizable()
+                        }
+                        .frame(width: 24, height: 24)
                     }
+                    
+                    Spacer()
+                    
+                    Picker("Edit Form", selection: viewStore.$editFormType) {
+                        ForEach(EditFormType.allCases) {
+                            Text($0.rawValue)
+                                .tag($0)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 320)
+                    
+                    Spacer()
+
+                    Spacer()
+                        .frame(width: 28)
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .frame(width: 320)
-                .padding(.bottom, 16)
+                .padding(.bottom, viewStore.isDisplayAllEditToolOptions ? 16 : 0)
                 
-                EditButtonToolView(store: store.scope(
-                    state: \.editButtonTool,
-                    action: EditPanelFeature.Action.editButtonTool)
-                )
-                .padding(.bottom, 4)
-                
-                Divider()
-                    .background(.gray)
-                
-                EditStepperToolView(store: store.scope(
-                    state: \.editStepperTool,
-                    action: EditPanelFeature.Action.editStepperTool)
-                )
+                if viewStore.isDisplayAllEditToolOptions {
+                    
+                    EditButtonToolView(store: store.scope(
+                        state: \.editButtonTool,
+                        action: EditPanelFeature.Action.editButtonTool)
+                    )
+                    .padding(.bottom, 4)
+                    
+                    Divider()
+                        .background(.gray)
+                    
+                    EditStepperToolView(store: store.scope(
+                        state: \.editStepperTool,
+                        action: EditPanelFeature.Action.editStepperTool)
+                    )
+                }
             }
             .frame(width: 560)
             .padding(8)
