@@ -78,18 +78,8 @@ struct EditPanelView: View {
                 
                 HStack {
                     
-                    Button {
+                    ResizeButton(isExpanded: viewStore.isDisplayAllEditToolOptions) {
                         viewStore.send(.resizeButtonTapped, animation: .bouncy)
-                    } label: {
-                        ZStack {
-                            Image(symbol: .circleFill)
-                                .resizable()
-                                .foregroundStyle(.black)
-                            
-                            Image(symbol: viewStore.isDisplayAllEditToolOptions ? .minusCircleFill : .arrowUpLeftAndArrowDownRightCircleFill)
-                                .resizable()
-                        }
-                        .frame(width: 24, height: 24)
                     }
                     
                     Spacer()

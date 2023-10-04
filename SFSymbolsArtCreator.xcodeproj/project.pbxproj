@@ -62,6 +62,7 @@
 		97671A812ACCB69F00648FD4 /* EditValueStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A802ACCB69F00648FD4 /* EditValueStepper.swift */; };
 		97671A832ACCB76500648FD4 /* EditPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A822ACCB76500648FD4 /* EditPanelView.swift */; };
 		97671A852ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A842ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift */; };
+		97671A872ACD19FF00648FD4 /* ResizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A862ACD19FF00648FD4 /* ResizeButton.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -138,6 +139,7 @@
 		97671A802ACCB69F00648FD4 /* EditValueStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValueStepper.swift; sourceTree = "<group>"; };
 		97671A822ACCB76500648FD4 /* EditPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPanelView.swift; sourceTree = "<group>"; };
 		97671A842ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extension.swift"; sourceTree = "<group>"; };
+		97671A862ACD19FF00648FD4 /* ResizeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeButton.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				97671A802ACCB69F00648FD4 /* EditValueStepper.swift */,
+				97671A862ACD19FF00648FD4 /* ResizeButton.swift */,
 				97671A682ACB0A0100648FD4 /* VerticalLabelButton.swift */,
 				97671A6A2ACB0A4800648FD4 /* VerticalSymbolLabelButton.swift */,
 			);
@@ -600,6 +603,7 @@
 				97671A4C2AC4724E00648FD4 /* FlipType.swift in Sources */,
 				97FCD54E2AC061F6002795F6 /* CategorySettingView.swift in Sources */,
 				97FCD5562AC0882D002795F6 /* SymbolCatalogView.swift in Sources */,
+				97671A872ACD19FF00648FD4 /* ResizeButton.swift in Sources */,
 				97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */,
 				97671A652ACAF0CC00648FD4 /* EditButtonTool.swift in Sources */,
 				97671A432AC45FB900648FD4 /* EditPointMark.swift in Sources */,
