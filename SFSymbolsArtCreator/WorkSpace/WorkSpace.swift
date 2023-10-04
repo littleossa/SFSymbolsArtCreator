@@ -124,6 +124,38 @@ struct WorkSpaceFeature: Reducer {
                 
             case .drawTool:
                 return .none
+                                
+            case let .editPanel(.delegate(.editFormTypeChanged(editFormType))):
+                state.artCanvasState.editFormType = editFormType
+                return .none
+                
+            case let .editPanel(.editButtonTool(.delegate(.degreesRotated(degrees)))):
+                state.artCanvasState.editingSymbol?.rotationDegrees = degrees
+                return .none
+                
+            case let .editPanel(.editButtonTool(.delegate(.flipTypeChanged(flipType)))):
+                state.artCanvasState.editingSymbol?.flipType = flipType
+                return .none
+                
+            case let .editPanel(.editButtonTool(.delegate(.fontWeightChanged(weight)))):
+                state.artCanvasState.editingSymbol?.weight = weight
+                return .none
+                
+            case let .editPanel(.editStepperTool(.delegate(.degreesValueChanged(degrees)))):
+                state.artCanvasState.editingSymbol?.rotationDegrees = degrees
+                return .none
+                
+            case let .editPanel(.editStepperTool(.delegate(.heightValueChanged(height)))):
+                state.artCanvasState.editingSymbol?.height = height
+                return .none
+                
+            case let .editPanel(.editStepperTool(.delegate(.positionValueChanged(position)))):
+                state.artCanvasState.editingSymbol?.position = position
+                return .none
+                
+            case let .editPanel(.editStepperTool(.delegate(.widthValueChanged(width)))):
+                state.artCanvasState.editingSymbol?.width = width
+                return .none
                 
             case .editPanel:
                 return .none
