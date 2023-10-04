@@ -12,6 +12,7 @@ struct WorkSpaceFeature: Reducer {
         var artCanvasState: ArtCanvasFeature.State
         var colorToolState: ColorToolFeature.State
         var drawToolState: DrawToolFeature.State
+        var editPanelState: EditPanelFeature.State?
         var menuToolState: MenuToolFeature.State
         var symbolCatalogState: SymbolCatalogFeature.State
         
@@ -44,6 +45,7 @@ struct WorkSpaceFeature: Reducer {
         case artCanvas(ArtCanvasFeature.Action)
         case colorTool(ColorToolFeature.Action)
         case drawTool(DrawToolFeature.Action)
+        case editPanel(EditPanelFeature.Action)
         case menuTool(MenuToolFeature.Action)
         case symbolCatalog(SymbolCatalogFeature.Action)
     }
@@ -112,25 +114,33 @@ struct WorkSpaceFeature: Reducer {
                     state.colorToolState.secondaryColor = lastSymbol.secondaryColor
                     state.colorToolState.tertiaryColor = lastSymbol.tertiaryColor
                     
+                    state.editPanelState = .init(artSymbol: lastSymbol)
+                    
                 } else {
                     state.artCanvasState.editSymbolID = nil
+                    state.editPanelState = nil
                 }
                 return .none
                 
             case .drawTool:
                 return .none
                 
+            case .editPanel:
+                return .none
+                
             case .menuTool:
                 return .none
             case let .symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))):
                 let uuid = UUID()
-                state.artCanvasState.artSymbols.append(.init(
+                
+                let artSymbol: ArtSymbolFeature.State = .init(
                     id: uuid,
                     catalogItem: item,
                     width: 60,
                     height: 60,
                     position: CGPoint(x: 50, y: 50)
-                ))
+                )
+                state.artCanvasState.artSymbols.append(artSymbol)
                 state.artCanvasState.editSymbolID = uuid
                 state.drawToolState.isEditMode = true
                 
@@ -138,11 +148,16 @@ struct WorkSpaceFeature: Reducer {
                 state.colorToolState.primaryColor = item.primaryColor
                 state.colorToolState.secondaryColor = item.secondaryColor
                 state.colorToolState.tertiaryColor = item.tertiaryColor
+                
+                state.editPanelState = .init(artSymbol: artSymbol)
                 return .none
                 
             case .symbolCatalog:
                 return .none
             }
+        }
+        .ifLet(\.editPanelState, action: /Action.editPanel) {
+            EditPanelFeature()
         }
         Scope(state: \.artCanvasState, action: /Action.artCanvas) {
             ArtCanvasFeature()
@@ -206,6 +221,15 @@ struct WorkSpaceView: View {
                         )
                         .frame(width: geometry.size.width * 0.7,
                                height: geometry.size.width * 0.7)
+                        
+                        VStack {
+                            Spacer()
+                            
+                            IfLetStore(self.store.scope(state: \.editPanelState,
+                                                        action: WorkSpaceFeature.Action.editPanel)) {
+                                EditPanelView(store: $0)
+                            }
+                        }
                     }
                 }
                 
