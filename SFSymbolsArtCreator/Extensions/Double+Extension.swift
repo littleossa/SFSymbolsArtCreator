@@ -13,6 +13,9 @@ extension Double {
     /// - Returns: The resulting degrees after rotation. If it exceeds 360 degrees, it starts again from 0 degrees.
     func rotatingWithin360ByDegrees(_ degrees: Double) -> Double {
         let sumDegrees = self + degrees
+        if sumDegrees < 0 {
+            return 360 + sumDegrees
+        }
         return sumDegrees > 360 ? sumDegrees - 360 : sumDegrees
     }
 }
