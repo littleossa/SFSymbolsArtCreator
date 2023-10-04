@@ -114,11 +114,11 @@ struct SymbolCatalogFeature: Reducer {
                 return .none
                 
             case .keyboardClosed:
-                state.isKeyboardClosed = false
+                state.isKeyboardClosed = true
                 return .none
                 
             case .keyboardOpened:
-                state.isKeyboardClosed = true
+                state.isKeyboardClosed = false
                 return .none
             }
         }
@@ -151,10 +151,10 @@ struct SymbolCatalogView: View {
             .background(.heavyDarkGray)
             .onReceive(
                 NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                    viewStore.send(.keyboardClosed,animation: .smooth)
+                    viewStore.send(.keyboardOpened,animation: .smooth)
             }.onReceive(
                 NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
-                    viewStore.send(.keyboardOpened,animation: .smooth)
+                    viewStore.send(.keyboardClosed,animation: .smooth)
             }
         }
     }

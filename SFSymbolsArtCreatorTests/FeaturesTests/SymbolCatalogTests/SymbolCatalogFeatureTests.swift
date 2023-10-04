@@ -91,4 +91,14 @@ final class SymbolCatalogFeatureTests: XCTestCase {
             $0.catalogItemListState.tertiaryColor = .red
         }
     }
+    
+    func test_isKeyboardClosed() async {
+        await store.send(.keyboardOpened) {
+            $0.isKeyboardClosed = false
+        }
+        
+        await store.send(.keyboardClosed) {
+            $0.isKeyboardClosed = true
+        }
+    }
 }
