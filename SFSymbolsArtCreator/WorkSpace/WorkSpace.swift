@@ -53,6 +53,18 @@ struct WorkSpaceFeature: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case let .artCanvas(.delegate(.artSymbolValueChanged(artSymbolState))):
+                
+                guard let editPanel = state.editPanelState
+                else { return .none }
+                state.editPanelState = .init(
+                    artSymbol: artSymbolState,
+                    editFormType: editPanel.editFormType,
+                    isDisplayAllEditToolOptions: editPanel.isDisplayAllEditToolOptions
+                )
+                    
+                return .none
+                
             case .artCanvas:
                 return .none
                 

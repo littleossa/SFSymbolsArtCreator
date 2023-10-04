@@ -30,11 +30,19 @@ struct ArtCanvasFeature: Reducer {
     }
     enum Action: Equatable {
         case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)
+        case delegate(Delegate)
+        
+        enum Delegate: Equatable {
+            case artSymbolValueChanged(ArtSymbolFeature.State)
+        }
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case let .artSymbol(id: id, action: .binding(\.$position)):
+                return sendArtSymbolValueChanged(id: id, state: state)
+                
             case let .artSymbol(id: id, action: .symbolSizeScaled(value)):
                 
                 guard let symbolState = state.artSymbols[id: id]
@@ -64,14 +72,25 @@ struct ArtCanvasFeature: Reducer {
                 state.editingSymbol?.width = scaledWidth
                 state.editingSymbol?.height = scaledHeight
                 
-                return .none
+                return sendArtSymbolValueChanged(id: id, state: state)
                 
             case .artSymbol(id: _, action: _):
+                return .none
+            case .delegate:
                 return .none
             }
         }
         .forEach(\.artSymbols, action: /Action.artSymbol(id:action:)) {
             ArtSymbolFeature()
+        }
+    }
+    
+    private func sendArtSymbolValueChanged(id: UUID, state: ArtCanvasFeature.State) -> Effect<Action> {
+        guard let artSymbolState = state.artSymbols[id: id]
+        else { return .none }
+        
+        return .run { send in
+            await send(.delegate(.artSymbolValueChanged(artSymbolState)))
         }
     }
 }

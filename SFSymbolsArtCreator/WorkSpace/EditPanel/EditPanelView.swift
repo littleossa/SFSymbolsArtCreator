@@ -63,12 +63,20 @@ struct EditPanelFeature: Reducer {
                 }
             case .binding:
                 return .none
+                
             case .delegate:
                 return .none
+                
+            case let .editButtonTool(.delegate(.degreesRotated(degrees))):
+                state.editStepperTool.rotationDegrees = degrees
+                return .none
+                
             case .editButtonTool:
                 return .none
+                
             case .editStepperTool:
                 return .none
+                
             case .resizeButtonTapped:
                 state.isDisplayAllEditToolOptions.toggle()
                 return .none
