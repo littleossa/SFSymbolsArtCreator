@@ -199,7 +199,7 @@
 			children = (
 				975679D92AB9C2690057B0E2 /* SFSymbolsArtCreatorApp.swift */,
 				97671A7D2ACCB5DA00648FD4 /* Common */,
-				97671A542AC54A3600648FD4 /* WorkSpace */,
+				97671A8F2ACDD3E200648FD4 /* Views */,
 				975679DD2AB9C26B0057B0E2 /* Assets.xcassets */,
 				97567A082AB9C4BF0057B0E2 /* DataStore */,
 				97FCD5492ABE35F5002795F6 /* Models */,
@@ -479,6 +479,14 @@
 				97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */,
 			);
 			path = EditPanelTests;
+			sourceTree = "<group>";
+		};
+		97671A8F2ACDD3E200648FD4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97671A542AC54A3600648FD4 /* WorkSpace */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
