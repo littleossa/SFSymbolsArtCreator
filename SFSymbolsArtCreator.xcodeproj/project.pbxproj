@@ -29,7 +29,7 @@
 		97671A282AC3E16500648FD4 /* RenderingMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */; };
 		97671A2B2AC3E29C00648FD4 /* DrawToolFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */; };
 		97671A2F2AC4244700648FD4 /* MenuToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A2E2AC4244700648FD4 /* MenuToolBar.swift */; };
-		97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A332AC453EE00648FD4 /* ArtSymbol.swift */; };
+		97671A342AC453EE00648FD4 /* ArtSymbolFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A332AC453EE00648FD4 /* ArtSymbolFeature.swift */; };
 		97671A412AC45FB900648FD4 /* MovingDashFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */; };
 		97671A422AC45FB900648FD4 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A392AC45FB900648FD4 /* BoundingBox.swift */; };
 		97671A432AC45FB900648FD4 /* EditPointMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A3B2AC45FB900648FD4 /* EditPointMark.swift */; };
@@ -67,6 +67,9 @@
 		97671A8C2ACD96CB00648FD4 /* EditStepperToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */; };
 		97671A8E2ACDA4E800648FD4 /* EditPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */; };
 		97671A922ACE65FF00648FD4 /* ArtSymbolLayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */; };
+		97671A952ACF7B5800648FD4 /* ArtSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A942ACF7B5800648FD4 /* ArtSymbolImage.swift */; };
+		97671A972ACF7BAD00648FD4 /* ArtSymbolEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A962ACF7BAD00648FD4 /* ArtSymbolEditorView.swift */; };
+		97671A992ACF7C3A00648FD4 /* LayerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A982ACF7C3A00648FD4 /* LayerPanel.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -110,7 +113,7 @@
 		97671A272AC3E16500648FD4 /* RenderingMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingMenuButton.swift; sourceTree = "<group>"; };
 		97671A2A2AC3E29C00648FD4 /* DrawToolFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolFeatureTests.swift; sourceTree = "<group>"; };
 		97671A2E2AC4244700648FD4 /* MenuToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolBar.swift; sourceTree = "<group>"; };
-		97671A332AC453EE00648FD4 /* ArtSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbol.swift; sourceTree = "<group>"; };
+		97671A332AC453EE00648FD4 /* ArtSymbolFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolFeature.swift; sourceTree = "<group>"; };
 		97671A382AC45FB900648FD4 /* MovingDashFramedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingDashFramedRectangle.swift; sourceTree = "<group>"; };
 		97671A392AC45FB900648FD4 /* BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		97671A3B2AC45FB900648FD4 /* EditPointMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPointMark.swift; sourceTree = "<group>"; };
@@ -148,6 +151,9 @@
 		97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepperToolTests.swift; sourceTree = "<group>"; };
 		97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPanelTests.swift; sourceTree = "<group>"; };
 		97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolLayerCell.swift; sourceTree = "<group>"; };
+		97671A942ACF7B5800648FD4 /* ArtSymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolImage.swift; sourceTree = "<group>"; };
+		97671A962ACF7BAD00648FD4 /* ArtSymbolEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolEditorView.swift; sourceTree = "<group>"; };
+		97671A982ACF7C3A00648FD4 /* LayerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerPanel.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -386,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				97671A512AC4F64900648FD4 /* ArtCanvasView.swift */,
-				97671A332AC453EE00648FD4 /* ArtSymbol.swift */,
 				97671A372AC45FB900648FD4 /* BoundingBox */,
 			);
 			path = ArtCanvas;
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				97671A552AC54BE200648FD4 /* WorkSpace.swift */,
+				97671A932ACF7B2000648FD4 /* ArtSymbol */,
 				97671A902ACE65EA00648FD4 /* LayerPanel */,
 				97671A662ACAF0DE00648FD4 /* EditPanel */,
 				97671A532AC4FA8400648FD4 /* ArtCanvas */,
@@ -495,9 +501,20 @@
 		97671A902ACE65EA00648FD4 /* LayerPanel */ = {
 			isa = PBXGroup;
 			children = (
-				97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */,
+				97671A982ACF7C3A00648FD4 /* LayerPanel.swift */,
 			);
 			path = LayerPanel;
+			sourceTree = "<group>";
+		};
+		97671A932ACF7B2000648FD4 /* ArtSymbol */ = {
+			isa = PBXGroup;
+			children = (
+				97671A962ACF7BAD00648FD4 /* ArtSymbolEditorView.swift */,
+				97671A332AC453EE00648FD4 /* ArtSymbolFeature.swift */,
+				97671A942ACF7B5800648FD4 /* ArtSymbolImage.swift */,
+				97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */,
+			);
+			path = ArtSymbol;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -647,17 +664,20 @@
 				97671A7F2ACCB5EA00648FD4 /* AppConfig.swift in Sources */,
 				97567A172ABC3D410057B0E2 /* SearchBar.swift in Sources */,
 				97671A6B2ACB0A4800648FD4 /* VerticalSymbolLabelButton.swift in Sources */,
+				97671A972ACF7BAD00648FD4 /* ArtSymbolEditorView.swift in Sources */,
+				97671A952ACF7B5800648FD4 /* ArtSymbolImage.swift in Sources */,
 				97567A122AB9C6D80057B0E2 /* CatalogItemListView.swift in Sources */,
 				97567A152ABA4E1C0057B0E2 /* CatalogItemView.swift in Sources */,
 				97671A4A2AC4719900648FD4 /* EditFormType.swift in Sources */,
 				97671A7C2ACBC58B00648FD4 /* EditStepperTool.swift in Sources */,
-				97671A342AC453EE00648FD4 /* ArtSymbol.swift in Sources */,
+				97671A342AC453EE00648FD4 /* ArtSymbolFeature.swift in Sources */,
 				97671A5F2AC9603600648FD4 /* CatalogSymbolColorSettingView.swift in Sources */,
 				97671A852ACCD7BE00648FD4 /* UISegmentedControl+Extension.swift in Sources */,
 				97671A1F2AC385CB00648FD4 /* ColorPickRectangleButton.swift in Sources */,
 				97671A242AC3A54B00648FD4 /* DrawToolBar.swift in Sources */,
 				97671A482AC45FB900648FD4 /* EditPointFrame.swift in Sources */,
 				97671A632ACA3A7800648FD4 /* CatalogItem.swift in Sources */,
+				97671A992ACF7C3A00648FD4 /* LayerPanel.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
 				97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */,
