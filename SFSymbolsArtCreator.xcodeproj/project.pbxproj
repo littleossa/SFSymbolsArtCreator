@@ -66,6 +66,7 @@
 		97671A8A2ACD1FC700648FD4 /* EditButtonToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A892ACD1FC700648FD4 /* EditButtonToolTests.swift */; };
 		97671A8C2ACD96CB00648FD4 /* EditStepperToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */; };
 		97671A8E2ACDA4E800648FD4 /* EditPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */; };
+		97671A922ACE65FF00648FD4 /* ArtSymbolLayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -146,6 +147,7 @@
 		97671A892ACD1FC700648FD4 /* EditButtonToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonToolTests.swift; sourceTree = "<group>"; };
 		97671A8B2ACD96CB00648FD4 /* EditStepperToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepperToolTests.swift; sourceTree = "<group>"; };
 		97671A8D2ACDA4E800648FD4 /* EditPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPanelTests.swift; sourceTree = "<group>"; };
+		97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolLayerCell.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				97671A552AC54BE200648FD4 /* WorkSpace.swift */,
+				97671A902ACE65EA00648FD4 /* LayerPanel */,
 				97671A662ACAF0DE00648FD4 /* EditPanel */,
 				97671A532AC4FA8400648FD4 /* ArtCanvas */,
 				97671A1A2AC3359600648FD4 /* ColorToolBar */,
@@ -487,6 +490,14 @@
 				97671A542AC54A3600648FD4 /* WorkSpace */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		97671A902ACE65EA00648FD4 /* LayerPanel */ = {
+			isa = PBXGroup;
+			children = (
+				97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */,
+			);
+			path = LayerPanel;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -622,6 +633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97671A832ACCB76500648FD4 /* EditPanelView.swift in Sources */,
+				97671A922ACE65FF00648FD4 /* ArtSymbolLayerCell.swift in Sources */,
 				97671A582AC5C15800648FD4 /* ColorItem.swift in Sources */,
 				97FCD5522AC071F5002795F6 /* CatalogBackgroundColorSettingView.swift in Sources */,
 				97671A6D2ACB87B500648FD4 /* Double+Extension.swift in Sources */,
