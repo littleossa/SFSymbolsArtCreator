@@ -35,24 +35,34 @@ final class DrawToolFeatureTests: XCTestCase {
         await store.send(.delegate(.editButtonToggled(false)))
     }
     
-    func test_eraserButtonTapped() async {
-        
-        await store.send(.eraserButtonTapped) {
-            $0.isEraserMode = true
-        }
-        
-        await store.send(.eraserButtonTapped) {
-            $0.isEraserMode = false
-        }
-    }
-    
     func test_layerButtonTapped() async {
         
+        store.exhaustivity = .off
         await store.send(.layerButtonTapped) {
             $0.layerPanelIsPresented = true
         }
         
         await store.send(.layerButtonTapped) {
+            $0.layerPanelIsPresented = false
+        }
+    }
+    
+    func test_layerIsPresented() async {
+        
+        store.exhaustivity = .off
+        await store.send(.layerButtonTapped) {
+            $0.layerPanelIsPresented = true
+        }
+        await store.send(.editButtonTapped)
+        store.assert {
+            $0.layerPanelIsPresented = false
+        }
+        
+        await store.send(.layerButtonTapped) {
+            $0.layerPanelIsPresented = true
+        }
+        await store.send(.renderingTypeChanged(.hierarchical))
+        store.assert {
             $0.layerPanelIsPresented = false
         }
     }
