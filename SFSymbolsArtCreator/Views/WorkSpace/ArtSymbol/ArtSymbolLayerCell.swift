@@ -49,7 +49,6 @@ struct ArtSymbolLayerCell: View {
             RoundedRectangle(cornerRadius: 8)
                 .fill(.heavyDarkGray)
         }
-        .frame(width: 200, height: 96)
     }
 }
 
@@ -70,6 +69,7 @@ struct ArtSymbolLayerCell: View {
             rotationDegrees: 45,
             flipType: .horizontal), hideButtonAction: { _ in }
         )
+        .frame(width: 200, height: 96)
         
         ArtSymbolLayerCell(artSymbol: .init(
             id: UUID(),
@@ -86,5 +86,6 @@ struct ArtSymbolLayerCell: View {
             flipType: .horizontal,
             isHidden: true), hideButtonAction: { _ in }
         )
+        .frame(width: 200, height: 96)
     }
 }
