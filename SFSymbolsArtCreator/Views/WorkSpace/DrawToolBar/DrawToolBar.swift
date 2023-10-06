@@ -9,20 +9,19 @@ import SwiftUI
 
 struct DrawToolFeature: Reducer {
     struct State: Equatable {
-        var isEraserMode = false
         var isEditMode = false
         var layerPanelIsPresented = false
         var renderingType: RenderingType
     }
     enum Action: Equatable {
         case editButtonTapped
-        case eraserButtonTapped
         case delegate(Delegate)
         case layerButtonTapped
         case renderingTypeChanged(RenderingType)
         
         enum Delegate: Equatable {
             case editButtonToggled(Bool)
+            case layerButtonToggled(Bool)
         }
     }
     
@@ -30,23 +29,23 @@ struct DrawToolFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .editButtonTapped:
+                state.layerPanelIsPresented = false
                 state.isEditMode.toggle()
                 return .run { [isEditMode = state.isEditMode] send in
                     await send(.delegate(.editButtonToggled(isEditMode)))
                 }
-                
-            case .eraserButtonTapped:
-                state.isEraserMode.toggle()
-                return .none
                 
             case .delegate:
                 return .none
                 
             case .layerButtonTapped:
                 state.layerPanelIsPresented.toggle()
-                return .none
+                return .run { [isPresented = state.layerPanelIsPresented] send in
+                    await send(.delegate(.layerButtonToggled(isPresented)))
+                }
                 
             case let .renderingTypeChanged(renderingType):
+                state.layerPanelIsPresented = false
                 state.renderingType = renderingType
                 return .none
             }
@@ -73,17 +72,6 @@ struct DrawToolBar: View {
                 }
                 .frame(width: 44, height: 44)
                 .foregroundStyle(viewStore.isEditMode ? Color.accentColor : .paleGray)
-                
-                Button {
-                    viewStore.send(.eraserButtonTapped)
-                } label: {
-                    // FIXME: SFUserFriendlySymbols is not supported for eraser
-                    Image(systemName: "eraser.fill")
-                        .resizable()
-                        .scaledToFit()
-                }
-                .frame(width: 44, height: 44)
-                .foregroundStyle(viewStore.isEraserMode ? Color.accentColor : .paleGray)
                 
                 Button {
                     viewStore.send(.layerButtonTapped)
