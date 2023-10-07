@@ -7,41 +7,29 @@
 import SwiftUI
 
 struct ArtSymbolImage: View {
-    let state: ArtSymbolFeature.State
+    let appearance: ArtSymbolAppearance
     
     var body: some View {
         
-        Image(systemName: state.name)
+        Image(systemName: appearance.name)
             .resizable()
-            .fontWeight(state.weight)
+            .fontWeight(appearance.weight)
             .rotation3DEffect(.degrees(180),
-                              axis: (x: state.flipType.value.rotationEffectAxis.x,
-                                     y: state.flipType.value.rotationEffectAxis.y,
-                                     z: state.flipType.value.rotationEffectAxis.z),
+                              axis: (x: appearance.flipType.value.rotationEffectAxis.x,
+                                     y: appearance.flipType.value.rotationEffectAxis.y,
+                                     z: appearance.flipType.value.rotationEffectAxis.z),
                               anchorZ: 1)
-            .rotation3DEffect(.degrees(state.rotationDegrees),
+            .rotation3DEffect(.degrees(appearance.rotationDegrees),
                               axis: (x: 0, y: 0, z: 1), anchorZ: 1)
-            .symbolRenderingMode(state.renderingType.renderingMode)
-            .foregroundStyle(state.primaryColor,
-                             state.secondaryColor,
-                             state.tertiaryColor)
-            .frame(width: state.width, height: state.height)
-            .position(state.position)
+            .symbolRenderingMode(appearance.renderingType.renderingMode)
+            .foregroundStyle(appearance.primaryColor,
+                             appearance.secondaryColor,
+                             appearance.tertiaryColor)
+            .frame(width: appearance.width, height: appearance.height)
+            .position(appearance.position)
     }
 }
 
 #Preview {
-    ArtSymbolImage(state: .init(
-        id: UUID(),
-        symbolName: "checkmark.icloud",
-        width: 44,
-        height: 44,
-        weight: .regular,
-        position: CGPoint(x: 50, y: 50),
-        renderingType: .monochrome,
-        primaryColor: .black,
-        secondaryColor: .clear,
-        tertiaryColor: .clear)
-    )
-    .previewDisplayName("ArtSymbolImage")
+    ArtSymbolImage(appearance: .preview())
 }

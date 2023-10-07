@@ -14,22 +14,22 @@ struct EditPanelFeature: Reducer {
         var editStepperTool: EditStepperToolFeature.State
         var isDisplayAllEditToolOptions: Bool
         
-        init(artSymbol: ArtSymbolFeature.State,
+        init(appearance: ArtSymbolAppearance,
              editFormType: EditFormType = .freeForm,
              isDisplayAllEditToolOptions: Bool = true) {
             self.editFormType = editFormType
             self.editButtonTool = .init(
-                fontWight: artSymbol.weight,
-                isFlippedHorizontal: artSymbol.flipType.value.isFlippedHorizontal,
-                isFlippedVertical: artSymbol.flipType.value.isFlippedVertical,
-                rotationDegrees: artSymbol.rotationDegrees
+                fontWight: appearance.weight,
+                isFlippedHorizontal: appearance.flipType.value.isFlippedHorizontal,
+                isFlippedVertical: appearance.flipType.value.isFlippedVertical,
+                rotationDegrees: appearance.rotationDegrees
             )
             self.editStepperTool = .init(
-                width: artSymbol.width,
-                height: artSymbol.height,
-                positionX: artSymbol.position.x,
-                positionY: artSymbol.position.y,
-                rotationDegrees: artSymbol.rotationDegrees
+                width: appearance.width,
+                height: appearance.height,
+                positionX: appearance.position.x,
+                positionY: appearance.position.y,
+                rotationDegrees: appearance.rotationDegrees
             )
             self.isDisplayAllEditToolOptions = isDisplayAllEditToolOptions
         }
@@ -151,21 +151,11 @@ struct EditPanelView: View {
         .overlay {
             EditPanelView(store: .init(
                 initialState: EditPanelFeature.State(
-                    artSymbol: .init(
-                        id: UUID(),
-                        name: "xmark",
-                        renderingType: .monochrome,
-                        primaryColor: .red,
-                        secondaryColor: .clear,
-                        tertiaryColor: .clear,
-                        weight: .regular,
-                        width: 100,
-                        height: 100,
-                        position: CGPoint(x: 100, y: 100)
-                    ),
-                    editFormType: .freeForm)) {
-                        EditPanelFeature()
-                    })
+                    appearance: .preview(),
+                    editFormType: .freeForm)
+            ) {
+                EditPanelFeature()
+            })
         }
         .onAppear {
             UISegmentedControl.setAppearance()

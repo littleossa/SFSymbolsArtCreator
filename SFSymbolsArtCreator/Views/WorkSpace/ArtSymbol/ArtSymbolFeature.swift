@@ -10,62 +10,88 @@ import SwiftUI
 struct ArtSymbolFeature: Reducer {
     struct State: Equatable, Identifiable {
         var id: UUID
-        let name: String
-        var renderingType: RenderingType
-        var primaryColor: Color
-        var secondaryColor: Color
-        var tertiaryColor: Color
-        var weight: Font.Weight
-        var width: CGFloat
-        var height: CGFloat
-        @BindingState var position: CGPoint
-        var flipType: FlipType = .none
-        var rotationDegrees: Double = 0
-        var isHidden = false
+        var appearance: ArtSymbolAppearance
+        var editor: ArtSymbolEditorFeature.State
+        var layer: ArtSymbolLayerFeature.State
+        
+        init(id: UUID, appearance: ArtSymbolAppearance) {
+            self.id = id
+            self.appearance = appearance
+            self.editor = .init(appearance: appearance)
+            self.layer = .init(appearance: appearance)
+        }
     }
     
-    enum Action: Equatable, BindableAction {
-        case binding(BindingAction<State>)
-        case symbolSizeScaled(EditPointScaling.Value)
+    enum Action: Equatable {
+        case editor(ArtSymbolEditorFeature.Action)
+        case layer(ArtSymbolLayerFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
-        BindingReducer()
+        Reduce { state, action in
+            switch action {
+            case .editor:
+                return .none
+            case .layer:
+                return .none
+            }
+        }
+        Scope(state: \.editor, action: /Action.editor) {
+            ArtSymbolEditorFeature()
+        }
+        Scope(state: \.layer, action: /Action.layer) {
+            ArtSymbolLayerFeature()
+        }
     }
 }
 
 // MARK: - State Initializer
-extension ArtSymbolFeature.State {
-    init(id: UUID,
-         symbolName: String,
-         width: CGFloat,
-         height: CGFloat,
-         weight: Font.Weight,
-         position: CGPoint,
-         renderingType: RenderingType,
-         primaryColor: Color,
-         secondaryColor: Color,
-         tertiaryColor: Color,
-         rotationDegrees: Double = 0,
-         flipType: FlipType = .none,
-         isHidden: Bool = false) {
-        self.flipType = flipType
-        self.height = height
-        self.id = id
-        self.isHidden = isHidden
-        self.position = position
-        self.name = symbolName
-        self.primaryColor = primaryColor
-        self.renderingType = renderingType
-        self.rotationDegrees = rotationDegrees
-        self.secondaryColor = secondaryColor
-        self.tertiaryColor = tertiaryColor
-        self.weight = weight
-        self.width = width
+
+struct ArtSymbolAppearance: Equatable {
+    let name: String
+    var renderingType: RenderingType
+    var primaryColor: Color
+    var secondaryColor: Color
+    var tertiaryColor: Color
+    var weight: Font.Weight
+    var width: CGFloat
+    var height: CGFloat
+    var position: CGPoint
+    var flipType: FlipType = .none
+    var rotationDegrees: Double = 0
+    var isHidden = false
+}
+
+extension ArtSymbolAppearance {
+    static func preview(name: String = "checkmark.icloud",
+                        renderingType: RenderingType = .monochrome,
+                        primaryColor: Color = .black,
+                        secondaryColor: Color = .clear,
+                        tertiaryColor: Color = .clear,
+                        weight: Font.Weight = .regular,
+                        width: CGFloat = 44,
+                        height: CGFloat = 44,
+                        position: CGPoint = CGPoint(x: 50, y: 50),
+                        flipType: FlipType = .none,
+                        rotationDegrees: Double = 0) -> ArtSymbolAppearance {
+        return .init(name: name,
+                     renderingType: renderingType,
+                     primaryColor: primaryColor,
+                     secondaryColor: secondaryColor,
+                     tertiaryColor: tertiaryColor,
+                     weight: weight,
+                     width: width,
+                     height: height,
+                     position: position,
+                     flipType: flipType,
+                     rotationDegrees: rotationDegrees)
     }
+}
+
+// MARK: - Initializer
+extension ArtSymbolAppearance {
     
-    init(id: UUID,
-         catalogItem: CatalogItem,
+    init(catalogItem: CatalogItem,
          width: CGFloat,
          height: CGFloat,
          position: CGPoint,
@@ -74,7 +100,6 @@ extension ArtSymbolFeature.State {
          isHidden: Bool = false) {
         self.flipType = flipType
         self.height = height
-        self.id = id
         self.isHidden = isHidden
         self.position = position
         self.name = catalogItem.symbolName

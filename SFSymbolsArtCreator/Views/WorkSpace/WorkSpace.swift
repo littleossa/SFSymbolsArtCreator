@@ -53,12 +53,12 @@ struct WorkSpaceFeature: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .artCanvas(.delegate(.artSymbolValueChanged(artSymbolState))):
+            case let .artCanvas(.delegate(.editingAppearanceChanged(appearance))):
                 
                 guard let editPanel = state.editPanelState
                 else { return .none }
                 state.editPanelState = .init(
-                    artSymbol: artSymbolState,
+                    appearance: appearance,
                     editFormType: editPanel.editFormType,
                     isDisplayAllEditToolOptions: editPanel.isDisplayAllEditToolOptions
                 )
@@ -79,15 +79,15 @@ struct WorkSpaceFeature: Reducer {
                 return .none
                 
             case let .colorTool(.delegate(.primaryColorChanged(color))):
-                state.artCanvasState.editingSymbol?.primaryColor = color
+                state.artCanvasState.editingSymbolAppearance?.primaryColor = color
                 return .none
                 
             case let .colorTool(.delegate(.secondaryColorChanged(color))):
-                state.artCanvasState.editingSymbol?.secondaryColor = color
+                state.artCanvasState.editingSymbolAppearance?.secondaryColor = color
                 return .none
                 
             case let .colorTool(.delegate(.tertiaryColorChanged(color))):
-                state.artCanvasState.editingSymbol?.tertiaryColor = color
+                state.artCanvasState.editingSymbolAppearance?.tertiaryColor = color
                 return .none
                 
             case .colorTool:
@@ -95,21 +95,21 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .drawTool(.renderingTypeChanged(type)):
                 state.colorToolState.renderingType = type
-                state.artCanvasState.editingSymbol?.renderingType = type
+                state.artCanvasState.editingSymbolAppearance?.renderingType = type
                 
                 switch type {
                     
                 case .hierarchical, .monochrome, .multiColor:
                     state.colorToolState.secondaryColor = .clear
                     state.colorToolState.tertiaryColor = .clear
-                    state.artCanvasState.editingSymbol?.secondaryColor = .clear
-                    state.artCanvasState.editingSymbol?.tertiaryColor = .clear
+                    state.artCanvasState.editingSymbolAppearance?.secondaryColor = .clear
+                    state.artCanvasState.editingSymbolAppearance?.tertiaryColor = .clear
                
                 case .palette:
                     state.colorToolState.secondaryColor = .accentColor
                     state.colorToolState.tertiaryColor = .white
-                    state.artCanvasState.editingSymbol?.secondaryColor = .accentColor
-                    state.artCanvasState.editingSymbol?.tertiaryColor = .white
+                    state.artCanvasState.editingSymbolAppearance?.secondaryColor = .accentColor
+                    state.artCanvasState.editingSymbolAppearance?.tertiaryColor = .white
                 }
                 
                 return .none
@@ -121,13 +121,15 @@ struct WorkSpaceFeature: Reducer {
                     
                     state.artCanvasState.editSymbolID = lastSymbol.id
                     
-                    state.drawToolState.renderingType = lastSymbol.renderingType
-                    state.colorToolState.primaryColor = lastSymbol.primaryColor
-                    state.colorToolState.secondaryColor = lastSymbol.secondaryColor
-                    state.colorToolState.tertiaryColor = lastSymbol.tertiaryColor
+                    let appearance = lastSymbol.appearance
+                    
+                    state.drawToolState.renderingType = appearance.renderingType
+                    state.colorToolState.primaryColor = appearance.primaryColor
+                    state.colorToolState.secondaryColor = appearance.secondaryColor
+                    state.colorToolState.tertiaryColor = appearance.tertiaryColor
                     
                     let editFormType = state.artCanvasState.editFormType
-                    state.editPanelState = .init(artSymbol: lastSymbol,
+                    state.editPanelState = .init(appearance: appearance,
                                                  editFormType: editFormType)
                     
                 } else {
@@ -144,31 +146,31 @@ struct WorkSpaceFeature: Reducer {
                 return .none
                 
             case let .editPanel(.editButtonTool(.delegate(.degreesRotated(degrees)))):
-                state.artCanvasState.editingSymbol?.rotationDegrees = degrees
+                state.artCanvasState.editingSymbolAppearance?.rotationDegrees = degrees
                 return .none
                 
             case let .editPanel(.editButtonTool(.delegate(.flipTypeChanged(flipType)))):
-                state.artCanvasState.editingSymbol?.flipType = flipType
+                state.artCanvasState.editingSymbolAppearance?.flipType = flipType
                 return .none
                 
             case let .editPanel(.editButtonTool(.delegate(.fontWeightChanged(weight)))):
-                state.artCanvasState.editingSymbol?.weight = weight
+                state.artCanvasState.editingSymbolAppearance?.weight = weight
                 return .none
                 
             case let .editPanel(.editStepperTool(.delegate(.degreesValueChanged(degrees)))):
-                state.artCanvasState.editingSymbol?.rotationDegrees = degrees
+                state.artCanvasState.editingSymbolAppearance?.rotationDegrees = degrees
                 return .none
                 
             case let .editPanel(.editStepperTool(.delegate(.heightValueChanged(height)))):
-                state.artCanvasState.editingSymbol?.height = height
+                state.artCanvasState.editingSymbolAppearance?.height = height
                 return .none
                 
             case let .editPanel(.editStepperTool(.delegate(.positionValueChanged(position)))):
-                state.artCanvasState.editingSymbol?.position = position
+                state.artCanvasState.editingSymbolAppearance?.position = position
                 return .none
                 
             case let .editPanel(.editStepperTool(.delegate(.widthValueChanged(width)))):
-                state.artCanvasState.editingSymbol?.width = width
+                state.artCanvasState.editingSymbolAppearance?.width = width
                 return .none
                 
             case .editPanel:
@@ -181,10 +183,12 @@ struct WorkSpaceFeature: Reducer {
                 
                 let artSymbol: ArtSymbolFeature.State = .init(
                     id: uuid,
-                    catalogItem: item,
-                    width: 60,
-                    height: 60,
-                    position: CGPoint(x: 50, y: 50)
+                    appearance: .init(
+                        catalogItem: item,
+                        width: 60,
+                        height: 60,
+                        position: CGPoint(x: 50, y: 50)
+                    )
                 )
                 state.artCanvasState.artSymbols.append(artSymbol)
                 state.artCanvasState.editSymbolID = uuid
@@ -196,7 +200,7 @@ struct WorkSpaceFeature: Reducer {
                 state.colorToolState.tertiaryColor = item.tertiaryColor
                 
                 let editFormType = state.artCanvasState.editFormType
-                state.editPanelState = .init(artSymbol: artSymbol,
+                state.editPanelState = .init(appearance: artSymbol.appearance,
                                              editFormType: editFormType)
                 return .none
                 
