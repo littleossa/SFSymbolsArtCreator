@@ -52,29 +52,13 @@ struct ArtCanvasFeature: Reducer {
                 guard let appearance = state.editingSymbolAppearance
                 else { return .none }
                 
-                let scaledWidth: CGFloat
-                let scaledHeight: CGFloat
-                
-                let baseWidth = appearance.width
-                let baseHeight = appearance.height
-                
-                switch state.editFormType {
-                case .freeForm:
-                    guard baseWidth + value.scaleSize.width > AppConfig.minScalingWidth,
-                          baseHeight + value.scaleSize.height > AppConfig.minScalingHeight
-                    else { return .none }
-                    
-                    scaledWidth = baseWidth + value.scaleSize.width
-                    scaledHeight = baseHeight + value.scaleSize.height
-                    
-                case .uniform:
-                    guard baseWidth + value.scaleValue > AppConfig.minScalingWidth,
-                          baseHeight + value.scaleValue > AppConfig.minScalingHeight
-                    else { return .none }
-                    
-                    scaledWidth = baseWidth + value.scaleValue
-                    scaledHeight = baseHeight + value.scaleValue
-                }
+                let scaledWidth = state.editFormType.scaledWidth(by: value,
+                                                                 beforeWidth: appearance.width)
+                let scaledHeight = state.editFormType.scaledWidth(by: value,
+                                                                  beforeWidth: appearance.height)
+                guard let scaledWidth,
+                      let scaledHeight
+                else { return .none }
                 
                 state.editingSymbolAppearance?.width = scaledWidth
                 state.editingSymbolAppearance?.height = scaledHeight
