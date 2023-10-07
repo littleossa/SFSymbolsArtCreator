@@ -60,7 +60,7 @@ final class WorkSpaceFeatureTests: XCTestCase {
         await store.send(.colorTool(.delegate(.primaryColorChanged(.yellow))))
         store.assert {
             $0.colorToolState.primaryColor = .yellow
-            $0.artCanvasState.editingSymbol?.primaryColor = .yellow
+            $0.artCanvasState.editingSymbolAppearance?.primaryColor = .yellow
         }
     }
     
@@ -82,7 +82,7 @@ final class WorkSpaceFeatureTests: XCTestCase {
         await store.send(.colorTool(.delegate(.secondaryColorChanged(.red))))
         store.assert {
             $0.colorToolState.secondaryColor = .red
-            $0.artCanvasState.editingSymbol?.secondaryColor = .red
+            $0.artCanvasState.editingSymbolAppearance?.secondaryColor = .red
         }
     }
     
@@ -104,7 +104,7 @@ final class WorkSpaceFeatureTests: XCTestCase {
         await store.send(.colorTool(.delegate(.tertiaryColorChanged(.green))))
         store.assert {
             $0.colorToolState.tertiaryColor = .green
-            $0.artCanvasState.editingSymbol?.tertiaryColor = .green
+            $0.artCanvasState.editingSymbolAppearance?.tertiaryColor = .green
         }
     }
     
@@ -123,8 +123,8 @@ final class WorkSpaceFeatureTests: XCTestCase {
         store.assert {
             $0.drawToolState.renderingType = .palette
             $0.colorToolState.renderingType = .palette
-            $0.artCanvasState.editingSymbol?.secondaryColor = .accentColor
-            $0.artCanvasState.editingSymbol?.tertiaryColor = .white
+            $0.artCanvasState.editingSymbolAppearance?.secondaryColor = .accentColor
+            $0.artCanvasState.editingSymbolAppearance?.tertiaryColor = .white
         }
         XCTAssertFalse(store.state.colorToolState.isOnlyPrimaryColorEnabled)
         
@@ -132,8 +132,8 @@ final class WorkSpaceFeatureTests: XCTestCase {
         store.assert {
             $0.drawToolState.renderingType = .hierarchical
             $0.colorToolState.renderingType = .hierarchical
-            $0.artCanvasState.editingSymbol?.secondaryColor = .clear
-            $0.artCanvasState.editingSymbol?.tertiaryColor = .clear
+            $0.artCanvasState.editingSymbolAppearance?.secondaryColor = .clear
+            $0.artCanvasState.editingSymbolAppearance?.tertiaryColor = .clear
         }
         XCTAssertTrue(store.state.colorToolState.isOnlyPrimaryColorEnabled)
         

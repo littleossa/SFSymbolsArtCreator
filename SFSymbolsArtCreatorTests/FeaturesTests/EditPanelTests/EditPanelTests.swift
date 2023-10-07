@@ -18,18 +18,18 @@ final class EditPanelTests: XCTestCase {
     override func setUpWithError() throws {
         store = TestStore(
             initialState: EditPanelFeature.State(
-                artSymbol: .init(id: UUID(),
-                                 name: "xmark",
-                                 renderingType: .monochrome,
-                                 primaryColor: .black,
-                                 secondaryColor: .accentColor,
-                                 tertiaryColor: .white,
-                                 weight: .regular,
-                                 width: 100,
-                                 height: 100,
-                                 position: CGPoint(x: 10, y: 10),
-                                 rotationDegrees: 0
-                                )
+                appearance: .init(
+                    name: "xmark",
+                    renderingType: .monochrome,
+                    primaryColor: .black,
+                    secondaryColor: .accentColor,
+                    tertiaryColor: .white,
+                    weight: .regular,
+                    width: 100,
+                    height: 100,
+                    position: CGPoint(x: 10, y: 10),
+                    rotationDegrees: 0
+                )
             )) {
                 EditPanelFeature()
             }
