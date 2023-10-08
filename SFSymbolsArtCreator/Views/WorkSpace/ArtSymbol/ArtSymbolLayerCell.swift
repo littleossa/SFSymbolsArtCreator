@@ -12,13 +12,23 @@ struct ArtSymbolLayerFeature: Reducer {
         var appearance: ArtSymbolAppearance
     }
     enum Action: Equatable {
+        case delegate(Delegate)
         case hideButtonTapped
+        
+        enum Delegate: Equatable {
+            case hideButtonToggled(Bool)
+        }
     }
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .hideButtonTapped:
+            case .delegate:
                 return .none
+            case .hideButtonTapped:
+                state.appearance.isHidden.toggle()
+                return .run { [isHidden = state.appearance.isHidden] send in
+                    await send(.delegate(.hideButtonToggled(isHidden)))
+                }
             }
         }
     }
