@@ -15,7 +15,7 @@ enum EditFormType: String, CaseIterable, Identifiable {
         return self.rawValue
     }
     
-    func scaledHeight(by scalingValue: EditPointScaling.Value, beforeHeight: CGFloat) -> CGFloat? {
+    func scaledHeight(by scalingValue: EditPointScaling.Value, beforeHeight: CGFloat) -> CGFloat {
         
         let scaledHeight: CGFloat
         
@@ -26,13 +26,14 @@ enum EditFormType: String, CaseIterable, Identifiable {
             scaledHeight = beforeHeight + scalingValue.scaleValue
         }
         
-        guard scaledHeight > AppConfig.minScalingHeight
-        else { return nil }
-        
-        return scaledHeight
+        if scaledHeight > AppConfig.minScalingHeight {
+            return scaledHeight
+        } else {
+            return beforeHeight
+        }
     }
     
-    func scaledWidth(by scalingValue: EditPointScaling.Value, beforeWidth: CGFloat) -> CGFloat? {
+    func scaledWidth(by scalingValue: EditPointScaling.Value, beforeWidth: CGFloat) -> CGFloat {
         
         let scaledWidth: CGFloat
         
@@ -43,9 +44,10 @@ enum EditFormType: String, CaseIterable, Identifiable {
             scaledWidth = beforeWidth + scalingValue.scaleValue
         }
         
-        guard scaledWidth > AppConfig.minScalingWidth
-        else { return nil }
-        
-        return scaledWidth
+        if scaledWidth > AppConfig.minScalingWidth {
+            return scaledWidth
+        } else {
+            return beforeWidth
+        }
     }
 }
