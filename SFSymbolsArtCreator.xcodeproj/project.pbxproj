@@ -72,6 +72,7 @@
 		97671A992ACF7C3A00648FD4 /* LayerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97671A982ACF7C3A00648FD4 /* LayerPanel.swift */; };
 		979E22CF2AD20560003559D2 /* EditFormTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22CE2AD20560003559D2 /* EditFormTypeTests.swift */; };
 		979E22D12AD206BF003559D2 /* EditPointScalingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22D02AD206BF003559D2 /* EditPointScalingTests.swift */; };
+		979E22D32AD2820F003559D2 /* ArtSymbolAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -158,6 +159,7 @@
 		97671A982ACF7C3A00648FD4 /* LayerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerPanel.swift; sourceTree = "<group>"; };
 		979E22CE2AD20560003559D2 /* EditFormTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormTypeTests.swift; sourceTree = "<group>"; };
 		979E22D02AD206BF003559D2 /* EditPointScalingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointScalingTests.swift; sourceTree = "<group>"; };
+		979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolAppearance.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				97671A332AC453EE00648FD4 /* ArtSymbolFeature.swift */,
 				97671A942ACF7B5800648FD4 /* ArtSymbolImage.swift */,
 				97671A912ACE65FF00648FD4 /* ArtSymbolLayerCell.swift */,
+				979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */,
 			);
 			path = ArtSymbol;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				97671A632ACA3A7800648FD4 /* CatalogItem.swift in Sources */,
 				97671A992ACF7C3A00648FD4 /* LayerPanel.swift in Sources */,
 				975679E32AB9C26B0057B0E2 /* Persistence.swift in Sources */,
+				979E22D32AD2820F003559D2 /* ArtSymbolAppearance.swift in Sources */,
 				975679E62AB9C26B0057B0E2 /* SFSymbolsArtCreator.xcdatamodeld in Sources */,
 				97671A562AC54BE200648FD4 /* WorkSpace.swift in Sources */,
 				97671A452AC45FB900648FD4 /* EditPoint.swift in Sources */,
