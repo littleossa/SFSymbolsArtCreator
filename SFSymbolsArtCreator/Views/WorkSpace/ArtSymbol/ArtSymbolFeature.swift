@@ -10,7 +10,12 @@ import SwiftUI
 struct ArtSymbolFeature: Reducer {
     struct State: Equatable, Identifiable {
         var id: UUID
-        var appearance: ArtSymbolAppearance
+        var appearance: ArtSymbolAppearance {
+            didSet {
+                editor.appearance = appearance
+                layer.appearance = appearance
+            }
+        }
         var editor: ArtSymbolEditorFeature.State
         var layer: ArtSymbolLayerFeature.State
         
@@ -44,3 +49,4 @@ struct ArtSymbolFeature: Reducer {
         }
     }
 }
+

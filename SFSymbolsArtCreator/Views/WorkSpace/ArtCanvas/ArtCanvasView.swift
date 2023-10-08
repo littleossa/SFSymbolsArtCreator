@@ -25,8 +25,6 @@ struct ArtCanvasFeature: Reducer {
                 if let editSymbolID,
                    let appearance = newValue {
                     artSymbols[id: editSymbolID]?.appearance = appearance
-                    artSymbols[id: editSymbolID]?.editor.appearance = appearance
-                    artSymbols[id: editSymbolID]?.layer.appearance = appearance
                 }
             }
         }
@@ -48,11 +46,11 @@ struct ArtCanvasFeature: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .artSymbol(id: _, action: .editor(.symbolPositionChanged(position))):
-                state.editingSymbolAppearance?.position = position
+            case let .artSymbol(id, action: .editor(.symbolPositionChanged(position))):
+                state.artSymbols[id: id]?.appearance.position = position
                 return sendEditingAppearanceChanged(state.editingSymbolAppearance)
                 
-            case let .artSymbol(id: _, action: .editor(.symbolSizeScaled(value))):
+            case let .artSymbol(id, action: .editor(.symbolSizeScaled(value))):
                 
                 guard let appearance = state.editingSymbolAppearance
                 else { return .none }
@@ -61,10 +59,15 @@ struct ArtCanvasFeature: Reducer {
                                                                  beforeWidth: appearance.width)
                 let scaledHeight = state.editFormType.scalingHeight(by: value,
                                                                   beforeHeight: appearance.height)
-                state.editingSymbolAppearance?.width = scaledWidth
-                state.editingSymbolAppearance?.height = scaledHeight
+                state.artSymbols[id: id]?.appearance.width = scaledWidth
+                state.artSymbols[id: id]?.appearance.height = scaledHeight
                 
                 return sendEditingAppearanceChanged(state.editingSymbolAppearance)
+                
+            case let .artSymbol(id, action: .layer(.delegate(.hideButtonToggled(isHidden)))):
+                
+                state.artSymbols[id: id]?.appearance.isHidden = isHidden
+                return .none
                 
             case .artSymbol(id: _, action: _):
                 return .none
