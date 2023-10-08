@@ -14,27 +14,40 @@ struct LayerPanelFeature: Reducer {
     
     enum Action: Equatable {
         case artSymbolsOrderMoved(IndexSet, Int)
-        case deleteButtonTapped(IndexSet)
+        case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)
+        case deleteButtonTapped(id: ArtSymbolFeature.State.ID)
+        case delegate(Delegate)
         case duplicateButtonTapped(id: ArtSymbolFeature.State.ID)
-        case hideButtonTapped(id: ArtSymbolFeature.State.ID)
         case overlayTapped
+        
+        enum Delegate: Equatable {
+            case hideButtonTapped(id: ArtSymbolFeature.State.ID)
+        }
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-                
             case .artSymbolsOrderMoved:
+                return .none
+            case let .artSymbol(id, action: .layer(.hideButtonTapped)):
+                return .run { send in
+                    await send(.delegate(.hideButtonTapped(id: id)))
+                }
+            case .artSymbol:
                 return .none
             case .deleteButtonTapped:
                 return .none
-            case .duplicateButtonTapped:
+            case .delegate:
                 return .none
-            case .hideButtonTapped:
+            case .duplicateButtonTapped:
                 return .none
             case .overlayTapped:
                 return .none
             }
+        }
+        .forEach(\.artSymbols, action: /Action.artSymbol(id:action:)) {
+            ArtSymbolFeature()
         }
     }
 }
@@ -56,22 +69,36 @@ struct LayerPanelView: View {
                     }
                 
                 List {
-                    ForEach(viewStore.artSymbols, id: \.self) {
-                        
-                        ArtSymbolLayerCell(artSymbol: $0) { id in
-                            viewStore.send(.hideButtonTapped(id: id))
+                    ForEachStore(store.scope(
+                        state: \.artSymbols,
+                        action: LayerPanelFeature.Action.artSymbol)
+                    ) { store in
+                        ArtSymbolLayerCell(
+                            store: store.scope(
+                                state: \.layer,
+                                action: ArtSymbolFeature.Action.layer
+                            )
+                        )
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            
+                            HStack {
+                                Button {
+                                    print()
+                                } label: {
+                                    Text("Delete")
+                                }
+                                .tint(.red)
+                                
+                                Button {
+                                    print()
+                                } label: {
+                                    Text("Duplicate")
+                                }
+                                .tint(.gray)
+                            }
                         }
                     }
-                    .onDelete { viewStore.send(.deleteButtonTapped($0)) }
                     .onMove { viewStore.send(.artSymbolsOrderMoved($0, $1)) }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                        Button {
-                            print()
-                        } label: {
-                            Text("duplicate")
-                        }
-                        .tint(.gray)
-                    }
                 }
                 .listRowBackground(Rectangle().fill(.clear))
                 .frame(width: 280)
@@ -94,43 +121,11 @@ extension IdentifiedArray where ID == ArtSymbolFeature.State.ID, Element == ArtS
   static let mock: Self = [
     ArtSymbolFeature.State(
         id: UUID(),
-        symbolName: "checkmark.icloud",
-        width: 44,
-        height: 44,
-        weight: .regular,
-        position: CGPoint(x: 50, y: 50),
-        renderingType: .monochrome,
-        primaryColor: .black,
-        secondaryColor: .clear,
-        tertiaryColor: .clear
+        appearance: .preview()
     ),
     ArtSymbolFeature.State(
         id: UUID(),
-        symbolName: "checkmark",
-        width: 70,
-        height: 30,
-        weight: .regular,
-        position: CGPoint(x: 70, y: 30),
-        renderingType: .monochrome,
-        primaryColor: .black,
-        secondaryColor: .clear,
-        tertiaryColor: .clear
-    ),
-    ArtSymbolFeature.State(
-        id: UUID(),
-        symbolName: "xmark",
-        width: 30,
-        height: 70,
-        weight: .regular,
-        position: CGPoint(x: 30, y: 70),
-        renderingType: .monochrome,
-        primaryColor: .black,
-        secondaryColor: .clear,
-        tertiaryColor: .clear,
-        rotationDegrees: 45
-    ),
+        appearance: .preview()
+    )
   ]
 }
-
-//swipe actionの複製メソッド
-//swipe delete禁止
