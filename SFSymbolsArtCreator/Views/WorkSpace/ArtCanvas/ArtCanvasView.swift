@@ -30,6 +30,11 @@ struct ArtCanvasFeature: Reducer {
                 }
             }
         }
+        
+        var reversedArtSymbols: IdentifiedArrayOf<ArtSymbolFeature.State> {
+            let reversedSymbolsArray = artSymbols.ids.reversed().compactMap({ artSymbols[id: $0] })
+            return IdentifiedArray(uniqueElements: reversedSymbolsArray)
+        }
     }
     enum Action: Equatable {
         case artSymbol(id: ArtSymbolFeature.State.ID, action: ArtSymbolFeature.Action)
@@ -92,7 +97,10 @@ struct ArtCanvasView: View {
             Rectangle()
                 .fill(viewStore.canvasColor)
                 .overlay {
-                    ForEachStore(store.scope(state: \.artSymbols, action: ArtCanvasFeature.Action.artSymbol)) { store in
+                    ForEachStore(store.scope(
+                        state: \.reversedArtSymbols,
+                        action: ArtCanvasFeature.Action.artSymbol)
+                    ) { store in
                         
                         store.withState { state in
                             
