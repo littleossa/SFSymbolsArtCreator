@@ -73,6 +73,7 @@
 		979E22CF2AD20560003559D2 /* EditFormTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22CE2AD20560003559D2 /* EditFormTypeTests.swift */; };
 		979E22D12AD206BF003559D2 /* EditPointScalingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22D02AD206BF003559D2 /* EditPointScalingTests.swift */; };
 		979E22D32AD2820F003559D2 /* ArtSymbolAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */; };
+		979E22D62AD283EF003559D2 /* ArtSymbolLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E22D52AD283EF003559D2 /* ArtSymbolLayerTests.swift */; };
 		97FCD5462ABDD9F5002795F6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */; };
 		97FCD5482ABDEC56002795F6 /* RenderingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD5472ABDEC56002795F6 /* RenderingType.swift */; };
 		97FCD54B2ABE3978002795F6 /* AccordionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */; };
@@ -160,6 +161,7 @@
 		979E22CE2AD20560003559D2 /* EditFormTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormTypeTests.swift; sourceTree = "<group>"; };
 		979E22D02AD206BF003559D2 /* EditPointScalingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointScalingTests.swift; sourceTree = "<group>"; };
 		979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolAppearance.swift; sourceTree = "<group>"; };
+		979E22D52AD283EF003559D2 /* ArtSymbolLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtSymbolLayerTests.swift; sourceTree = "<group>"; };
 		97FCD5452ABDD9F5002795F6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		97FCD5472ABDEC56002795F6 /* RenderingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingType.swift; sourceTree = "<group>"; };
 		97FCD54A2ABE3978002795F6 /* AccordionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSettingView.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		97671A752ACB9AE400648FD4 /* FeaturesTests */ = {
 			isa = PBXGroup;
 			children = (
+				979E22D42AD28391003559D2 /* ArtSymbolTests */,
 				97671A222AC3A2B100648FD4 /* ColorToolBarTests */,
 				97671A292AC3E28300648FD4 /* DrawToolBarTests */,
 				97671A882ACD1F9100648FD4 /* EditPanelTests */,
@@ -524,6 +527,14 @@
 				979E22D22AD2820F003559D2 /* ArtSymbolAppearance.swift */,
 			);
 			path = ArtSymbol;
+			sourceTree = "<group>";
+		};
+		979E22D42AD28391003559D2 /* ArtSymbolTests */ = {
+			isa = PBXGroup;
+			children = (
+				979E22D52AD283EF003559D2 /* ArtSymbolLayerTests.swift */,
+			);
+			path = ArtSymbolTests;
 			sourceTree = "<group>";
 		};
 		97FCD5442ABDD9C9002795F6 /* Extensions */ = {
@@ -721,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97671A722ACB8BA200648FD4 /* FontWeightExtensionTests.swift in Sources */,
+				979E22D62AD283EF003559D2 /* ArtSymbolLayerTests.swift in Sources */,
 				97671A612ACA14E200648FD4 /* CatalogSymbolColorSettingFeatureTests.swift in Sources */,
 				97671A5B2AC5C77200648FD4 /* WorkSpaceFeatureTests.swift in Sources */,
 				97671A8E2ACDA4E800648FD4 /* EditPanelTests.swift in Sources */,
