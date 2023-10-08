@@ -10,6 +10,17 @@ import SwiftUI
 struct LayerPanelFeature: Reducer {
     struct State: Equatable {
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
+        
+        var frameHeight: CGFloat {
+            let topSpace = 132
+            let cellFrameWithPadding = 90
+            let height = artSymbols.count * cellFrameWithPadding + topSpace
+            if height > 640 {
+                return 640
+            } else {
+                return CGFloat(height)
+            }
+        }
     }
     
     enum Action: Equatable {
@@ -68,40 +79,63 @@ struct LayerPanelView: View {
                         viewStore.send(.overlayTapped)
                     }
                 
-                List {
-                    ForEachStore(store.scope(
-                        state: \.artSymbols,
-                        action: LayerPanelFeature.Action.artSymbol)
-                    ) { store in
-                        ArtSymbolLayerCell(
-                            store: store.scope(
-                                state: \.layer,
-                                action: ArtSymbolFeature.Action.layer
+                VStack {
+                    
+                    List {
+                        Text("Layer")
+                            .foregroundStyle(.white)
+                            .font(.title)
+                            .bold()
+                            .listRowBackground(Color.clear)
+                            .frame(height: 56)
+                        
+                        ForEachStore(store.scope(
+                            state: \.artSymbols,
+                            action: LayerPanelFeature.Action.artSymbol)
+                        ) { store in
+                            ArtSymbolLayerCell(
+                                store: store.scope(
+                                    state: \.layer,
+                                    action: ArtSymbolFeature.Action.layer
+                                )
                             )
-                        )
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            
-                            HStack {
-                                Button {
-                                    print()
-                                } label: {
-                                    Text("Delete")
-                                }
-                                .tint(.red)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                 
-                                Button {
-                                    print()
-                                } label: {
-                                    Text("Duplicate")
+                                HStack {
+                                    Button {
+                                        print()
+                                    } label: {
+                                        Text("Delete")
+                                    }
+                                    .tint(.red)
+                                    
+                                    Button {
+                                        print()
+                                    } label: {
+                                        Text("Duplicate")
+                                    }
+                                    .tint(.gray)
                                 }
-                                .tint(.gray)
                             }
                         }
+                        .onMove { viewStore.send(.artSymbolsOrderMoved($0, $1)) }
+                        .listRowInsets(.init(top: 8, leading: 4, bottom: 8, trailing: 0))
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.heavyDarkGray2)
+                                .padding(8)
+                        )
+                        .listRowSeparator(.hidden)
                     }
-                    .onMove { viewStore.send(.artSymbolsOrderMoved($0, $1)) }
+                    .scrollContentBackground(.hidden)
+                    .background(RoundedRectangle(cornerRadius: 16)
+                        .fill(.heavyDarkGray2))
+                    .frame(width: 280, height: viewStore.frameHeight)
+                    .shadow(radius: 10)
+                    .padding()
+                    
+                    Spacer()
                 }
-                .listRowBackground(Rectangle().fill(.clear))
-                .frame(width: 280)
             }
         }
     }
@@ -126,6 +160,26 @@ extension IdentifiedArray where ID == ArtSymbolFeature.State.ID, Element == ArtS
     ArtSymbolFeature.State(
         id: UUID(),
         appearance: .preview()
-    )
+    ),
+    ArtSymbolFeature.State(
+        id: UUID(),
+        appearance: .preview()
+    ),
+    ArtSymbolFeature.State(
+        id: UUID(),
+        appearance: .preview()
+    ),
+    ArtSymbolFeature.State(
+        id: UUID(),
+        appearance: .preview()
+    ),
+    ArtSymbolFeature.State(
+        id: UUID(),
+        appearance: .preview()
+    ),
+    ArtSymbolFeature.State(
+        id: UUID(),
+        appearance: .preview()
+    ),
   ]
 }

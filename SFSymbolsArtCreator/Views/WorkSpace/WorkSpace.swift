@@ -13,6 +13,7 @@ struct WorkSpaceFeature: Reducer {
         var colorToolState: ColorToolFeature.State
         var drawToolState: DrawToolFeature.State
         var editPanelState: EditPanelFeature.State?
+        var layerPanelState: LayerPanelFeature.State?
         var menuToolState: MenuToolFeature.State
         var symbolCatalogState: SymbolCatalogFeature.State
         
@@ -46,6 +47,7 @@ struct WorkSpaceFeature: Reducer {
         case colorTool(ColorToolFeature.Action)
         case drawTool(DrawToolFeature.Action)
         case editPanel(EditPanelFeature.Action)
+        case layerPanel(LayerPanelFeature.Action)
         case menuTool(MenuToolFeature.Action)
         case symbolCatalog(SymbolCatalogFeature.Action)
     }
@@ -94,6 +96,10 @@ struct WorkSpaceFeature: Reducer {
                 return .none
                 
             case let .drawTool(.renderingTypeChanged(type)):
+                
+                state.layerPanelState = nil
+                state.drawToolState.layerPanelIsPresented = false
+
                 state.colorToolState.renderingType = type
                 state.artCanvasState.editingSymbolAppearance?.renderingType = type
                 
@@ -116,6 +122,9 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .drawTool(.delegate(.editButtonToggled(isEditMode))):
                 
+                state.layerPanelState = nil
+                state.drawToolState.layerPanelIsPresented = false
+                
                 if isEditMode,
                    let lastSymbol = state.artCanvasState.artSymbols.last {
                     
@@ -136,6 +145,17 @@ struct WorkSpaceFeature: Reducer {
                     state.artCanvasState.editSymbolID = nil
                     state.editPanelState = nil
                 }
+                return .none
+            
+            case let .drawTool(.delegate(.layerButtonToggled(layerIsPresented))):
+                
+                if layerIsPresented {
+                    state.layerPanelState = .init(artSymbols: state.artCanvasState.artSymbols)
+                } else {
+                    state.layerPanelState = nil
+                    state.drawToolState.layerPanelIsPresented = false
+                }
+                
                 return .none
                 
             case .drawTool:
@@ -176,6 +196,14 @@ struct WorkSpaceFeature: Reducer {
             case .editPanel:
                 return .none
                 
+            case .layerPanel(.overlayTapped):
+                state.layerPanelState = nil
+                state.drawToolState.layerPanelIsPresented = false
+                return .none
+                
+            case .layerPanel:
+                return .none
+                
             case .menuTool:
                 return .none
             case let .symbolCatalog(.catalogItemList(.delegate(.catalogItemSelected(item)))):
@@ -210,6 +238,9 @@ struct WorkSpaceFeature: Reducer {
         }
         .ifLet(\.editPanelState, action: /Action.editPanel) {
             EditPanelFeature()
+        }
+        .ifLet(\.layerPanelState, action: /Action.layerPanel) {
+            LayerPanelFeature()
         }
         Scope(state: \.artCanvasState, action: /Action.artCanvas) {
             ArtCanvasFeature()
@@ -253,42 +284,50 @@ struct WorkSpaceView: View {
                     .background(.black.opacity(0.9))
             }
             
-            HStack(spacing:0) {
-                SymbolCatalogView(store: store.scope(
-                    state: \.symbolCatalogState,
-                    action: WorkSpaceFeature.Action.symbolCatalog)
-                )
-                                    
-                GeometryReader { geometry in
+            ZStack {
+                
+                HStack(spacing:0) {
+                    SymbolCatalogView(store: store.scope(
+                        state: \.symbolCatalogState,
+                        action: WorkSpaceFeature.Action.symbolCatalog)
+                    )
                     
-                    ZStack(alignment: .center) {
+                    GeometryReader { geometry in
                         
-                        Rectangle()
-                            .fill(.black.gradient)
-                            .ignoresSafeArea(edges: .bottom)
-                        
-                        ArtCanvasView(store: store.scope(
-                            state: \.artCanvasState,
-                            action: WorkSpaceFeature.Action.artCanvas)
-                        )
-                        .frame(width: geometry.size.width * 0.7,
-                               height: geometry.size.width * 0.7)
-                        
-                        VStack {
-                            Spacer()
+                        ZStack(alignment: .center) {
                             
-                            IfLetStore(self.store.scope(state: \.editPanelState,
-                                                        action: WorkSpaceFeature.Action.editPanel)) {
-                                EditPanelView(store: $0)
+                            Rectangle()
+                                .fill(.black.gradient)
+                                .ignoresSafeArea(edges: .bottom)
+                            
+                            ArtCanvasView(store: store.scope(
+                                state: \.artCanvasState,
+                                action: WorkSpaceFeature.Action.artCanvas)
+                            )
+                            .frame(width: geometry.size.width * 0.7,
+                                   height: geometry.size.width * 0.7)
+                            
+                            VStack {
+                                Spacer()
+                                
+                                IfLetStore(self.store.scope(state: \.editPanelState,
+                                                            action: WorkSpaceFeature.Action.editPanel)) {
+                                    EditPanelView(store: $0)
+                                }
                             }
                         }
                     }
+                    
+                    ColorToolBar(store: store.scope(
+                        state: \.colorToolState,
+                        action: WorkSpaceFeature.Action.colorTool)
+                    )
                 }
                 
-                ColorToolBar(store: store.scope(
-                    state: \.colorToolState,
-                    action: WorkSpaceFeature.Action.colorTool)
-                )
+                IfLetStore(self.store.scope(state: \.layerPanelState,
+                                            action: WorkSpaceFeature.Action.layerPanel)) {
+                    LayerPanelView(store: $0)
+                }
             }
         }
         .ignoresSafeArea(.keyboard)
