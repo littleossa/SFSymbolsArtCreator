@@ -26,7 +26,7 @@ enum EditFormType: String, CaseIterable, Identifiable {
             scaledHeight = beforeHeight + scalingValue.scaleValue
         }
         
-        if scaledHeight > AppConfig.minScalingHeight {
+        if scaledHeight >= AppConfig.minScalingHeight {
             return scaledHeight
         } else {
             return beforeHeight
@@ -44,7 +44,7 @@ enum EditFormType: String, CaseIterable, Identifiable {
             scaledWidth = beforeWidth + scalingValue.scaleValue
         }
         
-        if scaledWidth > AppConfig.minScalingWidth {
+        if scaledWidth >= AppConfig.minScalingWidth {
             return scaledWidth
         } else {
             return beforeWidth

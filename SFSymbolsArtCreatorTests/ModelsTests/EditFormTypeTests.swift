@@ -18,7 +18,7 @@ final class EditFormTypeTests: XCTestCase {
         var width = editForm.scalingWidth(by: scaling.value, beforeWidth: 100)
         XCTAssertEqual(width, 250)
         
-        XCTContext.runActivity(named: "Scaling below Minimum Width is not changed") { _ in
+        XCTContext.runActivity(named: "Scaling less than Minimum Width is not changed") { _ in
             
             XCTAssertEqual(AppConfig.minScalingWidth, 10)
             
@@ -30,8 +30,8 @@ final class EditFormTypeTests: XCTestCase {
             scaling = EditPointScaling(position: .topLeft,
                                          dragGestureTranslation: CGSize(width: 90, height: 100))
             width = editForm.scalingWidth(by: scaling.value, beforeWidth: 100)
-            XCTAssertEqual(width, 100)
-
+            XCTAssertEqual(width, 10)
+            
             scaling = EditPointScaling(position: .topLeft,
                                          dragGestureTranslation: CGSize(width: 91, height: 100))
             width = editForm.scalingWidth(by: scaling.value, beforeWidth: 100)
@@ -48,7 +48,7 @@ final class EditFormTypeTests: XCTestCase {
         var height = editForm.scalingHeight(by: scaling.value, beforeHeight: 80)
         XCTAssertEqual(height, 180)
         
-        XCTContext.runActivity(named: "Scaling below Minimum Height is not changed") { _ in
+        XCTContext.runActivity(named: "Scaling less than Minimum Height is not changed") { _ in
             
             XCTAssertEqual(AppConfig.minScalingHeight, 10)
             
@@ -60,7 +60,7 @@ final class EditFormTypeTests: XCTestCase {
             scaling = EditPointScaling(position: .topRight,
                                          dragGestureTranslation: CGSize(width: 90, height: 70))
             height = editForm.scalingHeight(by: scaling.value, beforeHeight: 80)
-            XCTAssertEqual(height, 80)
+            XCTAssertEqual(height, 10)
 
             scaling = EditPointScaling(position: .topRight,
                                          dragGestureTranslation: CGSize(width: 91, height: 71))
@@ -78,7 +78,7 @@ final class EditFormTypeTests: XCTestCase {
         var width = editForm.scalingWidth(by: scaling.value, beforeWidth: 200)
         XCTAssertEqual(width, 100)
         
-        XCTContext.runActivity(named: "Scaling below Minimum Width is not changed") { _ in
+        XCTContext.runActivity(named: "Scaling less than Minimum Width is not changed") { _ in
             
             XCTAssertEqual(AppConfig.minScalingWidth, 10)
             
@@ -90,7 +90,7 @@ final class EditFormTypeTests: XCTestCase {
             scaling = EditPointScaling(position: .topCenter,
                                        dragGestureTranslation: CGSize(width: 150, height: 190))
             width = editForm.scalingWidth(by: scaling.value, beforeWidth: 200)
-            XCTAssertEqual(width, 200)
+            XCTAssertEqual(width, 10)
             
             scaling = EditPointScaling(position: .topCenter,
                                        dragGestureTranslation: CGSize(width: 150, height: 191))
@@ -108,7 +108,7 @@ final class EditFormTypeTests: XCTestCase {
         var height = editForm.scalingHeight(by: scaling.value, beforeHeight: 80)
         XCTAssertEqual(height, 180)
         
-        XCTContext.runActivity(named: "Scaling below Minimum Height is not changed") { _ in
+        XCTContext.runActivity(named: "Scaling less than Minimum Height is not changed") { _ in
             
             XCTAssertEqual(AppConfig.minScalingHeight, 10)
             
@@ -120,7 +120,7 @@ final class EditFormTypeTests: XCTestCase {
             scaling = EditPointScaling(position: .topRight,
                                          dragGestureTranslation: CGSize(width: 90, height: 70))
             height = editForm.scalingHeight(by: scaling.value, beforeHeight: 80)
-            XCTAssertEqual(height, 80)
+            XCTAssertEqual(height, 10)
 
             scaling = EditPointScaling(position: .topRight,
                                          dragGestureTranslation: CGSize(width: 91, height: 71))
