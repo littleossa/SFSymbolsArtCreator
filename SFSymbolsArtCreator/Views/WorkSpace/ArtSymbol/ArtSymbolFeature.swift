@@ -11,9 +11,23 @@ struct ArtSymbolFeature: Reducer {
     struct State: Equatable, Identifiable {
         var id: UUID
         var appearance: ArtSymbolAppearance {
-            didSet {
-                editor.appearance = appearance
-                layer.appearance = appearance
+            get {
+                ArtSymbolAppearance(
+                    name: editor.appearance.name,
+                    renderingType: editor.appearance.renderingType,
+                    primaryColor: editor.appearance.primaryColor,
+                    secondaryColor: editor.appearance.secondaryColor,
+                    tertiaryColor: editor.appearance.tertiaryColor,
+                    weight: editor.appearance.weight,
+                    width: editor.appearance.width,
+                    height: editor.appearance.height,
+                    position: editor.appearance.position,
+                    isHidden: layer.appearance.isHidden
+                )
+            }
+            set {
+                editor.appearance = newValue
+                layer.appearance = newValue
             }
         }
         var editor: ArtSymbolEditorFeature.State
@@ -21,7 +35,6 @@ struct ArtSymbolFeature: Reducer {
         
         init(id: UUID, appearance: ArtSymbolAppearance) {
             self.id = id
-            self.appearance = appearance
             self.editor = .init(appearance: appearance)
             self.layer = .init(appearance: appearance)
         }
