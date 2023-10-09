@@ -44,6 +44,11 @@ struct WorkSpaceFeature: Reducer {
         var layerPanelState: LayerPanelFeature.State?
         var menuToolState: MenuToolFeature.State
         var symbolCatalogState: SymbolCatalogFeature.State
+        
+        fileprivate mutating func clearLayerPanel() {
+            layerPanelState = nil
+            drawToolState.layerPanelIsPresented = false
+        }
     }
     
     enum Action: Equatable {
@@ -101,8 +106,7 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .drawTool(.renderingTypeChanged(type)):
                 
-                state.layerPanelState = nil
-                state.drawToolState.layerPanelIsPresented = false
+                state.clearLayerPanel()
 
                 state.colorToolState.renderingType = type
                 state.artCanvasState.editingSymbolAppearance?.renderingType = type
@@ -126,8 +130,7 @@ struct WorkSpaceFeature: Reducer {
                 
             case let .drawTool(.delegate(.editButtonToggled(isEditMode))):
                 
-                state.layerPanelState = nil
-                state.drawToolState.layerPanelIsPresented = false
+                state.clearLayerPanel()
                 
                 if isEditMode,
                    let lastSymbol = state.artCanvasState.artSymbols.last {
@@ -156,8 +159,7 @@ struct WorkSpaceFeature: Reducer {
                 if layerIsPresented {
                     state.layerPanelState = .init(artSymbols: state.artCanvasState.artSymbols)
                 } else {
-                    state.layerPanelState = nil
-                    state.drawToolState.layerPanelIsPresented = false
+                    state.clearLayerPanel()
                 }
                 
                 return .none
@@ -201,8 +203,7 @@ struct WorkSpaceFeature: Reducer {
                 return .none
                 
             case .layerPanel(.overlayTapped):
-                state.layerPanelState = nil
-                state.drawToolState.layerPanelIsPresented = false
+                state.clearLayerPanel()
                 return .none
                 
             case .layerPanel:
