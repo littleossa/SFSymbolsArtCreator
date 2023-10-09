@@ -73,10 +73,7 @@ struct ArtSymbolLayerCell: View {
                 .frame(width: 44, height: 44)
             }
             .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(.heavyDarkGray)
-            }
+            .background(.clear)
         }
     }
 }
@@ -91,6 +88,10 @@ struct ArtSymbolLayerCell: View {
             ArtSymbolLayerFeature()
         })
         .frame(width: 200, height: 96)
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.heavyDarkGray)
+        }
         
         ArtSymbolLayerCell(store: .init(
             initialState: ArtSymbolLayerFeature.State(
@@ -105,5 +106,9 @@ struct ArtSymbolLayerCell: View {
             ArtSymbolLayerFeature()
         })
         .frame(width: 200, height: 96)
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.heavyDarkGray)
+        }
     }
 }

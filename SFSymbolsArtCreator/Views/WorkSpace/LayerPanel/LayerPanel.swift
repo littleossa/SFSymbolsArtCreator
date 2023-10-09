@@ -9,16 +9,17 @@ import SwiftUI
 
 struct LayerPanelFeature: Reducer {
     struct State: Equatable {
+        let cellHeight: CGFloat = 90
+        
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
         
         var frameHeight: CGFloat {
-            let topSpace = 132
-            let cellFrameWithPadding = 90
-            let height = artSymbols.count * cellFrameWithPadding + topSpace
-            if height > 640 {
+            let topSpace: CGFloat = 132
+            let cellListHeight = CGFloat(artSymbols.count) * cellHeight + topSpace
+            if cellListHeight > 640 {
                 return 640
             } else {
-                return CGFloat(height)
+                return cellListHeight
             }
         }
     }
@@ -122,8 +123,9 @@ struct LayerPanelView: View {
                         .listRowInsets(.init(top: 8, leading: 4, bottom: 8, trailing: 0))
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(.heavyDarkGray2)
+                                .fill(.heavyDarkGray)
                                 .padding(8)
+                                .frame(height: viewStore.cellHeight)
                         )
                         .listRowSeparator(.hidden)
                     }
