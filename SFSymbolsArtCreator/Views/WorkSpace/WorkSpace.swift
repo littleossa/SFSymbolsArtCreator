@@ -7,6 +7,34 @@
 import ComposableArchitecture
 import SwiftUI
 
+// MARK: - Initializer
+extension WorkSpaceFeature.State {
+    
+    init(renderingType: RenderingType = .monochrome,
+         primaryColor: Color = .black,
+         secondaryColor: Color = .accentColor,
+         tertiaryColor: Color = .white,
+         canvasColor: Color = .white,
+         editFormType: EditFormType = .freeForm
+    ) {
+        self.artCanvasState = .init(artSymbols: [],
+                                    canvasColor: canvasColor,
+                                    editFormType: editFormType)
+        self.colorToolState = .init(renderingType: renderingType,
+                                    canvasColor: canvasColor,
+                                    primaryColor: primaryColor,
+                                    secondaryColor: secondaryColor,
+                                    tertiaryColor: tertiaryColor)
+        self.drawToolState = .init(renderingType: renderingType)
+        self.menuToolState = .init()
+        self.symbolCatalogState = .init(renderingType: renderingType,
+                                        primaryColor: primaryColor,
+                                        secondaryColor: secondaryColor,
+                                        tertiaryColor: tertiaryColor,
+                                        canvasColor: canvasColor)
+    }
+}
+
 struct WorkSpaceFeature: Reducer {
     struct State: Equatable {
         var artCanvasState: ArtCanvasFeature.State
@@ -16,30 +44,6 @@ struct WorkSpaceFeature: Reducer {
         var layerPanelState: LayerPanelFeature.State?
         var menuToolState: MenuToolFeature.State
         var symbolCatalogState: SymbolCatalogFeature.State
-        
-        init(renderingType: RenderingType = .monochrome,
-             primaryColor: Color = .black,
-             secondaryColor: Color = .accentColor,
-             tertiaryColor: Color = .white,
-             canvasColor: Color = .white,
-             editFormType: EditFormType = .freeForm
-        ) {
-            self.artCanvasState = .init(artSymbols: [],
-                                        canvasColor: canvasColor,
-                                        editFormType: editFormType)
-            self.colorToolState = .init(renderingType: renderingType,
-                                        canvasColor: canvasColor,
-                                        primaryColor: primaryColor,
-                                        secondaryColor: secondaryColor,
-                                        tertiaryColor: tertiaryColor)
-            self.drawToolState = .init(renderingType: renderingType)
-            self.menuToolState = .init()
-            self.symbolCatalogState = .init(renderingType: renderingType,
-                                            primaryColor: primaryColor,
-                                            secondaryColor: secondaryColor,
-                                            tertiaryColor: tertiaryColor,
-                                            canvasColor: canvasColor)
-        }
     }
     
     enum Action: Equatable {
