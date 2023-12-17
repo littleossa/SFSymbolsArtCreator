@@ -210,13 +210,8 @@ struct WorkSpaceFeature: Reducer {
                 state.clearLayerPanel()
                 return .none
                 
-            case let  .layerPanel(.artSymbolsOrderMoved(sourceIndex, destinationOrder)):
+            case let .layerPanel(.artSymbolsOrderMoved(sourceIndex, destinationOrder)):
                 state.artCanvasState.artSymbols.move(fromOffsets: sourceIndex, toOffset: destinationOrder)
-                return .none
-                
-            case let .layerPanel(.delegate(.hideButtonTapped(id))):
-                state.artCanvasState.artSymbols[id: id]?.appearance.isHidden.toggle()
-                state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
                 return .none
                 
             case .layerPanel(.delegate(.currentEditSymbolLayerTapped)):
@@ -232,6 +227,11 @@ struct WorkSpaceFeature: Reducer {
                 else { return .none }
                 
                 state.setEditSymbol(appearance: appearance)
+                return .none
+                
+            case let .layerPanel(.delegate(.hideButtonTapped(id))):
+                state.artCanvasState.artSymbols[id: id]?.appearance.isHidden.toggle()
+                state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
                 return .none
                 
             case let .layerPanel(.deleteButtonTapped(id)):
