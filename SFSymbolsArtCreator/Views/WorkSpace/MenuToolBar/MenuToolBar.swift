@@ -7,7 +7,6 @@
 import ComposableArchitecture
 import SwiftUI
 
-// TODO: まだやることがまとまっていない為、後で更新
 struct MenuToolFeature: Reducer {
     struct State: Equatable {
     }
@@ -40,14 +39,15 @@ struct MenuToolBar: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             HStack(spacing: 48) {
                 
-                Button {
-                } label: {
-                    Label("Art works", systemImage: "chevron.left")
-                        .font(.title)
-                        .bold()
-                }
-                .foregroundStyle(.paleGray)
-                .padding(.leading)
+                // TODO: Back to art work list
+//                Button {
+//                } label: {
+//                    Label("Art works", systemImage: "chevron.left")
+//                        .font(.title)
+//                        .bold()
+//                }
+//                .foregroundStyle(.paleGray)
+//                .padding(.leading)
                 
                 Button {
                 } label: {
@@ -59,6 +59,7 @@ struct MenuToolBar: View {
                 }
                 .frame(width: 44, height: 44)
                 .foregroundStyle(.paleGray)
+                .padding(.horizontal)
                 
                 Spacer()
             }
