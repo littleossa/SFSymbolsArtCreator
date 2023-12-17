@@ -22,6 +22,8 @@ struct ArtSymbolFeature: Reducer {
                     width: editor.appearance.width,
                     height: editor.appearance.height,
                     position: editor.appearance.position,
+                    flipType: editor.appearance.flipType,
+                    rotationDegrees: editor.appearance.rotationDegrees,
                     isHidden: layer.appearance.isHidden
                 )
             }
