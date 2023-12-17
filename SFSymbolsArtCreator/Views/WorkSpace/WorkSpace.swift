@@ -219,6 +219,12 @@ struct WorkSpaceFeature: Reducer {
                 state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
                 return .none
                 
+            case .layerPanel(.delegate(.currentEditSymbolLayerTapped)):
+                state.artCanvasState.editSymbolID = nil
+                state.layerPanelState?.editSymbolID = nil
+                state.editPanelState = nil
+                return .none
+                
             case let .layerPanel(.delegate(.editSymbolIDChanged(id))):
                 state.artCanvasState.editSymbolID = id
                 
