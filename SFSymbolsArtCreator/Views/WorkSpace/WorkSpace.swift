@@ -49,6 +49,17 @@ struct WorkSpaceFeature: Reducer {
             layerPanelState = nil
             drawToolState.layerPanelIsPresented = false
         }
+        
+        fileprivate mutating func setEditSymbol(appearance: ArtSymbolAppearance) {
+            drawToolState.renderingType = appearance.renderingType
+            colorToolState.primaryColor = appearance.primaryColor
+            colorToolState.secondaryColor = appearance.secondaryColor
+            colorToolState.tertiaryColor = appearance.tertiaryColor
+            
+            let editFormType = artCanvasState.editFormType
+            editPanelState = .init(appearance: appearance,
+                                   editFormType: editFormType)
+        }
     }
     
     enum Action: Equatable {
@@ -138,15 +149,7 @@ struct WorkSpaceFeature: Reducer {
                     state.artCanvasState.editSymbolID = lastSymbol.id
                     
                     let appearance = lastSymbol.appearance
-                    
-                    state.drawToolState.renderingType = appearance.renderingType
-                    state.colorToolState.primaryColor = appearance.primaryColor
-                    state.colorToolState.secondaryColor = appearance.secondaryColor
-                    state.colorToolState.tertiaryColor = appearance.tertiaryColor
-                    
-                    let editFormType = state.artCanvasState.editFormType
-                    state.editPanelState = .init(appearance: appearance,
-                                                 editFormType: editFormType)
+                    state.setEditSymbol(appearance: appearance)
                     
                 } else {
                     state.artCanvasState.editSymbolID = nil
@@ -216,6 +219,15 @@ struct WorkSpaceFeature: Reducer {
                 state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
                 return .none
                 
+            case let .layerPanel(.delegate(.editSymbolIDChanged(id))):
+                state.artCanvasState.editSymbolID = id
+                
+                guard let appearance = state.artCanvasState.editingSymbolAppearance
+                else { return .none }
+                
+                state.setEditSymbol(appearance: appearance)
+                return .none
+                
             case let .layerPanel(.deleteButtonTapped(id)):
                 state.artCanvasState.artSymbols.remove(id: id)
                 state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
@@ -258,14 +270,7 @@ struct WorkSpaceFeature: Reducer {
                 state.artCanvasState.editSymbolID = uuid
                 state.drawToolState.isEditMode = true
                 
-                state.drawToolState.renderingType = item.renderingType
-                state.colorToolState.primaryColor = item.primaryColor
-                state.colorToolState.secondaryColor = item.secondaryColor
-                state.colorToolState.tertiaryColor = item.tertiaryColor
-                
-                let editFormType = state.artCanvasState.editFormType
-                state.editPanelState = .init(appearance: artSymbol.appearance,
-                                             editFormType: editFormType)
+                state.setEditSymbol(appearance: artSymbol.appearance)
                 return .none
                 
             case .symbolCatalog:

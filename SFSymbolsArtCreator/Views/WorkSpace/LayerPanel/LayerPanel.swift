@@ -34,6 +34,7 @@ struct LayerPanelFeature: Reducer {
         case overlayTapped
         
         enum Delegate: Equatable {
+            case editSymbolIDChanged(id: ArtSymbolFeature.State.ID)
             case hideButtonTapped(id: ArtSymbolFeature.State.ID)
         }
     }
@@ -46,6 +47,13 @@ struct LayerPanelFeature: Reducer {
             case let .artSymbol(id, action: .layer(.hideButtonTapped)):
                 return .run { send in
                     await send(.delegate(.hideButtonTapped(id: id)))
+                }
+            case let .artSymbol(id, action: .layer(.cellTapped)):
+                guard state.editSymbolID != id
+                else { return .none }
+                state.editSymbolID = id
+                return .run { send in
+                    await send(.delegate(.editSymbolIDChanged(id: id)))
                 }
             case .artSymbol:
                 return .none
