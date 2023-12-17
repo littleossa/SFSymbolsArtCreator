@@ -46,7 +46,7 @@ struct ArtSymbolLayerCell: View {
                     .fill(.white)
                     .frame(width: 44, height: 44)
                     .overlay {
-                        Image(systemName: viewStore.appearance.name)
+                        Image(systemName: viewStore.appearance.isHidden ? "" : viewStore.appearance.name)
                             .fontWeight(viewStore.appearance.weight)
                             .rotation3DEffect(.degrees(180),
                                               axis: (x: viewStore.appearance.flipType.value.rotationEffectAxis.x,
@@ -60,6 +60,10 @@ struct ArtSymbolLayerCell: View {
                                              viewStore.appearance.secondaryColor,
                                              viewStore.appearance.tertiaryColor)
                     }
+                
+                Text(viewStore.appearance.name)
+                    .foregroundStyle(.paleGray)
+                    .font(.caption)
                 
                 Spacer()
                 

@@ -12,7 +12,8 @@ struct LayerPanelFeature: Reducer {
         let cellHeight: CGFloat = 90
         
         var artSymbols: IdentifiedArrayOf<ArtSymbolFeature.State>
-        
+        var editSymbolID: UUID?
+
         var frameHeight: CGFloat {
             let topSpace: CGFloat = 132
             let cellListHeight = CGFloat(artSymbols.count) * cellHeight + topSpace
@@ -94,39 +95,43 @@ struct LayerPanelView: View {
                             state: \.artSymbols,
                             action: LayerPanelFeature.Action.artSymbol)
                         ) { store in
-                            ArtSymbolLayerCell(
-                                store: store.scope(
-                                    state: \.layer,
-                                    action: ArtSymbolFeature.Action.layer
-                                )
-                            )
-                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            
+                            store.withState { state in
                                 
-                                HStack {
-                                    Button {
-                                        print()
-                                    } label: {
-                                        Text("Delete")
-                                    }
-                                    .tint(.red)
+                                ArtSymbolLayerCell(
+                                    store: store.scope(
+                                        state: \.layer,
+                                        action: ArtSymbolFeature.Action.layer
+                                    )
+                                )
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                     
-                                    Button {
-                                        print()
-                                    } label: {
-                                        Text("Duplicate")
+                                    HStack {
+                                        Button {
+                                            viewStore.send(.deleteButtonTapped(id: state.id))
+                                        } label: {
+                                            Text("Delete")
+                                        }
+                                        .tint(.red)
+                                        
+                                        Button {
+                                            viewStore.send(.duplicateButtonTapped(id: state.id))
+                                        } label: {
+                                            Text("Duplicate")
+                                        }
+                                        .tint(.gray)
                                     }
-                                    .tint(.gray)
                                 }
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(viewStore.state.editSymbolID == state.id ? Color.accentColor : .heavyDarkGray)
+                                        .padding(8)
+                                        .frame(height: viewStore.cellHeight)
+                                )
                             }
                         }
                         .onMove { viewStore.send(.artSymbolsOrderMoved($0, $1)) }
                         .listRowInsets(.init(top: 8, leading: 4, bottom: 8, trailing: 0))
-                        .listRowBackground(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.heavyDarkGray)
-                                .padding(8)
-                                .frame(height: viewStore.cellHeight)
-                        )
                         .listRowSeparator(.hidden)
                     }
                     .scrollContentBackground(.hidden)
@@ -146,7 +151,8 @@ struct LayerPanelView: View {
 #Preview {
     LayerPanelView(store: .init(
         initialState: LayerPanelFeature.State(
-            artSymbols: IdentifiedArray.mock
+            artSymbols: IdentifiedArray.mock,
+            editSymbolID: nil
         )) {
             LayerPanelFeature()
         }

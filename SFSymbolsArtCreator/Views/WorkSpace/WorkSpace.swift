@@ -157,7 +157,8 @@ struct WorkSpaceFeature: Reducer {
             case let .drawTool(.delegate(.layerButtonToggled(layerIsPresented))):
                 
                 if layerIsPresented {
-                    state.layerPanelState = .init(artSymbols: state.artCanvasState.artSymbols)
+                    state.layerPanelState = .init(artSymbols: state.artCanvasState.artSymbols,
+                                                  editSymbolID: state.artCanvasState.editSymbolID)
                 } else {
                     state.clearLayerPanel()
                 }
@@ -204,6 +205,36 @@ struct WorkSpaceFeature: Reducer {
                 
             case .layerPanel(.overlayTapped):
                 state.clearLayerPanel()
+                return .none
+                
+            case let  .layerPanel(.artSymbolsOrderMoved(sourceIndex, destinationOrder)):
+                state.artCanvasState.artSymbols.move(fromOffsets: sourceIndex, toOffset: destinationOrder)
+                return .none
+                
+            case let .layerPanel(.delegate(.hideButtonTapped(id))):
+                state.artCanvasState.artSymbols[id: id]?.appearance.isHidden.toggle()
+                state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
+                return .none
+                
+            case let .layerPanel(.deleteButtonTapped(id)):
+                state.artCanvasState.artSymbols.remove(id: id)
+                state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
+                return .none
+            
+            case let .layerPanel(.duplicateButtonTapped(id)):
+                guard let sourceSymbol = state.artCanvasState.artSymbols[id: id],
+                      let index = state.artCanvasState.artSymbols.index(id: id)
+                else { return .none }
+                         
+                let uuid = UUID()
+                let duplicatedSymbol: ArtSymbolFeature.State = .init(
+                    id: uuid,
+                    appearance: sourceSymbol.appearance
+                )
+                state.artCanvasState.artSymbols.insert(duplicatedSymbol, at: index)
+                state.artCanvasState.editSymbolID = uuid
+                state.layerPanelState?.editSymbolID = uuid
+                state.layerPanelState?.artSymbols = state.artCanvasState.artSymbols
                 return .none
                 
             case .layerPanel:

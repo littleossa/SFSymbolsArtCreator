@@ -10,8 +10,7 @@ struct ArtSymbolImage: View {
     let appearance: ArtSymbolAppearance
     
     var body: some View {
-        
-        Image(systemName: appearance.name)
+        Image(systemName: appearance.isHidden ? "" : appearance.name)
             .resizable()
             .fontWeight(appearance.weight)
             .rotation3DEffect(.degrees(180),

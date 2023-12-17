@@ -35,7 +35,7 @@ struct ArtSymbolEditorView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
                 
-            Image(systemName: viewStore.appearance.name)
+            Image(systemName: viewStore.appearance.isHidden ? "" : viewStore.appearance.name)
                     .resizable()
                     .fontWeight(viewStore.appearance.weight)
                     .rotation3DEffect(.degrees(180),
