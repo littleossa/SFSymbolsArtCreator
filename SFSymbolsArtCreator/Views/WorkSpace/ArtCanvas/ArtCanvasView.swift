@@ -109,17 +109,13 @@ struct ArtCanvasView: View {
                             
                             ZStack {
                                 if viewStore.editSymbolID == state.id {
-                                    ZStack {
-                                        ArtSymbolEditorView(
-                                            store: store.scope(
-                                                state: \.editor,
-                                                action: ArtSymbolFeature.Action.editor)
-                                        )
-                                    }
+                                    ArtSymbolEditorView(
+                                        store: store.scope(
+                                            state: \.editor,
+                                            action: ArtSymbolFeature.Action.editor)
+                                    )
                                 } else {
-                                    ZStack {
-                                        ArtSymbolImage(appearance: state.appearance)
-                                    }
+                                    ArtSymbolImage(appearance: state.appearance)
                                 }
                             }
                         }
