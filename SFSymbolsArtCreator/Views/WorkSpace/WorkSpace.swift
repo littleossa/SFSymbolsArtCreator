@@ -144,11 +144,11 @@ struct WorkSpaceFeature: Reducer {
                 state.clearLayerPanel()
                 
                 if isEditMode,
-                   let lastSymbol = state.artCanvasState.artSymbols.last {
+                   let firstSymbol = state.artCanvasState.artSymbols.first {
                     
-                    state.artCanvasState.editSymbolID = lastSymbol.id
+                    state.artCanvasState.editSymbolID = firstSymbol.id
                     
-                    let appearance = lastSymbol.appearance
+                    let appearance = firstSymbol.appearance
                     state.setEditSymbol(appearance: appearance)
                     
                 } else {
